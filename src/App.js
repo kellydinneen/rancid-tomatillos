@@ -14,12 +14,12 @@ class App extends Component {
 
     return (
       <body>
-      <header>header</header>
-      <main>
-      <div>top rated</div>
-      <div>movies</div>
-      </main>
-      <footer>footer</footer>
+        <header>header</header>
+        <main>
+          <div>top rated</div>
+          <div>movies</div>
+        </main>
+        <footer>footer</footer>
       </body>
     )
   }
