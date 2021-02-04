@@ -10,11 +10,11 @@ const Movies = ({movies}) => {
 
   const scrollLeft = () => {
     console.log(scroller.current);
-    scroller.current.scrollLeft -= 400;
+    scroller.current.scrollLeft -= 600;
   }
 
   const scrollRight = () => {
-    scroller.current.scrollLeft += 400;
+    scroller.current.scrollLeft += 600;
   }
 
   const moviePosters = movies.map(movie => {
