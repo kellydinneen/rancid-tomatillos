@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import MovieDetails from './components/MovieDetails';
 import About from './components/FooterLinks/About';
 import Careers from './components/FooterLinks/Careers';
 import ContactUs from './components/FooterLinks/ContactUs';
@@ -16,6 +17,7 @@ ReactDOM.render(
       </header>
       <Switch>
         <Route path='/' exact component={App} />
+        <Route path='/movie-details' exact component={MovieDetails} />
         <Route path='/about' exact component={About} />
         <Route path='/careers' exact component={Careers} />
         <Route path='/contact-us' exact component={ContactUs} />
