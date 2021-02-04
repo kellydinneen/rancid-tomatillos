@@ -1,4 +1,11 @@
 .poster {
   height: 30vh;
   margin: 2vh;
+  filter: drop-shadow(5px 5px 10px #434343);
+  transition: all .2s ease-in-out;
+}
+.poster:hover {
+  transform: scale(1.2);
+  /* filter: hue-rotate(-0.2turn); */
+  filter: brightness(1.1);
 }

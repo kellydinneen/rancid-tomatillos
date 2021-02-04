@@ -1,6 +1,11 @@
+.movies {
+  display: flex;
+}
+
 .movies-container {
   display: flex;
-  height: 35vh;
+  height: 60vh;
   width: 90vw;
   overflow: scroll;
+  align-items: center;
 }
