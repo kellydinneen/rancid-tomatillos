@@ -1,0 +1,14 @@
+.top-movie {
+  text-align: center;
+  margin: 15px;
+}
+
+.top-movie-rating {
+  font-size: xx-large;
+  margin-bottom: 0;
+}
+
+.top-movie-title {
+  font-size: xx-large;
+  margin-top: 5px;
+}

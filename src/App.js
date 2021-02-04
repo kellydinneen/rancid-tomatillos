@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Movies from './components/Movies';
 import movieData from './movieData';
+import TopRated from './components/TopRated';
 
 class App extends Component {
   constructor() {
@@ -15,11 +16,12 @@ class App extends Component {
 
     return (
       <>
+
         <header>
           <h1>Rotten Tomatillos</h1>
         </header>
         <main>
-          <div>top rated</div>
+          <TopRated movies={this.state.movies}/>
           <Movies movies={this.state.movies}/>
         </main>
         <footer>
