@@ -2,3 +2,8 @@
   text-align: center;
   font-size: xxx-large;
 }
+
+.top-three-section {
+  display: flex;
+  justify-content: space-between;
+}
