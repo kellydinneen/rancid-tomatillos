@@ -15,12 +15,18 @@ class App extends Component {
 
     return (
       <>
-        <header>header</header>
+        <header>
+          <h1>Rotten Tomatillos</h1>
+        </header>
         <main>
           <div>top rated</div>
           <Movies movies={this.state.movies}/>
         </main>
-        <footer>footer</footer>
+        <footer>
+          <h3>About</h3>
+          <h3>Careers</h3>
+          <h3>Contact Us</h3>
+        </footer>
       </>
     )
   }
