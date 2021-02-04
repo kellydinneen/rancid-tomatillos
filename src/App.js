@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './App.css';
 import Movies from './components/Movies';
 import movieData from './movieData';
 import TopRated from './components/TopRated';
+
 
 class App extends Component {
   constructor() {
@@ -17,7 +18,6 @@ class App extends Component {
 
     return (
       <>
-
         <header>
           <h1>Rotten<br/> Tomatillos</h1>
         </header>
@@ -26,9 +26,9 @@ class App extends Component {
           <Movies movies={this.state.movies}/>
         </main>
         <footer>
-          <h3>About</h3>
-          <h3>Careers</h3>
-          <h3>Contact Us</h3>
+          <Link to='/about'>About</Link>
+          <Link to='/careers'>Careers</Link>
+          <Link to='/contact-us'>Contact Us</Link>
         </footer>
       </>
     )

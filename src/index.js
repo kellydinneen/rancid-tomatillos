@@ -1,12 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import About from './components/FooterLinks/About';
+import Careers from './components/FooterLinks/Careers';
+import ContactUs from './components/FooterLinks/ContactUs';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Switch>
+        <Route path='/' exact component={App} />
+        <Route path='/about' exact component={About} />
+        <Route path='/careers' exact component={Careers} />
+        <Route path='/contact-us' exact component={ContactUs} />
+        <Route path='/' render={() => <div>404</div>} />
+      </Switch>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
