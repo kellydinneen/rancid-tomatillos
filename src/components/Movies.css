@@ -16,3 +16,7 @@
   height: 10vh;
   width: 5vw;
 }
+
+.scrollButton:hover {
+  filter: drop-shadow(5px 5px 10px #FFFF);
+}
