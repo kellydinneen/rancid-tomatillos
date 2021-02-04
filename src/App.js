@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Movies from './components/Movies';
 import movieData from './movieData';
 import TopRated from './components/TopRated';
 
@@ -15,12 +16,19 @@ class App extends Component {
 
     return (
       <>
-        <header>header</header>
+
+        <header>
+          <h1>Rotten Tomatillos</h1>
+        </header>
         <main>
           <TopRated movies={this.state.movies}/>
-          <div>movies</div>
+          <Movies movies={this.state.movies}/>
         </main>
-        <footer>footer</footer>
+        <footer>
+          <h3>About</h3>
+          <h3>Careers</h3>
+          <h3>Contact Us</h3>
+        </footer>
       </>
     )
   }
