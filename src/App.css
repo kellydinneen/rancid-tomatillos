@@ -1,27 +1,25 @@
 header {
   border-bottom: 1px solid #E74300;
-  height: 12vh;
   display: flex;
   align-items: flex-end;
 }
 
 main {
-  height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 5vh;
 }
 
 footer {
   display: flex;
   border-top: 1px solid #E74300;
-  height: 20vh;
 }
 
 h1 {
   color: #E74300;
+  font-size: xx-large;
+  margin-bottom: 0px;
 }
 
 h3 {

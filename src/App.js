@@ -18,7 +18,7 @@ class App extends Component {
       <>
 
         <header>
-          <h1>Rotten Tomatillos</h1>
+          <h1>Rotten<br/> Tomatillos</h1>
         </header>
         <main>
           <TopRated movies={this.state.movies}/>
