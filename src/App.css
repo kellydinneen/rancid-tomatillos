@@ -1,6 +1,8 @@
 header {
-  border-bottom: 1px solid black;
-  height: 20vh;
+  border-bottom: 1px solid #E74300;
+  height: 12vh;
+  display: flex;
+  align-items: flex-end;
 }
 
 main {
@@ -9,12 +11,17 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 5vh;
 }
 
 footer {
   display: flex;
-  border-top: 1px solid black;
+  border-top: 1px solid #E74300;
   height: 20vh;
+}
+
+h1 {
+  color: #E74300;
 }
 
 h3 {
