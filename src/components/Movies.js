@@ -1,3 +1,7 @@
+import React from 'react';
+import Poster from './Poster';
+import './Movies.css';
+
 const Movies = ({movies}) => {
 
   const moviePosters = movies.map(movie => {
@@ -16,3 +20,5 @@ const Movies = ({movies}) => {
     </div>
   )
 }
+
+export default Movies;
