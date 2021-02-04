@@ -1,7 +1,3 @@
-body {
-  height: 100vh;
-  width: 100vw;
-}
 header {
   border-bottom: 1px solid black;
   height: 25vh;
@@ -10,8 +6,6 @@ header {
 main {
   height: 50vh;
 }
-
-
 
 footer {
   border-top: 1px solid black;

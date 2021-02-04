@@ -13,14 +13,14 @@ class App extends Component {
   render() {
 
     return (
-      <body>
+      <>
         <header>header</header>
         <main>
           <div>top rated</div>
           <div>movies</div>
         </main>
         <footer>footer</footer>
-      </body>
+      </>
     )
   }
 
