@@ -9,7 +9,6 @@ const Movies = ({movies}) => {
   const scroller = React.useRef();
 
   const scrollLeft = () => {
-    console.log(scroller.current);
     scroller.current.scrollLeft -= 600;
   }
 
@@ -22,6 +21,7 @@ const Movies = ({movies}) => {
       <Poster
         image={movie.poster_path}
         id={movie.id}
+        title={movie.title}
         key={movie.id}
       />
     )
@@ -29,11 +29,12 @@ const Movies = ({movies}) => {
 
   return (
     <div className='movies'>
-      <img className="scrollButton" onClick={scrollRight} src={scrollLeftButton} onClick={scrollLeft}/>
+      <img className="scrollButton" src={scrollLeftButton} alt='Scroll Right Arrow' onClick={scrollLeft}/>
       <div className='movies-container' id='container' ref={scroller}>
         {moviePosters}
       </div>
-      <img className="scrollButton" onClick={scrollRight} src={scrollRightButton} onClick={scrollRight}/>
+      <img className="scrollButton" onClick={scrollRight} src={scrollRightButton}
+      alt='Scroll Right Button'/>
     </div>
   )
 }
