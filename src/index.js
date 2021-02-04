@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -11,6 +11,9 @@ import ContactUs from './components/FooterLinks/ContactUs';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+      <header>
+        <h1>Rotten<br/> Tomatillos</h1>
+      </header>
       <Switch>
         <Route path='/' exact component={App} />
         <Route path='/about' exact component={About} />
@@ -18,6 +21,11 @@ ReactDOM.render(
         <Route path='/contact-us' exact component={ContactUs} />
         <Route path='/' render={() => <div>404</div>} />
       </Switch>
+      <footer>
+        <Link to='/about'>About</Link>
+        <Link to='/careers'>Careers</Link>
+        <Link to='/contact-us'>Contact Us</Link>
+      </footer>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
