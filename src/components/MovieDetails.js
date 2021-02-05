@@ -1,30 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
+import './MovieDetails.css'
 
+class MovieDetails extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      id: props.location.state.movie.id,
+      movie: {}
+    }
+  }
 
-const MovieDetails = (props) => {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     id: 12,
-  //     movie: {}
-  //   }
-    console.log(props)
-  // }
-  //
-  // componentDidMount = () => {
-  //
-  // }
-  //
-  // render() {
+  componentDidMount = () => {
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.state.id}`)
+      .then(response => response.json())
+      .then(data =>
+        this.setState({ movie: data.movie }))
+  }
+
+  render() {
     return (
       <div>
-        <img src='' alt='' />
-        <h3 className='movieTitle'>Movie Title</h3>
-        <h3 className='rating'>Rating</h3>
-        <h4 className='releaseDate'>Release Date</h4>
+        <img src={this.state.movie.backdrop_path} alt={this.state.movie.title} className='movieBackdrop'/>
+        <h3 className='movieTitle'>{this.state.movie.title}</h3>
+        <h3 className='rating'>{this.state.movie.average_rating}</h3>
+        <h4 className='releaseDate'>{this.state.movie.release_date}</h4>
       </div>
     )
   }
-// }
+}
 
 export default MovieDetails;
