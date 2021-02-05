@@ -3,6 +3,7 @@ import './App.css';
 import Movies from './components/Movies';
 import TopRated from './components/TopRated';
 
+
 class App extends Component {
   constructor() {
     super()
@@ -39,18 +40,10 @@ class App extends Component {
 
     return (
       <>
-        <header>
-          <h1>Rotten<br/> Tomatillos</h1>
-        </header>
         <main>
           <TopRated movies={movies}/>
           <Movies movies={movies}/>
         </main>
-        <footer>
-          <h3>About</h3>
-          <h3>Careers</h3>
-          <h3>Contact Us</h3>
-        </footer>
       </>
     )
   }

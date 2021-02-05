@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './TopMovie.css';
 
 const TopMovie = ({ movie }) => {
@@ -6,8 +7,16 @@ const TopMovie = ({ movie }) => {
   return (
     <>
     <article className="top-movie">
-      <h3 className="top-movie-rating">{movie.average_rating}</h3>
-      <h4 className="top-movie-title">{movie.title}</h4>
+      <h3><Link to={{
+        pathname:`/movie-details/${movie.title}`,
+        state: {movie}
+      }}  className="top-movie-rating">{movie.average_rating}</Link></h3>
+      <h4><Link
+      to={{
+        pathname:`/movie-details/${movie.title}`,
+        state: {movie}
+      }}
+      className="top-movie-title">{movie.title}</Link></h4>
     </article>
     </>
 
