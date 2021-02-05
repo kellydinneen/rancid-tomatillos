@@ -34,7 +34,7 @@ class App extends Component {
     }
 
     if(isLoading) {
-      return <p>Loading...</p>
+      return <p className='loading-message'>Loading...</p>
     }
 
     return (
