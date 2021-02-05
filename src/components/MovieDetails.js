@@ -1,19 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 
-class MovieDetails extends Component {
-  constructor() {
-    super()
-    this.state = {
-      movie: {}
-    }
-  }
-
-  componentDidMount = () => {
-
-  }
-
-  render() {
+const MovieDetails = (props) => {
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     id: 12,
+  //     movie: {}
+  //   }
+    console.log(props)
+  // }
+  //
+  // componentDidMount = () => {
+  //
+  // }
+  //
+  // render() {
     return (
       <div>
         <img src='' alt='' />
@@ -23,6 +25,6 @@ class MovieDetails extends Component {
       </div>
     )
   }
-}
+// }
 
 export default MovieDetails;

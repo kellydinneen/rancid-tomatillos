@@ -17,7 +17,7 @@ ReactDOM.render(
       </header>
       <Switch>
         <Route path='/' exact component={App} />
-        <Route path='/movie-details' exact component={MovieDetails} />
+        <Route path='/movie-details/:title' exact component={MovieDetails} />
         <Route path='/about' exact component={About} />
         <Route path='/careers' exact component={Careers} />
         <Route path='/contact-us' exact component={ContactUs} />

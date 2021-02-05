@@ -7,8 +7,16 @@ const TopMovie = ({ movie }) => {
   return (
     <>
     <article className="top-movie">
-      <h3><Link to='/movie-details'  className="top-movie-rating">{movie.average_rating}</Link></h3>
-      <h4><Link to='/movie-details' className="top-movie-title">{movie.title}</Link></h4>
+      <h3><Link to={{
+        pathname:`/movie-details/${movie.title}`,
+        state: {movie}
+      }}  className="top-movie-rating">{movie.average_rating}</Link></h3>
+      <h4><Link
+      to={{
+        pathname:`/movie-details/${movie.title}`,
+        state: {movie}
+      }}
+      className="top-movie-title">{movie.title}</Link></h4>
     </article>
     </>
 
