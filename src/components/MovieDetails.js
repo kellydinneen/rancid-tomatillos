@@ -8,24 +8,34 @@ class MovieDetails extends Component {
       id: props.location.state.movie.id,
       movie: {},
       isLoading: true,
-      error: null
+      errorMsg: null
     }
   }
 
-  componentDidMount = () => {
+  checkRes(response) {
+    if (!response.ok) {
+      this.setState({errorMsg: `${response.status} error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!`})
+    }
+  }
+
+  componentDidMount() {
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.state.id}`)
-      .then(response => response.json())
-      .then(data =>
-        this.setState({ movie: data.movie, isLoading: false }))
-      .catch(error =>
-        this.setState(error))
+      .then(res => {
+        this.checkRes(res)
+        return res.json()})
+      .then(result =>
+        this.setState({
+          movie: result.movie,
+          isLoading: false,
+        }))
+      .catch(error => console.log(error))
   }
 
   render() {
-    const {movie, isLoading, error} = this.state;
+    const {movie, isLoading, errorMsg} = this.state;
 
-    if(error) {
-      return <p>{error.message}</p>
+    if(errorMsg) {
+      return <p>{errorMsg}</p>
     }
 
     if(isLoading) {

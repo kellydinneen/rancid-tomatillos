@@ -16,7 +16,7 @@ class App extends Component {
 
   checkRes(response) {
     if (!response.ok) {
-      this.setState({errorMsg: "Something went wrong! Sorry! Try again later or go to Contact Us to contact the developers with questions!"})
+      this.setState({errorMsg: `${response.status} error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!`})
     }
   }
 
@@ -25,12 +25,12 @@ class App extends Component {
         .then(res => {
           this.checkRes(res)
           return res.json()})
-        .then(result => {
+        .then(result =>
           this.setState({
               movies: result.movies,
               isLoading: false,
               errorMsg: result.error
-            })})
+            }))
         .catch(error => console.log(error))
   }
 
