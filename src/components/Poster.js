@@ -5,7 +5,7 @@ import './Poster.css';
 const Poster = ({ movie }) => {
   return (
     <Link to={{
-        pathname:`/movie-details/${movie.title}`,
+        pathname:`/movie-details/${movie.title.replace(/\s+/g, '')}`,
         state: {movie}
       }}>
       <img src={movie.poster_path} className='poster'/>

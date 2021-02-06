@@ -8,12 +8,12 @@ const TopMovie = ({ movie }) => {
     <>
     <article className="top-movie">
       <h3><Link to={{
-        pathname:`/movie-details/${movie.title}`,
+        pathname:`/movie-details/${movie.title.replace(/\s+/g, '')}`,
         state: {movie}
       }}  className="top-movie-rating">{movie.average_rating}</Link></h3>
       <h4><Link
       to={{
-        pathname:`/movie-details/${movie.title}`,
+        pathname:`/movie-details/${movie.title.replace(/\s+/g, '')}`,
         state: {movie}
       }}
       className="top-movie-title">{movie.title}</Link></h4>
