@@ -19,9 +19,7 @@ const Movies = ({movies}) => {
   const moviePosters = movies.map(movie => {
     return (
       <Poster
-        image={movie.poster_path}
-        id={movie.id}
-        title={movie.title}
+        movie={movie}
         key={movie.id}
       />
     )
