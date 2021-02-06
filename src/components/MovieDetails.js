@@ -7,6 +7,7 @@ class MovieDetails extends Component {
     this.state = {
       id: props.location.state.movie.id,
       movie: {},
+      isLoading: true,
       error: null
     }
   }
@@ -15,26 +16,35 @@ class MovieDetails extends Component {
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.state.id}`)
       .then(response => response.json())
       .then(data =>
-        this.setState({ movie: data.movie }))
+        this.setState({ movie: data.movie, isLoading: false }))
       .catch(error =>
         this.setState(error))
   }
 
   render() {
+    const {movie, isLoading, error} = this.state;
 
-    if(this.state.error) {
-      return <p>{this.state.error.message}</p>
+    if(error) {
+      return <p>{error.message}</p>
+    }
+
+    if(isLoading) {
+      return <p className='loading-message'>Loading...</p>
     }
 
     return (
       <div>
-        <img src={this.state.movie.backdrop_path} alt={this.state.movie.title} className='movieBackdrop'/>
-        <h3 className='movieTitle'>{this.state.movie.title}</h3>
-        <h3 className='rating'>{this.state.movie.average_rating}</h3>
-        <h4 className='releaseDate'>{this.state.movie.release_date}</h4>
-        <h4 className='genre'>{this.state.movie.genres}</h4>
-        <h4 className='runtime'>{this.state.movie.runtime}</h4>
-        <p className='overview'>{this.state.movie.overview}</p>
+        <img src={movie.backdrop_path} alt={movie.title} className='movieBackdrop'/>
+        <div className='featuredMovieData'>
+          <h3 className='movieTitle'>{movie.title}</h3>
+          <h3 className='rating'>{movie.average_rating.toFixed(1)}★</h3>
+        </div>
+        <div className='movieData'>
+          <h4 className='releaseDate'>{movie.release_date} </h4>
+          <h4 className='genre'>{movie.genres}</h4>
+          <h4 className='runtime'>{movie.runtime} minutes</h4>
+        </div>
+        <p className='overview'>{movie.overview}</p>
       </div>
     )
   }
