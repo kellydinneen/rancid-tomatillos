@@ -26,11 +26,26 @@ code {
     monospace;
 }
 
-header {
-  border-bottom: 1px solid #E74300;
+.header-content {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  margin-left: 1vw;
+}
+
+.footer-links {
+  display: flex;
+  align-items: flex-start;
+  padding: 3vh;
+}
+
+.footer-link {
+  margin: 1vh;
+}
+
+.gradient {
+  height: 0.5vh;
+  background: linear-gradient(to right, #E74300,#F9A119);
 }
 
 .site-title {

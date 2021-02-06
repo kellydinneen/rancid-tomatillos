@@ -14,18 +14,20 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <header>
-        <h1>
+        <section className="header-content">
+          <h1>
+            <Link to={{
+              pathname:'/'
+            }}  className="site-title">Rancid<br/> Tomatillos
+            </Link>
+          </h1>
           <Link to={{
             pathname:'/'
-          }}  className="site-title">Rotten<br/> Tomatillos
+          }}>
+            <img src={homeButton} className='home-button'/>
           </Link>
-        </h1>
-        <Link to={{
-          pathname:'/'
-        }}>
-          <img src={homeButton} className='home-button'/>
-        </Link>
-
+        </section>
+        <section className="gradient"></section>
       </header>
       <Switch>
         <Route path='/' exact component={App} />
@@ -36,9 +38,12 @@ ReactDOM.render(
         <Route path='/' render={() => <div>404</div>} />
       </Switch>
       <footer>
-        <Link to='/about'>About</Link>
-        <Link to='/careers'>Careers</Link>
-        <Link to='/contact-us'>Contact Us</Link>
+        <section className="gradient"></section>
+        <div className="footer-links">
+          <Link to='/about' className="footer-link">About</Link>
+          <Link to='/careers' className="footer-link">Careers</Link>
+          <Link to='/contact-us' className="footer-link">Contact Us</Link>
+        </div>
       </footer>
     </BrowserRouter>
   </React.StrictMode>,

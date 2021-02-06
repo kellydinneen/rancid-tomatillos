@@ -10,28 +10,30 @@ class App extends Component {
     this.state = {
       movies: [],
       isLoading: true,
-      error: null
+      errorMessage: null
     }
   }
 
   componentDidMount() {
     fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
         .then(res => res.json())
-        .then(result => this.setState({
-              movies: result.movies,
-              isLoading: false
-            }))
-        .catch(error => this.setState({
-              isLoading: false,
-              error
-            }))
+        .then(response => {
+          this.setState({movies: response.movies,isLoading: false, errorMessage: response.error})
+        })
+        // .catch(error => {
+        //   this.setState({
+        //         isLoading: false,
+        //         errorMessage: error.status
+        //       })
+        // })
   }
 
   render() {
-    const {movies, isLoading, error} = this.state;
+    const {movies, isLoading, errorMessage} = this.state;
+    console.log(errorMessage);
 
-    if(error) {
-      return <p>{error.message}</p>
+    if(errorMessage) {
+      return <p>{errorMessage}</p>
     }
 
     if(isLoading) {
