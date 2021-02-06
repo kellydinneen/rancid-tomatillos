@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import homeButton from './home.png';
 import MovieDetails from './components/MovieDetails';
 import About from './components/FooterLinks/About';
 import Careers from './components/FooterLinks/Careers';
@@ -13,7 +14,18 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <header>
-        <h1>Rotten<br/> Tomatillos</h1>
+        <h1>
+          <Link to={{
+            pathname:'/'
+          }}  className="site-title">Rotten<br/> Tomatillos
+          </Link>
+        </h1>
+        <Link to={{
+          pathname:'/'
+        }}>
+          <img src={homeButton} className='home-button'/>
+        </Link>
+
       </header>
       <Switch>
         <Route path='/' exact component={App} />

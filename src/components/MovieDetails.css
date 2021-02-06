@@ -1,4 +1,24 @@
 .movieBackdrop {
   width: 100vw;
-  height: 75vh;
+}
+
+.movieData, .featuredMovieData {
+  display: flex;
+  margin-left: 5vw;
+}
+
+.movieTitle, .rating {
+  font-size: xx-large;
+  margin-right: 6vw;
+  margin-left: 0;
+}
+
+.releaseDate, .genre, .runtime {
+  margin: 1vw;
+}
+
+.overview {
+  margin-top: 0;
+  margin-left: 5vw;
+  margin-right: 10vw;
 }
