@@ -13,7 +13,12 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <header>
-        <h1>Rotten<br/> Tomatillos</h1>
+        <h1>
+          <Link to={{
+            pathname:'/'
+          }}  className="site-title">Rotten<br/> Tomatillos
+          </Link>
+        </h1>
       </header>
       <Switch>
         <Route path='/' exact component={App} />
