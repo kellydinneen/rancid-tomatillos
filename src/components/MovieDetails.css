@@ -7,6 +7,8 @@
 .movieBackdrop {
   width: 100vw;
   max-width: 1250px;
+  /* box-shadow: 0 0 8px 8px white inset; */
+  /* background-blend-mode:luminosity; */
 }
 
 .movieData, .featuredMovieData {
@@ -15,6 +17,7 @@
 
 .movieTitle, .rating {
   font-size: xx-large;
+    mix-blend-mode: screen;
 }
 
 .releaseDate, .genre, .runtime {
