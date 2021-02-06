@@ -41,7 +41,7 @@ class MovieDetails extends Component {
         </div>
         <div className='movieData'>
           <h4 className='releaseDate'>{movie.release_date} </h4>
-          <h4 className='genre'>{movie.genres}</h4>
+          <h4 className='genre'>{movie.genres.join(', ')}</h4>
           <h4 className='runtime'>{movie.runtime} minutes</h4>
         </div>
         <p className='overview'>{movie.overview}</p>
