@@ -6,7 +6,8 @@ class MovieDetails extends Component {
     super(props)
     this.state = {
       id: props.location.state.movie.id,
-      movie: {}
+      movie: {},
+      error: null
     }
   }
 
@@ -15,9 +16,16 @@ class MovieDetails extends Component {
       .then(response => response.json())
       .then(data =>
         this.setState({ movie: data.movie }))
+      .catch(error =>
+        this.setState(error))
   }
 
   render() {
+
+    if(this.state.error) {
+      return <p>{this.state.error.message}</p>
+    }
+
     return (
       <div>
         <img src={this.state.movie.backdrop_path} alt={this.state.movie.title} className='movieBackdrop'/>
