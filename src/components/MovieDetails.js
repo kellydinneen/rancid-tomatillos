@@ -24,6 +24,9 @@ class MovieDetails extends Component {
         <h3 className='movieTitle'>{this.state.movie.title}</h3>
         <h3 className='rating'>{this.state.movie.average_rating}</h3>
         <h4 className='releaseDate'>{this.state.movie.release_date}</h4>
+        <h4 className='genre'>{this.state.movie.genres}</h4>
+        <h4 className='runtime'>{this.state.movie.runtime}</h4>
+        <p className='overview'>{this.state.movie.overview}</p>
       </div>
     )
   }
