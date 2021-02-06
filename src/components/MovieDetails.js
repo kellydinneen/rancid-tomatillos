@@ -33,7 +33,7 @@ class MovieDetails extends Component {
     }
 
     return (
-      <div>
+      <div className="movie-details">
         <img src={movie.backdrop_path} alt={movie.title} className='movieBackdrop'/>
         <div className='featuredMovieData'>
           <h3 className='movieTitle'>{movie.title}</h3>

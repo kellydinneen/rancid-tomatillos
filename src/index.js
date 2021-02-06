@@ -24,7 +24,7 @@ ReactDOM.render(
           <Link to={{
             pathname:'/'
           }}>
-            <img src={homeButton} className='home-button'/>
+            <img src={homeButton} alt="home button" className='home-button'/>
           </Link>
         </section>
         <section className="gradient"></section>

@@ -1,25 +1,31 @@
+.movie-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .movieBackdrop {
   width: 100vw;
+  max-width: 1250px;
 }
 
 .movieData, .featuredMovieData {
   display: flex;
-  margin-left: 5vw;
 }
 
 .movieTitle, .rating {
   font-size: xx-large;
-  margin-right: 6vw;
-  margin-left: 0;
 }
 
 .releaseDate, .genre, .runtime {
   margin: 1vw;
+  font-size: 1.2rem;
 }
 
 .overview {
-  margin-top: 0;
-  margin-left: 5vw;
-  margin-right: 10vw;
+  margin-top: 1vh;
   margin-bottom: 5vh;
+  margin-left: 5vh;
+  margin-right: 5vh;
+  max-width: 1000px;
 }
