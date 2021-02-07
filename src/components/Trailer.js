@@ -30,12 +30,6 @@ class Trailer extends React.Component {
       .catch(error => console.log(error))
   }
 
-  playVideo() {
-   document.querySelector('.movieBackdrop').classList.add('hidden');
-   document.querySelector('.trailer').style.display = 'block';
-  }
-
-
   render() {
     const opts = {
       height: '390',
