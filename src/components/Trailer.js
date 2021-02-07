@@ -42,11 +42,11 @@ class Trailer extends React.Component {
     const { errorMsg } = this.state;
 
     if(errorMsg) {
-      return <p>{errorMsg}</p>
+      return <p className='trailer'>{errorMsg}</p>
     }
 
     return (
-      <div className="trailer">
+      <div className='trailer'>
         <YouTube
         videoId={this.state.videoKey}
         opts={opts}
