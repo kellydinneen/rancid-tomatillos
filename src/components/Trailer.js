@@ -30,6 +30,19 @@ class Trailer extends React.Component {
       .catch(error => console.log(error))
   }
 
+  onReady(event) {
+    event.target.pauseVideo();
+  }
+
+  toggleTrailerBtn() {
+    let viewTrailerBtn = document.querySelector('.viewTrailerBtn');
+    if (viewTrailerBtn.style.display === 'none') {
+      viewTrailerBtn.style.display = 'inline-block'
+    } else {
+      viewTrailerBtn.style.display = 'none'
+    }
+  }
+
   render() {
     const opts = {
       height: '390',
@@ -47,16 +60,16 @@ class Trailer extends React.Component {
 
     return (
       <div className='trailer'>
-        <YouTube
+        <YouTube className='vid'
         videoId={this.state.videoKey}
         opts={opts}
-        onPlay={this.playVideo}
-        onPause={this.pauseVideo}
+        onReady={this.onReady}
+        onPlay={this.toggleTrailerBtn}
+        onPause={this.toggleTrailerBtn}
         />
       </div>
     )
   }
-
 }
 
 export default Trailer;

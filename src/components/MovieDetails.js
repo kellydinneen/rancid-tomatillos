@@ -35,7 +35,7 @@ class MovieDetails extends Component {
   showHideTrailer() {
     let backdrop = document.querySelector('.movieBackdrop');
     let trailer = document.querySelector('.trailer');
-    let trailerButton = document.querySelector('.viewTrailer');
+    let trailerButton = document.querySelector('.viewTrailerBtn');
     if (!backdrop.classList.contains('hidden')) {
       backdrop.classList.add('hidden');
       trailer.style.display = 'block';
@@ -74,7 +74,7 @@ class MovieDetails extends Component {
           <h4 className='runtime'>{movie.runtime} minutes</h4>
         </div>
         <p className='overview'>{movie.overview}</p>
-        <button className='viewTrailer' onClick={this.showHideTrailer}>View Trailer</button>
+        <button className='viewTrailerBtn' onClick={this.showHideTrailer}>View Trailer</button>
       </main>
     )
   }
