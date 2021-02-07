@@ -46,3 +46,7 @@ header {
 .home-button:hover {
   filter: brightness(1);
 }
+
+.hidden {
+  display: none;
+}

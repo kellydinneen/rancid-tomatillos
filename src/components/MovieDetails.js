@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './MovieDetails.css'
+import './MovieDetails.css';
+import Trailer from './Trailer';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -43,8 +44,11 @@ class MovieDetails extends Component {
     }
 
     return (
-      <div>
-        <img src={movie.backdrop_path} alt={movie.title} className='movieBackdrop'/>
+      <main>
+        <div className='trailerContainer'>
+          <img src={movie.backdrop_path} alt={movie.title} className='movieBackdrop'/>
+          <Trailer/>
+        </div>
         <div className='featuredMovieData'>
           <h3 className='movieTitle'>{movie.title}</h3>
           <h3 className='rating'>{movie.average_rating.toFixed(1)}★</h3>
@@ -55,7 +59,7 @@ class MovieDetails extends Component {
           <h4 className='runtime'>{movie.runtime} minutes</h4>
         </div>
         <p className='overview'>{movie.overview}</p>
-      </div>
+      </main>
     )
   }
 }

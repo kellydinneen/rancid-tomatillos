@@ -1,6 +1,20 @@
+.trailerContainer {
+  display: grid;
+  grid-template-rows: 1fr
+}
+
 .movieBackdrop {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
   width: 100vw;
 }
+
+.trailerContainer:hover .movieBackdrop {
+  display: none
+}
+
 
 .movieData, .featuredMovieData {
   display: flex;
