@@ -12,9 +12,16 @@ class Trailer extends React.Component {
     }
   }
 
+  checkRes(response) {
+    if (!response.ok) {
+      this.setState({errorMsg: `${response.status} error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!`})
+    }
+  }
+
   componentDidMount() {
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.state.movieId}/videos`)
       .then(res => {
+        this.checkRes(res)
         return res.json()})
       .then(result =>
         this.setState({
@@ -37,6 +44,12 @@ class Trailer extends React.Component {
         autoplay: 0
       }
     };
+
+    const { errorMsg } = this.state;
+
+    if(errorMsg) {
+      return <p>{errorMsg}</p>
+    }
 
     return (
       <div className="trailer">
