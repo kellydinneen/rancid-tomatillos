@@ -3,6 +3,12 @@ import './Trailer.css';
 import YouTube from 'react-youtube';
 
 class Trailer extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state ={
+      movieId: props.movieInfo.id
+    }
+  }
 
   playVideo() {
     let backdrop = document.querySelector('.movieBackdrop');
@@ -10,6 +16,7 @@ class Trailer extends React.Component {
   }
 
   render() {
+
     const opts = {
       height: '390',
       width: '640',
@@ -21,7 +28,7 @@ class Trailer extends React.Component {
     return (
       <div className="trailer">
         <YouTube
-        videoId='ct5mQYE3Xk4'
+        videoId='NqLl-b-PhLo'
         opts={opts}
         onPlay={this.playVideo}
         />

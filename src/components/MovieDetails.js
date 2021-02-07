@@ -47,7 +47,7 @@ class MovieDetails extends Component {
       <main>
         <div className='trailerContainer'>
           <img src={movie.backdrop_path} alt={movie.title} className='movieBackdrop'/>
-          <Trailer/>
+          <Trailer movieInfo={this.state}/>
         </div>
         <div className='featuredMovieData'>
           <h3 className='movieTitle'>{movie.title}</h3>
