@@ -5,9 +5,22 @@ import YouTube from 'react-youtube';
 class Trailer extends React.Component {
   constructor(props) {
     super(props)
-    this.state ={
-      movieId: props.movieInfo.id
+    this.state = {
+      movieId: props.movieInfo.id,
+      errorMsg: null,
+      videoKey: ''
     }
+  }
+
+  componentDidMount() {
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.state.movieId}/videos`)
+      .then(res => {
+        return res.json()})
+      .then(result =>
+        this.setState({
+          videoKey: result.videos[0].key
+        }))
+      .catch(error => console.log(error))
   }
 
   playVideo() {
@@ -28,7 +41,7 @@ class Trailer extends React.Component {
     return (
       <div className="trailer">
         <YouTube
-        videoId='HfiH_526qhY'
+        videoId={this.state.videoKey}
         opts={opts}
         onPlay={this.playVideo}
         onPause={this.pauseVideo}
