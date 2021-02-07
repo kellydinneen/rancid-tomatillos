@@ -11,12 +11,12 @@ class Trailer extends React.Component {
   }
 
   playVideo() {
-    let backdrop = document.querySelector('.movieBackdrop');
-    backdrop.classList.add('hidden');
+   document.querySelector('.movieBackdrop').classList.add('hidden');
+   document.querySelector('.trailer').style.display = 'block';
   }
 
-  render() {
 
+  render() {
     const opts = {
       height: '390',
       width: '640',
@@ -28,9 +28,10 @@ class Trailer extends React.Component {
     return (
       <div className="trailer">
         <YouTube
-        videoId='NqLl-b-PhLo'
+        videoId='HfiH_526qhY'
         opts={opts}
         onPlay={this.playVideo}
+        onPause={this.pauseVideo}
         />
       </div>
     )
