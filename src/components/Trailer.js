@@ -1,33 +1,34 @@
 import React from 'react';
 import './Trailer.css';
 import YouTube from 'react-youtube';
+import { fetchTrailerKey } from '../apiCalls';
 
 class Trailer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       movieId: props.movieInfo.id,
+      isLoading: true,
       errorMsg: null,
       videoKey: ''
     }
   }
 
-  checkRes(response) {
-    if (!response.ok) {
-      this.setState({errorMsg: `${response.status} error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!`})
-    }
-  }
-
   componentDidMount() {
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.state.movieId}/videos`)
-      .then(res => {
-        this.checkRes(res)
-        return res.json()})
-      .then(result =>
-        this.setState({
-          videoKey: result.videos[0].key
-        }))
-      .catch(error => console.log(error))
+    fetchTrailerKey(this.state.movieId)
+      .then(result =>{
+        if (!result.videos) {
+          this.setState({
+            isLoading: false,
+            errorMsg: result
+          })
+        } else {
+          this.setState({
+            isLoading: false,
+            videoKey: result.videos[0].key
+          })
+        }
+      })
   }
 
   onReady(event) {
@@ -52,10 +53,14 @@ class Trailer extends React.Component {
       }
     };
 
-    const { errorMsg } = this.state;
+    const { errorMsg, isLoading } = this.state;
 
     if(errorMsg) {
       return <p className='trailer'>{errorMsg}</p>
+    }
+
+    if(isLoading) {
+      return <p className='loading-message'>Loading...</p>
     }
 
     return (
