@@ -23,10 +23,6 @@ code {
     monospace;
 }
 
-/* header, footer {
-  display: grid;
-  height: 15vh;
-} */
 
 .header-content {
   display: flex;
@@ -38,7 +34,7 @@ code {
 .footer-links {
   display: flex;
   align-items: flex-start;
-  padding: 3vh;
+  padding: 5vh;
   font-family: 'Rubik Mono One', sans-serif;
 }
 
