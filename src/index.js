@@ -40,9 +40,9 @@ ReactDOM.render(
       <footer>
         <section className="gradient"></section>
         <div className="footer-links">
-          <Link to='/about'>About</Link>
-          <Link to='/faq'>FAQ</Link>
-          <Link to='/contact-us'>Contact Us</Link>
+          <Link className="footer-link" to='/about'>About</Link>
+          <Link className="footer-link" to='/faq'>FAQ</Link>
+          <Link className="footer-link" to='/contact-us'>Contact Us</Link>
         </div>
       </footer>
     </BrowserRouter>
