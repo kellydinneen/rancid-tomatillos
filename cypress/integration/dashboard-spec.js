@@ -1,4 +1,4 @@
-describe('Rancid Tomatillos', () => {
+describe('Dashboard UI', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000');
   });
