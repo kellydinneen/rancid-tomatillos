@@ -1,12 +1,9 @@
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-    height: auto;
-    width: 100vw;
+  font-family: 'Montserrat', sans-serif;
+  height: auto;
+  width: 100vw;
   background: linear-gradient(#434343, #000000);
   color: #FFFF;
 }
@@ -26,15 +23,33 @@ code {
     monospace;
 }
 
-header {
-  border-bottom: 1px solid #E74300;
+
+.header-content {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  margin-left: 1vw;
+}
+
+.footer-links {
+  display: flex;
+  align-items: flex-start;
+  padding: 5vh;
+  font-family: 'Rubik Mono One', sans-serif;
+}
+
+.footer-link {
+  margin: 1vh;
+}
+
+.gradient {
+  height: 0.5vh;
+  background: linear-gradient(to right, #F9A119, #E74300);
 }
 
 .site-title {
   color: #E74300;
+  font-family: 'Rubik Mono One', sans-serif;
   font-size: xx-large;
   margin-bottom: 0px;
 }
@@ -45,4 +60,8 @@ header {
 
 .home-button:hover {
   filter: brightness(1);
+}
+
+.hidden {
+  display: none;
 }
