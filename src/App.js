@@ -40,7 +40,7 @@ class App extends Component {
     const {movies, isLoading, errorMsg} = this.state;
 
     if(errorMsg) {
-      return <p>{errorMsg}</p>
+      return <p className='error-message'>{errorMsg}</p>
     }
 
     if(isLoading) {
