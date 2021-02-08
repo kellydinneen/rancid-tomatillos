@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './MovieDetails.css'
+import './MovieDetails.css';
+import Trailer from './Trailer';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -8,24 +9,49 @@ class MovieDetails extends Component {
       id: props.location.state.movie.id,
       movie: {},
       isLoading: true,
-      error: null
+      errorMsg: null
     }
   }
 
-  componentDidMount = () => {
+  checkRes(response) {
+    if (!response.ok) {
+      this.setState({errorMsg: `${response.status} error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!`})
+    }
+  }
+
+  componentDidMount() {
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.state.id}`)
-      .then(response => response.json())
-      .then(data =>
-        this.setState({ movie: data.movie, isLoading: false }))
-      .catch(error =>
-        this.setState(error))
+      .then(res => {
+        this.checkRes(res)
+        return res.json()})
+      .then(result =>
+        this.setState({
+          movie: result.movie,
+          isLoading: false,
+        }))
+      .catch(error => console.log(error))
+  }
+
+  showHideTrailer() {
+    let backdrop = document.querySelector('.movieBackdrop');
+    let trailer = document.querySelector('.trailer');
+    let trailerButton = document.querySelector('.viewTrailerBtn');
+    if (!backdrop.classList.contains('hidden')) {
+      backdrop.classList.add('hidden');
+      trailer.style.display = 'block';
+      trailerButton.innerText='View Poster';
+    } else {
+      backdrop.classList.remove('hidden');
+      trailer.style.display = 'none';
+      trailerButton.innerText='View Trailer';
+    }
   }
 
   render() {
-    const {movie, isLoading, error} = this.state;
+    const {movie, isLoading, errorMsg} = this.state;
 
-    if(error) {
-      return <p>{error.message}</p>
+    if(errorMsg) {
+      return <p>{errorMsg}</p>
     }
 
     if(isLoading) {
@@ -33,8 +59,11 @@ class MovieDetails extends Component {
     }
 
     return (
-      <div className="movie-details">
-        <img src={movie.backdrop_path} alt={movie.title} className='movieBackdrop'/>
+      <main>
+        <div className='trailerContainer'>
+          <img src={movie.backdrop_path} alt={movie.title} className='movieBackdrop'/>
+          <Trailer movieInfo={this.state}/>
+        </div>
         <div className='featuredMovieData'>
           <h3 className='movieTitle'>{movie.title}</h3>
           <h3 className='rating'>{movie.average_rating.toFixed(1)}★</h3>
@@ -45,7 +74,8 @@ class MovieDetails extends Component {
           <h4 className='runtime'>{movie.runtime} minutes</h4>
         </div>
         <p className='overview'>{movie.overview}</p>
-      </div>
+        <button className='viewTrailerBtn' onClick={this.showHideTrailer}>View Trailer</button>
+      </main>
     )
   }
 }
