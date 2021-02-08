@@ -10,7 +10,7 @@ const TopMovie = ({ movie }) => {
       <h3><Link to={{
         pathname:`/movie-details/${movie.title.replace(/\s+/g, '')}`,
         state: {movie}
-      }}  className="top-movie-rating">{movie.average_rating}</Link></h3>
+      }}  className="top-movie-rating">{movie.average_rating.toFixed(1)}</Link></h3>
       <h4><Link
       to={{
         pathname:`/movie-details/${movie.title.replace(/\s+/g, '')}`,

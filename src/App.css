@@ -6,11 +6,6 @@ main {
   align-items: center;
 }
 
-footer {
-  display: flex;
-  border-top: 1px solid #E74300;
-}
-
 h3 {
   margin: 1vh;
 }
