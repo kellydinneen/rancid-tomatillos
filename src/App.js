@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Movies from './components/Movies';
 import TopRated from './components/TopRated';
-
+import { fetchAllMovies } from './apiCalls'
 
 class App extends Component {
   constructor() {
@@ -21,17 +21,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
-        .then(res => {
-          this.checkRes(res)
-          return res.json()})
-        .then(result =>
-          this.setState({
-              movies: result.movies,
+    fetchAllMovies()
+        .then(result =>{
+          if (!result.movies) {
+            this.setState({
               isLoading: false,
-              errorMsg: result.error
-            }))
-        .catch(error => console.log(error))
+              errorMsg: result
+            })
+          } else {
+            this.setState({
+                movies: result.movies,
+                isLoading: false
+              })
+          }})
   }
 
   render() {
