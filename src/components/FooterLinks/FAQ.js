@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Careers = () => {
+const FAQ = () => {
   return (
     <h2>PAGE COMING SOON! SORRY!</h2>
   )
 }
 
-export default Careers;
+export default FAQ;
