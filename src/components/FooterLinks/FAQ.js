@@ -11,8 +11,7 @@ const FAQ = () => {
       <p className='FAQ-answer'>This project was a learning opportunity for the developers. It is their first rodeo using React, Cypress end-to-end testing, and Express.</p>
       <h2>How can "Cats and Dogs 3: Paws Unite" possibly be the top rated movie?</h2>
       <p className='FAQ-answer'>Cats and dogs rule the world.</p>
-      <p className='FAQ-cats-dogs'>🦮🐅🐩🐕‍🦴🐈</p>
-
+      <p className='FAQ-cats-dogs'>🐩🐅🐕‍🦴🐈🐾</p>
     </div>
   )
 }
