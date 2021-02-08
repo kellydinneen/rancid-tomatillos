@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './MovieDetails.css';
 import Trailer from './Trailer';
+import { fetchSpecificMovieDetails } from '../apiCalls'
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -13,23 +14,21 @@ class MovieDetails extends Component {
     }
   }
 
-  checkRes(response) {
-    if (!response.ok) {
-      this.setState({errorMsg: `${response.status} error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!`})
-    }
-  }
-
   componentDidMount() {
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.state.id}`)
-      .then(res => {
-        this.checkRes(res)
-        return res.json()})
-      .then(result =>
-        this.setState({
-          movie: result.movie,
-          isLoading: false,
-        }))
-      .catch(error => console.log(error))
+    fetchSpecificMovieDetails(this.state.id)
+      .then(result => {
+          if (!result.movie) {
+            this.setState({
+              isLoading: false,
+              errorMsg: result
+            })
+          } else {
+            this.setState({
+              movie: result.movie,
+              isLoading: false,
+            })
+          }
+        })
   }
 
   showHideTrailer() {
