@@ -17,7 +17,7 @@ ReactDOM.render(
         <h1>
           <Link to={{
             pathname:'/'
-          }}  className="site-title">Rotten<br/> Tomatillos
+          }}  className="site-title">Rancid<br/> Tomatillos
           </Link>
         </h1>
         <Link to={{
