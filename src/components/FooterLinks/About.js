@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => {
   return (
-    <h2>PAGE COMING SOON! SORRY!</h2>
+    <h2>Turing Frontend</h2>
   )
 }
 
