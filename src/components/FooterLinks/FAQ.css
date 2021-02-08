@@ -1,0 +1,17 @@
+.FAQ {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.FAQ-answer {
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+
+.FAQ-cats-dogs {
+  margin-top: 0;
+  font-size: 6rem;
+}
