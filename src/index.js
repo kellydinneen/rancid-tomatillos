@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import homeButton from './home.png';
 import MovieDetails from './components/MovieDetails';
 import About from './components/FooterLinks/About';
-import Careers from './components/FooterLinks/Careers';
+import FAQ from './components/FooterLinks/FAQ';
 import ContactUs from './components/FooterLinks/ContactUs';
 
 ReactDOM.render(
@@ -33,16 +33,16 @@ ReactDOM.render(
         <Route path='/' exact component={App} />
         <Route path='/movie-details/:title' exact component={MovieDetails} />
         <Route path='/about' exact component={About} />
-        <Route path='/careers' exact component={Careers} />
+        <Route path='/faq' exact component={FAQ} />
         <Route path='/contact-us' exact component={ContactUs} />
         <Route path='/' render={() => <div>404</div>} />
       </Switch>
       <footer>
         <section className="gradient"></section>
         <div className="footer-links">
-          <Link to='/about' className="footer-link">About</Link>
-          <Link to='/careers' className="footer-link">Careers</Link>
-          <Link to='/contact-us' className="footer-link">Contact Us</Link>
+          <Link className="footer-link" to='/about'>About</Link>
+          <Link className="footer-link" to='/faq'>FAQ</Link>
+          <Link className="footer-link" to='/contact-us'>Contact Us</Link>
         </div>
       </footer>
     </BrowserRouter>

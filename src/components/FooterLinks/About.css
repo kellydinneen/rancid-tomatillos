@@ -1,0 +1,12 @@
+.About {
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.About-text {
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
