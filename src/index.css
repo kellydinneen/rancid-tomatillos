@@ -39,7 +39,11 @@ code {
 }
 
 .footer-link {
-  margin: 1vh;
+  margin: 1.5vh;
+}
+
+.footer-link:hover {
+  color: #E74300;
 }
 
 .gradient {
