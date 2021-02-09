@@ -20,15 +20,24 @@ describe('Dashboard UI', () => {
   it('Should be able to click the rating or title for the top rated movie and visit the correct Movie Details page', () => {
     cy.get('#1 > h3').click()
     cy.url().should('include', 'movie-details/Peninsula')
+    cy.visit('http://localhost:3000')
+    cy.get('#1 > h4').click()
+    cy.url().should('include', 'movie-details/Peninsula')
   })
 
   it('Should be able to click the rating or title for the second top rated movie and visit the correct Movie Details page', () => {
     cy.get('#2 > h3').click()
     cy.url().should('include', 'movie-details/Cats&Dogs3:PawsUnite')
+    cy.visit('http://localhost:3000')
+    cy.get('#2 > h4').click()
+    cy.url().should('include', 'movie-details/Cats&Dogs3:PawsUnite')
   })
 
   it('Should be able to click the rating or title for the third top rated movie and visit the correct Movie Details page', () => {
     cy.get('#3 > h3').click()
+    cy.url().should('include', 'movie-details/TheKingofStatenIsland')
+    cy.visit('http://localhost:3000')
+    cy.get('#3 > h4').click()
     cy.url().should('include', 'movie-details/TheKingofStatenIsland')
   })
 
