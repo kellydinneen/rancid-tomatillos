@@ -19,16 +19,18 @@ describe('Dashboard UI', () => {
   })
 
   it('Should render a footer that contains an About, FAQ, and Contact Us links', () => {
-    cy.get('footer').contains('About')
-    cy.get('footer').contains('FAQ')
-    cy.get('footer').contains('Contact Us')
+    cy.get('.about').contains('About')
+    cy.get('.faq').contains('FAQ')
+    cy.get('.contact-us').contains('Contact Us')
   })
 
-  // it('Should be able to visit the page and render the correct elements', () => {
-  //     cy.get('.movies-container').children().first('link').click()
-  //     cy.url()
-  //     cy.contains('minutes')
-  //     cy.get('.featuredMovieData').contains('Money Plane')
-  // });
+  it('Should be able to click the footer links and visit the corresponding page', () => {
+    cy.get('.about').click()
+    cy.url().should('include', '/about')
+    cy.get('.faq').click()
+    cy.url().should('include', '/faq')
+    cy.get('.contact-us').click()
+    cy.url().should('include', '/contact-us')
+  });
 
 });

@@ -12,12 +12,12 @@ const TopRated = ({ movies }) => {
   })
 
   return (
-      <div>
+      <article>
         <h2 className="top-rated-title">Top Rated</h2>
         <section className="top-three-section">
         {topThreeComponents}
         </section>
-      </div>
+      </article>
   )
 
 }
