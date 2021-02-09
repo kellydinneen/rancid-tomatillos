@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './MovieDetails.css';
 import Trailer from './Trailer';
-import { fetchSpecificMovieDetails } from '../apiCalls'
+import { fetchMovieData } from '../apiCalls'
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    fetchSpecificMovieDetails(this.state.id)
+    fetchMovieData(`movies/${this.state.id}`)
       .then(result => {
           if (!result.movie) {
             this.setState({

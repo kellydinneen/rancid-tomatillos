@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Movies from './components/Movies';
 import TopRated from './components/TopRated';
-import { fetchAllMovies } from './apiCalls'
+import { fetchMovieData } from './apiCalls'
 
 class App extends Component {
   constructor() {
@@ -21,7 +21,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetchAllMovies()
+    fetchMovieData('movies')
         .then(result =>{
           if (!result.movies) {
             this.setState({

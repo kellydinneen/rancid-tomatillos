@@ -1,7 +1,7 @@
 import React from 'react';
 import './Trailer.css';
 import YouTube from 'react-youtube';
-import { fetchTrailerKey } from '../apiCalls';
+import { fetchMovieData } from '../apiCalls';
 
 class Trailer extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Trailer extends React.Component {
   }
 
   componentDidMount() {
-    fetchTrailerKey(this.state.movieId)
+    fetchMovieData(`movies/${this.state.movieId}/videos`)
       .then(result =>{
         if (!result.videos) {
           this.setState({
