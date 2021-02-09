@@ -47,11 +47,17 @@ describe('Dashboard UI', () => {
     cy.get('.contact-us').contains('Contact Us')
   })
 
-  it('Should be able to click the footer links and visit the corresponding page', () => {
+  it('Should be able to click the footer link About and visit the corresponding page', () => {
     cy.get('.about').click()
     cy.url().should('include', '/about')
+  });
+
+  it('Should be able to click the footer link FAQ and visit the corresponding page', () => {
     cy.get('.faq').click()
     cy.url().should('include', '/faq')
+  });
+
+  it('Should be able to click the footer link Contact Us and visit the corresponding page', () => {
     cy.get('.contact-us').click()
     cy.url().should('include', '/contact-us')
   });

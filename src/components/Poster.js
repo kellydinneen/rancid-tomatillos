@@ -8,7 +8,7 @@ const Poster = ({ movie }) => {
         pathname:`/movie-details/${movie.title.replace(/\s+/g, '')}`,
         state: {movie}
       }}>
-      <img src={movie.poster_path} alt={movie.title} className='poster'/>
+      <img src={movie.poster_path} alt={movie.title} className='poster' id={movie.id}/>
     </Link>
   )
 }
