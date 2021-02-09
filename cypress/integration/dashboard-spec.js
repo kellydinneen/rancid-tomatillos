@@ -15,7 +15,21 @@ describe('Dashboard UI', () => {
     cy.get('.top-three-section > #1').contains('h4', 'Peninsula')
     cy.get('.top-three-section > #2').contains('h4', 'Cats & Dogs 3: Paws Unite')
     cy.get('.top-three-section > #3').contains('h4', 'The King of Staten Island')
+  })
 
+  it('Should be able to click the rating or title for the top rated movie and visit the correct Movie Details page', () => {
+    cy.get('#1 > h3').click()
+    cy.url().should('include', 'movie-details/Peninsula')
+  })
+
+  it('Should be able to click the rating or title for the second top rated movie and visit the correct Movie Details page', () => {
+    cy.get('#2 > h3').click()
+    cy.url().should('include', 'movie-details/Cats&Dogs3:PawsUnite')
+  })
+
+  it('Should be able to click the rating or title for the third top rated movie and visit the correct Movie Details page', () => {
+    cy.get('#3 > h3').click()
+    cy.url().should('include', 'movie-details/TheKingofStatenIsland')
   })
 
   it('Should render a footer that contains an About, FAQ, and Contact Us links', () => {
