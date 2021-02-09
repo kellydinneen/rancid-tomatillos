@@ -41,6 +41,14 @@ describe('Dashboard UI', () => {
     cy.url().should('include', 'movie-details/TheKingofStatenIsland')
   })
 
+  it('Should have a left scroll image that has an alt stating it is the left scroll image', () => {
+    cy.get('.scrollButtonLeft').should('have.attr', 'alt', 'Scroll Left Arrow')
+  })
+
+  it('Should have a right scroll image that has an alt stating it is the right scroll image', () => {
+    cy.get('.scrollButtonRight').should('have.attr', 'alt', 'Scroll Right Arrow')
+  })
+
   it('Should render a footer that contains an About, FAQ, and Contact Us links', () => {
     cy.get('.about').contains('About')
     cy.get('.faq').contains('FAQ')
