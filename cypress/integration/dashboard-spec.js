@@ -41,12 +41,27 @@ describe('Dashboard UI', () => {
     cy.url().should('include', 'movie-details/TheKingofStatenIsland')
   })
 
+  it('Should have a section containing all of the movie posters', () => {
+    cy.get('.movies-container a').should('have.length', '40')
+  })
+
+  // it('Should have a link for each movie in the section that holds all of the movie posters', () => {
+  //   cy.get('.movies-container').children()
+  //     .each((element) => {
+  //       element.children()
+  //     })
+  // })
+
   it('Should have a left scroll image that has an alt stating it is the left scroll image', () => {
     cy.get('.scrollButtonLeft').should('have.attr', 'alt', 'Scroll Left Arrow')
   })
 
   it('Should have a right scroll image that has an alt stating it is the right scroll image', () => {
     cy.get('.scrollButtonRight').should('have.attr', 'alt', 'Scroll Right Arrow')
+  })
+
+  it('Should scroll to the right in the section containing all the movie posters.', () => {
+    cy.get('.movies-container').scrollTo('right')
   })
 
   it('Should render a footer that contains an About, FAQ, and Contact Us links', () => {
