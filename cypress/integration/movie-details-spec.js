@@ -24,8 +24,7 @@ describe('Movie Details UI', () => {
   });
 
   it('Should show movie backdrop', () => {
-      cy.get('main').find('img').should('have.class','movieBackdrop')
-      .get('.movieBackdrop').should('not.have.class', 'hidden')
+      cy.get('.trailerContainer').children().first().should('have.class','movieBackdrop')
   });
 
   it('Should show movie title and rating', () => {
@@ -44,15 +43,21 @@ describe('Movie Details UI', () => {
   });
 
   it('Should reveal trailer', () => {
-    cy.get('.viewTrailerBtn').click().wait(2000)
-      .get('.movieBackdrop').should('have.class', 'hidden')
-      .get('.trailer').click().wait(2000).screenshot('.trailer')
+    cy.get('.viewTrailerBtn').click().wait(500)
+    cy.get('.trailerContainer').children().first().should('have.class','trailer')
+      .get('.trailer').click().screenshot('.trailer')
+  });
+
+  it('Should play trailer', () => {
+    cy.get('.viewTrailerBtn').click()
+    cy.get('.trailer').click().screenshot('.trailer')
   });
 
   it('Should hide trailer', () => {
-    cy.get('.viewTrailerBtn').click()
-      .get('.viewTrailerBtn').click()
-      .get('.movieBackdrop').should('not.have.class', 'hidden')
+    cy.get('.viewTrailerBtn').click().wait(500)
+    cy.get('.trailerContainer').children().first().should('have.class','trailer')
+    cy.get('.viewTrailerBtn').click().wait(500)
+    cy.get('.trailerContainer').children().first().should('have.class','movieBackdrop')
   });
 
 
