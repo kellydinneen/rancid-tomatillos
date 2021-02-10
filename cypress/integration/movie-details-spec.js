@@ -40,28 +40,16 @@ describe('Movie Details UI', () => {
   });
 
   it('Should show movie overview', () => {
-      cy.get('.movieData').children().first().contains('2020-09-29')
-      .next().contains('Action')
-      .next().contains('82 minutes')
+      cy.get('.overview').contains('A professional thief with $40 million in debt and his family\'s life on the line must commit one final heist - rob a futuristic airborne casino filled with the world\'s most dangerous criminals.')
   });
 
   it('Should reveal trailer', () => {
-    cy.on('uncaught:exception', (err, runnable) => {
-      expect(err.message).to.include('something about the error')
-      done()
-      return false
-    })
     cy.get('.viewTrailerBtn').click().wait(2000)
       .get('.movieBackdrop').should('have.class', 'hidden')
       .get('.trailer').click().wait(2000).screenshot('.trailer')
   });
 
   it('Should hide trailer', () => {
-    cy.on('uncaught:exception', (err, runnable) => {
-      expect(err.message).to.include('something about the error')
-      done()
-      return false
-    })
     cy.get('.viewTrailerBtn').click()
       .get('.viewTrailerBtn').click()
       .get('.movieBackdrop').should('not.have.class', 'hidden')
