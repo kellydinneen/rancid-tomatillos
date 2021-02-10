@@ -76,7 +76,7 @@ class MovieDetails extends Component {
           <h4 className='runtime'>{movie.runtime} minutes</h4>
         </div>
         <p className='overview'>{movie.overview}</p>
-        {!trailerIsPlaying && <button className='viewTrailerBtn' onClick={this.toggleTrailer}>View Trailer</button>}
+        {!trailerIsPlaying && <button className='viewTrailerBtn' onClick={this.toggleTrailer}>Toggle Trailer & Movie Poster</button>}
       </main>
     )
   }

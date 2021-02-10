@@ -1,5 +1,5 @@
 .trailer {
   grid-row: 1 / 2;
   grid-column: 1 / 2;
-  animation: fadeIn ease 2s;
+  animation: fadeIn ease 3s;
 }
