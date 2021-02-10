@@ -43,20 +43,20 @@ describe('Movie Details UI', () => {
   });
 
   it('Should reveal trailer', () => {
-    cy.get('.viewTrailerBtn').click().wait(2000)
+    cy.get('.viewTrailerBtn').click().wait(500)
     cy.get('.trailerContainer').children().first().should('have.class','trailer')
-      .get('.trailer').click().wait(2000).screenshot('.trailer')
+      .get('.trailer').click().screenshot('.trailer')
   });
 
   it('Should play trailer', () => {
-    cy.get('.viewTrailerBtn').click().wait(2000)
-    cy.get('.trailer').click().wait(2000).screenshot('.trailer')
+    cy.get('.viewTrailerBtn').click()
+    cy.get('.trailer').click().screenshot('.trailer')
   });
 
   it('Should hide trailer', () => {
-    cy.get('.viewTrailerBtn').click().wait(2000)
+    cy.get('.viewTrailerBtn').click().wait(500)
     cy.get('.trailerContainer').children().first().should('have.class','trailer')
-    cy.get('.viewTrailerBtn').click().wait(2000)
+    cy.get('.viewTrailerBtn').click().wait(500)
     cy.get('.trailerContainer').children().first().should('have.class','movieBackdrop')
   });
 
