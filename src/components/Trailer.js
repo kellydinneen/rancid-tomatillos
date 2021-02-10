@@ -51,7 +51,9 @@ class Trailer extends React.Component {
     const { errorMsg, isLoading } = this.state;
 
     if(errorMsg) {
+
       return <p className='trailerErrorMsg'>{errorMsg}</p>
+
     }
 
     if(isLoading) {
