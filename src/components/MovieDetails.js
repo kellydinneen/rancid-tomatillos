@@ -10,7 +10,8 @@ class MovieDetails extends Component {
       id: props.location.state.movie.id,
       movie: {},
       isLoading: true,
-      errorMsg: null
+      errorMsg: null,
+      imageShowing: true
     }
   }
 
@@ -25,29 +26,18 @@ class MovieDetails extends Component {
           } else {
             this.setState({
               movie: result.movie,
-              isLoading: false,
+              isLoading: false
             })
           }
         })
   }
 
-  showHideTrailer() {
-    let backdrop = document.querySelector('.movieBackdrop');
-    let trailer = document.querySelector('.trailer');
-    let trailerButton = document.querySelector('.viewTrailerBtn');
-    if (!backdrop.classList.contains('hidden')) {
-      backdrop.classList.add('hidden');
-      trailer.style.display = 'block';
-      trailerButton.innerText='View Poster';
-    } else {
-      backdrop.classList.remove('hidden');
-      trailer.style.display = 'none';
-      trailerButton.innerText='View Trailer';
-    }
+  showHideTrailer = () => {
+    this.setState({ imageShowing: false })
   }
 
   render() {
-    const {movie, isLoading, errorMsg} = this.state;
+    const {movie, isLoading, errorMsg, imageShowing} = this.state;
 
     if(errorMsg) {
       return <p className='error-message'>{errorMsg}</p>
@@ -60,8 +50,8 @@ class MovieDetails extends Component {
     return (
       <main>
         <div className='trailerContainer'>
-          <img src={movie.backdrop_path} alt={movie.title} className='movieBackdrop'/>
-          <Trailer movieInfo={this.state}/>
+          {imageShowing && <img src={movie.backdrop_path} alt={movie.title} className='movieBackdrop'/>}
+          {!imageShowing && <Trailer movieInfo={this.state}/>}
         </div>
         <div className='featuredMovieData'>
           <h3 className='movieTitle'>{movie.title}</h3>
