@@ -33,7 +33,11 @@ class MovieDetails extends Component {
   }
 
   showHideTrailer = () => {
-    this.setState({ imageShowing: false })
+    if(this.state.imageShowing) {
+      this.setState({ imageShowing: false })
+    } else {
+      this.setState({ imageShowing: true })
+    }
   }
 
   render() {
