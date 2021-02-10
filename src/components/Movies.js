@@ -27,12 +27,12 @@ const Movies = ({movies}) => {
 
   return (
     <div className='movies'>
-      <img className="scrollButton" src={scrollLeftButton} alt='Scroll Right Arrow' onClick={scrollLeft}/>
+      <img className="scrollButtonLeft" src={scrollLeftButton} alt='Scroll Left Arrow' onClick={scrollLeft}/>
       <div className='movies-container' id='container' ref={scroller}>
         {moviePosters}
       </div>
-      <img className="scrollButton" onClick={scrollRight} src={scrollRightButton}
-      alt='Scroll Right Button'/>
+      <img className="scrollButtonRight" onClick={scrollRight} src={scrollRightButton}
+      alt='Scroll Right Arrow'/>
     </div>
   )
 }

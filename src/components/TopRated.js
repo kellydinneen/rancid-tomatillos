@@ -7,17 +7,17 @@ const TopRated = ({ movies }) => {
 
   let topThree = [sortedMovies[0], sortedMovies[1], sortedMovies[2]];
 
-  const topThreeComponents = topThree.map(movie => {
-    return (<TopMovie movie={movie} key={movie.id}/>)
+  const topThreeComponents = topThree.map((movie, index) => {
+    return (<TopMovie movie={movie} key={movie.id} id={index+1}/>)
   })
 
   return (
-      <div>
+      <article>
         <h2 className="top-rated-title">Top Rated</h2>
         <section className="top-three-section">
         {topThreeComponents}
         </section>
-      </div>
+      </article>
   )
 
 }
