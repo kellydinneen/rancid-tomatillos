@@ -35,13 +35,8 @@ class Trailer extends React.Component {
     event.target.pauseVideo();
   }
 
-  toggleTrailerBtn() {
-    let viewTrailerBtn = document.querySelector('.viewTrailerBtn');
-    if (viewTrailerBtn.style.display === 'none') {
-      viewTrailerBtn.style.display = 'inline-block'
-    } else {
-      viewTrailerBtn.style.display = 'none'
-    }
+  toggleTrailerBtn = () => {
+    this.props.toggleTrailerButton()
   }
 
   render() {
@@ -56,7 +51,9 @@ class Trailer extends React.Component {
     const { errorMsg, isLoading } = this.state;
 
     if(errorMsg) {
-      return <p className='error'>{errorMsg}</p>
+
+      return <p className='trailerErrorMsg'>{errorMsg}</p>
+
     }
 
     if(isLoading) {
