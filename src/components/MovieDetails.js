@@ -11,7 +11,8 @@ class MovieDetails extends Component {
       movie: {},
       isLoading: true,
       errorMsg: null,
-      imageShowing: true
+      imageShowing: true,
+      trailerIsPlaying: false
     }
   }
 
@@ -32,7 +33,7 @@ class MovieDetails extends Component {
         })
   }
 
-  showHideTrailer = () => {
+  toggleTrailer = () => {
     if(this.state.imageShowing) {
       this.setState({ imageShowing: false })
     } else {
@@ -40,8 +41,16 @@ class MovieDetails extends Component {
     }
   }
 
+  toggleTrailerButton = () => {
+    if(!this.state.trailerIsPlaying) {
+      this.setState({ trailerIsPlaying: true })
+    } else {
+      this.setState({ trailerIsPlaying: false })
+    }
+  }
+
   render() {
-    const {movie, isLoading, errorMsg, imageShowing} = this.state;
+    const {movie, isLoading, errorMsg, imageShowing, trailerIsPlaying} = this.state;
 
     if(errorMsg) {
       return <p className='error-message'>{errorMsg}</p>
@@ -55,7 +64,7 @@ class MovieDetails extends Component {
       <main>
         <div className='trailerContainer'>
           {imageShowing && <img src={movie.backdrop_path} alt={movie.title} className='movieBackdrop'/>}
-          {!imageShowing && <Trailer movieInfo={this.state}/>}
+          {!imageShowing && <Trailer movieInfo={this.state} toggleTrailerButton={this.toggleTrailerButton}/>}
         </div>
         <div className='featuredMovieData'>
           <h3 className='movieTitle'>{movie.title}</h3>
@@ -67,7 +76,7 @@ class MovieDetails extends Component {
           <h4 className='runtime'>{movie.runtime} minutes</h4>
         </div>
         <p className='overview'>{movie.overview}</p>
-        <button className='viewTrailerBtn' onClick={this.showHideTrailer}>View Trailer</button>
+        {!trailerIsPlaying && <button className='viewTrailerBtn' onClick={this.toggleTrailer}>View Trailer</button>}
       </main>
     )
   }
