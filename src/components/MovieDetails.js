@@ -5,7 +5,6 @@ import { fetchMovieData } from '../apiCalls'
 
 class MovieDetails extends Component {
   constructor(props) {
-    console.log('CONSTRUCT');
     super(props)
     this.state = {
       id: props.location.state.movie.id,
@@ -18,7 +17,6 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    console.log('MOUNT')
     fetchMovieData(`movies/${this.state.id}`)
       .then(result => {
           if (!result.movie) {
@@ -52,7 +50,6 @@ class MovieDetails extends Component {
   }
 
   render() {
-    console.log('RENDER');
     const {movie, isLoading, errorMsg, imageShowing, trailerIsPlaying} = this.state;
 
     if(errorMsg) {

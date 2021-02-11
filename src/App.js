@@ -18,7 +18,10 @@ class App extends Component {
       isLoading: true,
       errorMsg: null,
       atHome: true,
-      user: null
+      user: null,
+      logIn: this.logIn.bind(this),
+      logOut: this.logOut.bind(this),
+      leaveHome: this.leaveHome.bind(this),
     }
   }
 
@@ -62,10 +65,7 @@ class App extends Component {
 
 
   render() {
-    const {movies, isLoading, errorMsg, atHome, loggedIn} = this.state;
-    const leaveHome = this.leaveHome;
-    const logIn = this.logIn;
-    const logOut = this.logOut;
+    const {movies, isLoading, errorMsg, atHome, user, logIn, logOut, leaveHome} = this.state;
 
     return (
       <>
@@ -94,7 +94,12 @@ class App extends Component {
         <section className="gradient"></section>
       </header>
         <Switch>
-          <Route path='/' exact render={() => <Home errorMsg={errorMsg} isLoading={isLoading} movies={movies} />} />
+          <Route path='/' exact render={() => <Home
+            errorMsg={errorMsg}
+            isLoading={isLoading}
+            movies={movies}
+            leaveHome={leaveHome}
+            />} />
           <Route path='/movie-details/:title' exact component={MovieDetails} />
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />
@@ -104,9 +109,9 @@ class App extends Component {
         <footer>
           <section className="gradient"></section>
           <div className="footer-links">
-            <Link className="about footer-link" to='/about'>About</Link>
-            <Link className="faq footer-link" to='/faq'>FAQ</Link>
-            <Link className="contact-us footer-link" to='/contact-us'>Contact Us</Link>
+            <Link className="about footer-link" to='/about' onClick={this.leaveHome}>About</Link>
+            <Link className="faq footer-link" to='/faq' onClick={this.leaveHome}>FAQ</Link>
+            <Link className="contact-us footer-link" to='/contact-us' onClick={this.leaveHome}>Contact Us</Link>
           </div>
         </footer>
       </>

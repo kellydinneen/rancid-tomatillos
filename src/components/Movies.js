@@ -4,7 +4,7 @@ import scrollLeftButton from './scroll-left.png';
 import scrollRightButton from './scroll-right.png';
 import './Movies.css';
 
-const Movies = ({movies}) => {
+const Movies = (props) => {
 
   const scroller = React.useRef();
 
@@ -16,11 +16,12 @@ const Movies = ({movies}) => {
     scroller.current.scrollLeft += 600;
   }
 
-  const moviePosters = movies.map(movie => {
+  const moviePosters = props.movies.map(movie => {
     return (
       <Poster
         movie={movie}
         key={movie.id}
+        leaveHome={props.leaveHome}
       />
     )
   })

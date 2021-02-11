@@ -3,16 +3,16 @@ import './Home.css';
 import Movies from './Movies';
 import TopRated from './TopRated';
 
-const Home = ({movies, isLoading, errorMsg}) => {
+const Home = (props) => {
 
   return (
     <main>
-      {errorMsg && <p className='error-message'>{errorMsg}</p>}
-      {isLoading && <p className='loading-message'>Loading...</p>}
-      {!isLoading &&
+      {props.errorMsg && <p className='error-message'>{props.errorMsg}</p>}
+      {props.isLoading && <p className='loading-message'>Loading...</p>}
+      {!props.isLoading &&
         <>
-          <TopRated movies={movies}/>
-          <Movies movies={movies}/>
+          <TopRated movies={props.movies} leaveHome={props.leaveHome}/>
+          <Movies movies={props.movies} leaveHome={props.leaveHome}/>
         </>
       }
     </main>
