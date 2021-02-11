@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './Login.css';
+
 class Login extends Component {
   constructor(){
     super()
@@ -23,6 +25,15 @@ class Login extends Component {
             placeholder='Email'
             name='email'
             value={email}
+          />
+        </label>
+        <label>
+          Password 
+          <input
+            type='password'
+            placeholder='Password'
+            name='password'
+            value={password}
           />
           </label>
 
