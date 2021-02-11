@@ -8,12 +8,15 @@ class Login extends Component {
       email: '',
       password: '',
       errorMsg: '',
-      redirect: false
     }
   }
 
+  updateForm = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
   render() {
-    const { email, password, errorMsg, redirect } = this.state;
+    const { email, password, errorMsg } = this.state;
 
     return (
       <form>
@@ -25,6 +28,7 @@ class Login extends Component {
             placeholder='Email'
             name='email'
             value={email}
+            onChange={this.updateForm}
           />
         </label>
         <label>
@@ -34,6 +38,7 @@ class Login extends Component {
             placeholder='Password'
             name='password'
             value={password}
+            onChange={this.updateForm}
           />
         </label>
         {errorMsg && <p>{errorMsg}</p>}
