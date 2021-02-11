@@ -24,48 +24,6 @@ code {
 }
 
 
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-left: 1vw;
-}
-
-.footer-links {
-  display: flex;
-  align-items: flex-start;
-  padding: 5vh;
-  font-family: 'Rubik Mono One', sans-serif;
-}
-
-.footer-link {
-  margin: 1.5vh;
-}
-
-.footer-link:hover {
-  color: #E74300;
-}
-
-.gradient {
-  height: 0.5vh;
-  background: linear-gradient(to right, #F9A119, #E74300);
-}
-
-.site-title {
-  color: #E74300;
-  font-family: 'Rubik Mono One', sans-serif;
-  font-size: xx-large;
-  margin-bottom: 0px;
-}
-
-.home-button {
-  filter: brightness(50);
-}
-
-.home-button:hover {
-  filter: brightness(1);
-}
-
 .hidden {
   display: none;
 }

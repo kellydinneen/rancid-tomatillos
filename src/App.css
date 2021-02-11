@@ -1,17 +1,32 @@
-
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  animation: fadeIn 3s;
-}
-
-h3 {
-  margin: 1vh;
-}
-
 .loading-message,
 .error-message {
   height: 75vh;
+}
+
+
+.footer-links {
+  display: flex;
+  align-items: flex-start;
+  padding: 5vh;
+  font-family: 'Rubik Mono One', sans-serif;
+}
+
+.footer-link {
+  margin: 1.5vh;
+}
+
+.footer-link:hover {
+  color: #E74300;
+}
+
+.gradient {
+  height: 0.5vh;
+  background: linear-gradient(to right, #F9A119, #E74300);
+}
+
+.site-title {
+  color: #E74300;
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: xx-large;
+  margin-bottom: 0px;
 }

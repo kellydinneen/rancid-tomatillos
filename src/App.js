@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import './App.css';
-import Movies from './components/Movies';
-import TopRated from './components/TopRated';
+import { Route, Switch, Link } from "react-router-dom";
+import MovieDetails from './components/MovieDetails';
+import Home from './components/Home';
+import Header from './components/Header';
+import About from './components/FooterLinks/About';
+import FAQ from './components/FooterLinks/FAQ';
+import ContactUs from './components/FooterLinks/ContactUs';
 import { fetchMovieData } from './apiCalls'
+import './App.css';
 
 class App extends Component {
   constructor() {
@@ -10,7 +15,9 @@ class App extends Component {
     this.state = {
       movies: [],
       isLoading: true,
-      errorMsg: null
+      errorMsg: null,
+      atHome: true,
+      loggedIn: false
     }
   }
 
@@ -37,22 +44,27 @@ class App extends Component {
   }
 
   render() {
-    const {movies, isLoading, errorMsg} = this.state;
-
-    if(errorMsg) {
-      return <p className='error-message'>{errorMsg}</p>
-    }
-
-    if(isLoading) {
-      return <p className='loading-message'>Loading...</p>
-    }
+    const {movies, isLoading, errorMsg, atHome, loggedIn} = this.state;
 
     return (
       <>
-        <main>
-          <TopRated movies={movies}/>
-          <Movies movies={movies}/>
-        </main>
+        <Header atHome={atHome} loggedIn={loggedIn}/>
+        <Switch>
+          <Route path='/' exact render={() => <Home errorMsg={errorMsg} isLoading={isLoading} movies={movies} />} />
+          <Route path='/movie-details/:title' exact component={MovieDetails} />
+          <Route path='/about' exact component={About} />
+          <Route path='/faq' exact component={FAQ} />
+          <Route path='/contact-us' exact component={ContactUs} />
+          <Route path='/' render={() => <div>404</div>} />
+        </Switch>
+        <footer>
+          <section className="gradient"></section>
+          <div className="footer-links">
+            <Link className="about footer-link" to='/about'>About</Link>
+            <Link className="faq footer-link" to='/faq'>FAQ</Link>
+            <Link className="contact-us footer-link" to='/contact-us'>Contact Us</Link>
+          </div>
+        </footer>
       </>
     )
   }
