@@ -28,15 +28,16 @@ class Login extends Component {
           />
         </label>
         <label>
-          Password 
+          Password
           <input
             type='password'
             placeholder='Password'
             name='password'
             value={password}
           />
-          </label>
-
+        </label>
+        {errorMsg && <p>{errorMsg}</p>}
+        <button className='login-btn'>Login</button>
       </form>
     )
   }
