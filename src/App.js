@@ -14,14 +14,15 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
+      logIn: this.logIn.bind(this),
+      logOut: this.logOut.bind(this),
+      leaveHome: this.leaveHome.bind(this),
+      goHome: this.goHome.bind(this),
       movies: [],
       isLoading: true,
       errorMsg: null,
       atHome: true,
-      user: null,
-      logIn: this.logIn.bind(this),
-      logOut: this.logOut.bind(this),
-      leaveHome: this.leaveHome.bind(this),
+      user: null
     }
   }
 
@@ -32,6 +33,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log('MOUNT', this)
     fetchMovieData('movies')
         .then(result =>{
           if (!result.movies) {
@@ -48,11 +50,14 @@ class App extends Component {
   }
 
   goHome() {
+    console.log('RETURN HOME', this, this.state);
     this.setState({ atHome: true })
   }
 
   leaveHome() {
+    console.log('LEAVE', this.state);
     this.setState({ atHome: false })
+    console.log('AFTER', this.state);
   }
 
   logIn(user) {
@@ -65,7 +70,7 @@ class App extends Component {
 
 
   render() {
-    const {movies, isLoading, errorMsg, atHome, user, logIn, logOut, leaveHome} = this.state;
+    const {movies, isLoading, errorMsg, atHome, user} = this.state;
 
     return (
       <>
@@ -74,7 +79,7 @@ class App extends Component {
           <h1>
             <NavLink to={{
               pathname:'/'
-            }}  className="site-title">Rancid<br/> Tomatillos
+            }}  className="site-title" onClick={this.state.goHome}>Rancid<br/> Tomatillos
             </NavLink>
           </h1>
             <NavLink to={{
@@ -87,7 +92,7 @@ class App extends Component {
             <NavLink to={{
               pathname:'/'
               }}>
-              <img src={homeButton} alt="home button" className='home-button'/>
+              <img src={homeButton} alt="home button" className='home-button' onClick={this.state.goHome}/>
             </NavLink>
           }
         </nav>
@@ -98,7 +103,7 @@ class App extends Component {
             errorMsg={errorMsg}
             isLoading={isLoading}
             movies={movies}
-            leaveHome={leaveHome}
+            leaveHome={this.state.leaveHome}
             />} />
           <Route path='/movie-details/:title' exact component={MovieDetails} />
           <Route path='/about' exact component={About} />
@@ -109,9 +114,9 @@ class App extends Component {
         <footer>
           <section className="gradient"></section>
           <div className="footer-links">
-            <Link className="about footer-link" to='/about' onClick={this.leaveHome}>About</Link>
-            <Link className="faq footer-link" to='/faq' onClick={this.leaveHome}>FAQ</Link>
-            <Link className="contact-us footer-link" to='/contact-us' onClick={this.leaveHome}>Contact Us</Link>
+            <Link className="about footer-link" to='/about' onClick={this.state.leaveHome}>About</Link>
+            <Link className="faq footer-link" to='/faq' onClick={this.state.leaveHome}>FAQ</Link>
+            <Link className="contact-us footer-link" to='/contact-us' onClick={this.state.leaveHome}>Contact Us</Link>
           </div>
         </footer>
       </>
