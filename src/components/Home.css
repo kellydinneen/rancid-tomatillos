@@ -1,0 +1,16 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 3s;
+}
+
+h3 {
+  margin: 1vh;
+}
+
+.loading-message,
+.error-message {
+  height: 75vh;
+}
