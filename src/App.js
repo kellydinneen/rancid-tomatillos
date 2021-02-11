@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Switch, Link, NavLink } from "react-router-dom";
 import MovieDetails from './components/MovieDetails';
 import Home from './components/Home';
-import Header from './components/Header';
+// import Header from './components/Header';
 import About from './components/FooterLinks/About';
 import FAQ from './components/FooterLinks/FAQ';
 import ContactUs from './components/FooterLinks/ContactUs';
+import homeButton from './home.png';
 import { fetchMovieData } from './apiCalls'
 import './App.css';
 
@@ -17,7 +18,7 @@ class App extends Component {
       isLoading: true,
       errorMsg: null,
       atHome: true,
-      loggedIn: false
+      user: null
     }
   }
 
@@ -43,12 +44,55 @@ class App extends Component {
           }})
   }
 
+  goHome() {
+    this.setState({ atHome: true })
+  }
+
+  leaveHome() {
+    this.setState({ atHome: false })
+  }
+
+  logIn(user) {
+      this.setState({ user: user })
+    }
+
+  logOut() {
+      this.setState({ user: null })
+    }
+
+
   render() {
     const {movies, isLoading, errorMsg, atHome, loggedIn} = this.state;
+    const leaveHome = this.leaveHome;
+    const logIn = this.logIn;
+    const logOut = this.logOut;
 
     return (
       <>
-        <Header atHome={atHome} loggedIn={loggedIn}/>
+      <header>
+        <nav className="header-content">
+          <h1>
+            <NavLink to={{
+              pathname:'/'
+            }}  className="site-title">Rancid<br/> Tomatillos
+            </NavLink>
+          </h1>
+            <NavLink to={{
+              pathname:'/'
+              }}>
+              {!user && <button>Log in</button>}
+              {user && <button>Log out</button>}
+            </NavLink>
+          {!atHome &&
+            <NavLink to={{
+              pathname:'/'
+              }}>
+              <img src={homeButton} alt="home button" className='home-button'/>
+            </NavLink>
+          }
+        </nav>
+        <section className="gradient"></section>
+      </header>
         <Switch>
           <Route path='/' exact render={() => <Home errorMsg={errorMsg} isLoading={isLoading} movies={movies} />} />
           <Route path='/movie-details/:title' exact component={MovieDetails} />
