@@ -109,11 +109,11 @@ class App extends Component {
         </Switch>
         <footer>
           <section className="gradient"></section>
-          <div className="footer-links">
-            <Link className="about footer-link" to='/about' onClick={this.state.leaveHome}>About</Link>
-            <Link className="faq footer-link" to='/faq' onClick={this.state.leaveHome}>FAQ</Link>
-            <Link className="contact-us footer-link" to='/contact-us' onClick={this.state.leaveHome}>Contact Us</Link>
-          </div>
+          <nav className="footer-links">
+            <NavLink className="about footer-link" to='/about' onClick={this.state.leaveHome}>About</NavLink>
+            <NavLink className="faq footer-link" to='/faq' onClick={this.state.leaveHome}>FAQ</NavLink>
+            <NavLink className="contact-us footer-link" to='/contact-us' onClick={this.state.leaveHome}>Contact Us</NavLink>
+          </nav>
         </footer>
       </>
     )
