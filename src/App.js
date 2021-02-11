@@ -21,7 +21,7 @@ class App extends Component {
       movies: [],
       isLoading: true,
       errorMsg: null,
-      atHome: true,
+      atHome: window.location.pathname === '/' ? true : false,
       user: null
     }
   }
@@ -33,7 +33,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log('MOUNT', this)
     fetchMovieData('movies')
         .then(result =>{
           if (!result.movies) {
@@ -50,14 +49,11 @@ class App extends Component {
   }
 
   goHome() {
-    console.log('RETURN HOME', this, this.state);
     this.setState({ atHome: true })
   }
 
   leaveHome() {
-    console.log('LEAVE', this.state);
     this.setState({ atHome: false })
-    console.log('AFTER', this.state);
   }
 
   logIn(user) {
