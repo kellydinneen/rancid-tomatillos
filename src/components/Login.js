@@ -43,7 +43,7 @@ class Login extends Component {
 
     return (
       <form>
-        <h2 className="form-title">Please Login</h2>
+        {!user && <div className='login-form'><h2 className="form-title">Please Login</h2>
         <label>
           Email:
           <input
@@ -65,7 +65,8 @@ class Login extends Component {
           />
         </label>
         {errorMsg && <p>{errorMsg}</p>}
-        <button className='login-btn' onClick={this.retrieveUsers}>Login</button>
+        <button className='login-btn' onClick={this.retrieveUsers}>Login</button></div>}
+        {user && <h2 className='welcome-msg'>Welcome back {user.name}</h2>}
       </form>
     )
   }
