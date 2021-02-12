@@ -7,7 +7,7 @@ describe('Dashboard UI', () => {
     cy.get('header').contains('Rancid Tomatillos').should('be.visible')
   });
 
-  it.only('Should have a button to the Login page', () => {
+  it('Should have a button to the Login page', () => {
     cy.get('.login-button').contains('Log in')
       .click()
     cy.url().should('include', 'login')
@@ -51,12 +51,10 @@ describe('Dashboard UI', () => {
     cy.get('.movies-container a').should('have.length', '40')
   });
 
-  // it('Should have a link for each movie in the section that holds all of the movie posters', () => {
-  //   cy.get('.movies-container').children()
-  //     .each((element) => {
-  //       element.children()
-  //     })
-  // })
+  it.only('Should be able to click the first child in the movie container and go to the url with the title of the movie as the endpoint', () => {
+    cy.get('.movies-container').children().first().click()
+    cy.url().should('include', 'MoneyPlane')
+  })
 
   it('Should have a left scroll image that has an alt stating it is the left scroll image', () => {
     cy.get('.scrollButtonLeft').should('have.attr', 'alt', 'Scroll Left Arrow')
