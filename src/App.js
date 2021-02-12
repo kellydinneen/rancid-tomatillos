@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, Link, NavLink } from "react-router-dom";
 import MovieDetails from './components/MovieDetails';
 import Home from './components/Home';
-// import Header from './components/Header';
+import Login from './components/Login';
 import About from './components/FooterLinks/About';
 import FAQ from './components/FooterLinks/FAQ';
 import ContactUs from './components/FooterLinks/ContactUs';
@@ -23,12 +23,6 @@ class App extends Component {
       errorMsg: null,
       atHome: window.location.pathname === '/' ? true : false,
       user: null
-    }
-  }
-
-  checkRes(response) {
-    if (!response.ok) {
-      this.setState({errorMsg: `${response.status} error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!`})
     }
   }
 
@@ -79,7 +73,7 @@ class App extends Component {
             </NavLink>
           </h1>
             <NavLink to={{
-              pathname:'/'
+              pathname:'/login'
               }}>
               {!user && <button>Log in</button>}
               {user && <button>Log out</button>}
@@ -102,6 +96,7 @@ class App extends Component {
             leaveHome={this.state.leaveHome}
             />} />
           <Route path='/movie-details/:title' exact component={MovieDetails} />
+          <Route path='/login' exact component={Login} />
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />
           <Route path='/contact-us' exact component={ContactUs} />
