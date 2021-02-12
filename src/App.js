@@ -70,7 +70,7 @@ class App extends Component {
           </h1>
             <NavLink to={{
               pathname:'/login'
-              }}>
+              }} onClick={this.leaveHome}>
               {!user && <button>Log in</button>}
               {user && <button>Log out</button>}
             </NavLink>
