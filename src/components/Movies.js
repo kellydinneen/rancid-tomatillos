@@ -1,7 +1,7 @@
 import React from 'react';
 import Poster from './Poster';
-import scrollLeftButton from './scroll-left.png';
-import scrollRightButton from './scroll-right.png';
+import scrollLeftButton from '../Images/scroll-left.png';
+import scrollRightButton from '../Images/scroll-right.png';
 import './Movies.css';
 
 const Movies = (props) => {

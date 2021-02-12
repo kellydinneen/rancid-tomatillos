@@ -8,6 +8,5 @@
 
 .poster:hover {
   transform: scale(1.2);
-  /* filter: hue-rotate(-0.2turn); */
   filter: brightness(1.1);
 }

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Route, Switch, Link, NavLink } from "react-router-dom";
 import MovieDetails from './components/MovieDetails';
 import Home from './components/Home';
-// import Header from './components/Header';
+import Login from './components/Login';
 import About from './components/FooterLinks/About';
 import FAQ from './components/FooterLinks/FAQ';
 import ContactUs from './components/FooterLinks/ContactUs';
-import homeButton from './home.png';
+import homeButton from './Images/home.png';
 import { fetchMovieData } from './apiCalls'
 import './App.css';
 
@@ -14,21 +14,11 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      logIn: this.logIn.bind(this),
-      logOut: this.logOut.bind(this),
-      leaveHome: this.leaveHome.bind(this),
-      goHome: this.goHome.bind(this),
       movies: [],
       isLoading: true,
       errorMsg: null,
       atHome: window.location.pathname === '/' ? true : false,
       user: null
-    }
-  }
-
-  checkRes(response) {
-    if (!response.ok) {
-      this.setState({errorMsg: `${response.status} error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!`})
     }
   }
 
@@ -48,19 +38,19 @@ class App extends Component {
           }})
   }
 
-  goHome() {
+  goHome = () => {
     this.setState({ atHome: true })
   }
 
-  leaveHome() {
+  leaveHome = () => {
     this.setState({ atHome: false })
   }
 
-  logIn(user) {
+  logIn = (user) => {
       this.setState({ user: user })
     }
 
-  logOut() {
+  logOut = () => {
       this.setState({ user: null })
     }
 
@@ -75,12 +65,12 @@ class App extends Component {
           <h1>
             <NavLink to={{
               pathname:'/'
-            }}  className="site-title" onClick={this.state.goHome}>Rancid<br/> Tomatillos
+            }}  className="site-title" onClick={this.goHome}>Rancid<br/> Tomatillos
             </NavLink>
           </h1>
             <NavLink to={{
-              pathname:'/'
-              }}>
+              pathname:'/login'
+              }} onClick={this.leaveHome}>
               {!user && <button>Log in</button>}
               {user && <button>Log out</button>}
             </NavLink>
@@ -88,7 +78,7 @@ class App extends Component {
             <NavLink to={{
               pathname:'/'
               }}>
-              <img src={homeButton} alt="home button" className='home-button' onClick={this.state.goHome}/>
+              <img src={homeButton} alt="home button" className='home-button' onClick={this.goHome}/>
             </NavLink>
           }
         </nav>
@@ -99,9 +89,10 @@ class App extends Component {
             errorMsg={errorMsg}
             isLoading={isLoading}
             movies={movies}
-            leaveHome={this.state.leaveHome}
+            leaveHome={this.leaveHome}
             />} />
           <Route path='/movie-details/:title' exact component={MovieDetails} />
+          <Route path='/login' exact component={Login} />
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />
           <Route path='/contact-us' exact component={ContactUs} />
@@ -110,9 +101,9 @@ class App extends Component {
         <footer>
           <section className="gradient"></section>
           <nav className="footer-links">
-            <NavLink className="about footer-link" to='/about' onClick={this.state.leaveHome}>About</NavLink>
-            <NavLink className="faq footer-link" to='/faq' onClick={this.state.leaveHome}>FAQ</NavLink>
-            <NavLink className="contact-us footer-link" to='/contact-us' onClick={this.state.leaveHome}>Contact Us</NavLink>
+            <NavLink className="about footer-link" to='/about' onClick={this.leaveHome}>About</NavLink>
+            <NavLink className="faq footer-link" to='/faq' onClick={this.leaveHome}>FAQ</NavLink>
+            <NavLink className="contact-us footer-link" to='/contact-us' onClick={this.leaveHome}>Contact Us</NavLink>
           </nav>
         </footer>
       </>
