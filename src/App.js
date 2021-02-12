@@ -6,7 +6,7 @@ import Login from './components/Login';
 import About from './components/FooterLinks/About';
 import FAQ from './components/FooterLinks/FAQ';
 import ContactUs from './components/FooterLinks/ContactUs';
-import homeButton from './home.png';
+import homeButton from './Images/home.png';
 import { fetchMovieData } from './apiCalls'
 import './App.css';
 
