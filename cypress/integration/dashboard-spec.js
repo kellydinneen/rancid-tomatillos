@@ -1,5 +1,10 @@
 describe('Dashboard UI', () => {
   beforeEach(() => {
+    cy.fixture('testMovies.json')
+      .then((testMovies) => {cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+        statusCode: 200,
+        body: testMovies
+      })})
     cy.visit('http://localhost:3000');
   });
 
@@ -23,7 +28,7 @@ describe('Dashboard UI', () => {
     cy.get('.top-three-section > #3').contains('h4', 'The King of Staten Island')
   });
 
-  it('Should be able to click the rating or title for the top rated movie and visit the correct Movie Details page', () => {
+  it.skip('Should be able to click the rating or title for the top rated movie and visit the correct Movie Details page', () => {
     cy.get('#1 > h3').click()
     cy.url().should('include', 'movie-details/Peninsula')
     cy.visit('http://localhost:3000')
@@ -31,7 +36,7 @@ describe('Dashboard UI', () => {
     cy.url().should('include', 'movie-details/Peninsula')
   });
 
-  it('Should be able to click the rating or title for the second top rated movie and visit the correct Movie Details page', () => {
+  it.skip('Should be able to click the rating or title for the second top rated movie and visit the correct Movie Details page', () => {
     cy.get('#2 > h3').click()
     cy.url().should('include', 'movie-details/Cats&Dogs3:PawsUnite')
     cy.visit('http://localhost:3000')
@@ -39,7 +44,7 @@ describe('Dashboard UI', () => {
     cy.url().should('include', 'movie-details/Cats&Dogs3:PawsUnite')
   });
 
-  it('Should be able to click the rating or title for the third top rated movie and visit the correct Movie Details page', () => {
+  it.skip('Should be able to click the rating or title for the third top rated movie and visit the correct Movie Details page', () => {
     cy.get('#3 > h3').click()
     cy.url().should('include', 'movie-details/TheKingofStatenIsland')
     cy.visit('http://localhost:3000')
@@ -51,7 +56,7 @@ describe('Dashboard UI', () => {
     cy.get('.movies-container a').should('have.length', '40')
   });
 
-  it.only('Should be able to click the first child in the movie container and go to the url with the title of the movie as the endpoint', () => {
+  it.skip('Should be able to click the first child in the movie container and go to the url with the title of the movie as the endpoint', () => {
     cy.get('.movies-container').children().first().click()
     cy.url().should('include', 'MoneyPlane')
   })
@@ -74,17 +79,17 @@ describe('Dashboard UI', () => {
     cy.get('.contact-us').contains('Contact Us')
   });
 
-  it('Should be able to click the footer link About and visit the corresponding page', () => {
+  it.skip('Should be able to click the footer link About and visit the corresponding page', () => {
     cy.get('.about').click()
     cy.url().should('include', '/about')
   });
 
-  it('Should be able to click the footer link FAQ and visit the corresponding page', () => {
+  it.skip('Should be able to click the footer link FAQ and visit the corresponding page', () => {
     cy.get('.faq').click()
     cy.url().should('include', '/faq')
   });
 
-  it('Should be able to click the footer link Contact Us and visit the corresponding page', () => {
+  it.skip('Should be able to click the footer link Contact Us and visit the corresponding page', () => {
     cy.get('.contact-us').click()
     cy.url().should('include', '/contact-us')
   });
