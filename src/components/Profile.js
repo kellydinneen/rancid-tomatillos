@@ -8,6 +8,7 @@ class Profile extends Component {
       name: props.location.state.user.name,
       favorites: props.location.state.user.favorites
     }
+    console.log(props.location.state.user)
   }
 
   render() {
