@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './Login.css';
+import { Route, Redirect } from "react-router-dom";
+import Profile from './Profile';
 import { fetchUsers } from '../apiCalls'
 
 class Login extends Component {
@@ -66,7 +68,9 @@ class Login extends Component {
         </label>
         {errorMsg && <p>{errorMsg}</p>}
         <button className='login-btn' onClick={this.retrieveUsers}>Login</button></div>}
-        {user && <h2 className='welcome-msg'>Welcome back {user.name}</h2>}
+        <Route exact path="/login">
+          {user ? <Redirect to="/profile" /> : <Profile />}
+        </Route>
       </form>
     )
   }
