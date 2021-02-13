@@ -18,7 +18,7 @@ const TopMovie = (props) => {
         pathname:`/movie-details/${movie.title.replace(/\s+/g, '')}`,
         state: {movie}
       }}
-      className="top-movie-title" onClick={() => props.leaveHome()}><h4>{movie.title}</h4></Link>
+      className={`top-movie-title${id}`} onClick={() => props.leaveHome()}><h4>{movie.title}</h4></Link>
     </article>
     </>
 

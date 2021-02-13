@@ -33,14 +33,14 @@ describe('Dashboard UI', () => {
     cy.get('.top-movie-title').contains('The King of Staten Island')
   });
 
-  it.only('Should be able to click the rating or title for the top rated movie and visit the correct Movie Details page', () => {
+  it('Should be able to click the rating or title for the top rated movie and visit the correct Movie Details page', () => {
     cy.get('.top-movie-rating1').click()
     cy.url().should('include', 'movie-details/Cats&Dogs3:PawsUnite')
   });
 
-  it('Should be able to click the title of the top rated movie and visit the correct Movie Details page', () => {
-    cy.get('#1 > h4').click()
-    cy.url().should('include', 'movie-details/Peninsula')
+  it.only('Should be able to click the title of the top rated movie and visit the correct Movie Details page', () => {
+    cy.get('.top-movie-title1').click()
+    cy.url().should('include', 'movie-details/Cats&Dogs3:PawsUnite')
   });
 
   it.skip('Should be able to click the rating or title for the third top rated movie and visit the correct Movie Details page', () => {
