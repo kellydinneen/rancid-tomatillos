@@ -3,6 +3,7 @@ import { Route, Switch, Link, NavLink } from "react-router-dom";
 import MovieDetails from './components/MovieDetails';
 import Home from './components/Home';
 import Login from './components/Login';
+import Profile from './components/Profile';
 import About from './components/FooterLinks/About';
 import FAQ from './components/FooterLinks/FAQ';
 import ContactUs from './components/FooterLinks/ContactUs';
@@ -72,7 +73,7 @@ class App extends Component {
               pathname:'/login'
               }} onClick={this.leaveHome}>
               {!user && <button>Log in</button>}
-              {user && <button>Log out</button>}
+              {user && <Link to="/profile"><button>Log out</button></Link>}
             </NavLink>
           {!atHome &&
             <NavLink to={{
@@ -93,6 +94,7 @@ class App extends Component {
             />} />
           <Route path='/movie-details/:title' exact component={MovieDetails} />
           <Route path='/login' exact component={Login} />
+          <Route path='/profile' exact component={Profile} />
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />
           <Route path='/contact-us' exact component={ContactUs} />
