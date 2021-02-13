@@ -23,9 +23,9 @@ describe('Dashboard UI', () => {
     cy.get('.top-three-section > #1').contains('7')
     cy.get('.top-three-section > #2').contains('7')
     cy.get('.top-three-section > #3').contains('6.8')
-    cy.get('.top-three-section > #1').contains('h4', 'Peninsula')
-    cy.get('.top-three-section > #2').contains('h4', 'Cats & Dogs 3: Paws Unite')
-    cy.get('.top-three-section > #3').contains('h4', 'The King of Staten Island')
+    cy.get('.top-movie-title').contains('Peninsula')
+    cy.get('.top-movie-title').contains('Cats & Dogs 3: Paws Unite')
+    cy.get('.top-movie-title').contains('The King of Staten Island')
   });
 
   it.skip('Should be able to click the rating or title for the top rated movie and visit the correct Movie Details page', () => {
@@ -53,7 +53,7 @@ describe('Dashboard UI', () => {
   });
 
   it('Should have a section containing all of the movie posters', () => {
-    cy.get('.movies-container a').should('have.length', '40')
+    cy.get('.movies-container a').should('have.length', '8')
   });
 
   it.skip('Should be able to click the first child in the movie container and go to the url with the title of the movie as the endpoint', () => {

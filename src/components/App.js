@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Route, Switch, Link, NavLink } from "react-router-dom";
-import MovieDetails from './components/MovieDetails';
-import Home from './components/Home';
-import Login from './components/Login';
-import About from './components/FooterLinks/About';
-import FAQ from './components/FooterLinks/FAQ';
-import ContactUs from './components/FooterLinks/ContactUs';
-import homeButton from './Images/home.png';
-import { fetchMovieData } from './apiCalls'
+import MovieDetails from './MovieDetails';
+import Home from './Home';
+import Login from './Login';
+import About from './FooterLinks/About';
+import FAQ from './FooterLinks/FAQ';
+import ContactUs from './FooterLinks/ContactUs';
+import homeButton from '../Images/home.png';
+import { fetchMovieData } from '../apiCalls'
 import './App.css';
 
 class App extends Component {
