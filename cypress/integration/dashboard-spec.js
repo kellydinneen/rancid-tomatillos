@@ -13,17 +13,17 @@ describe('Dashboard UI', () => {
     cy.visit('http://localhost:3000');
   });
 
-  it.skip('Should be able to visit the page and render the title', () => {
+  it('Should be able to visit the page and render the title', () => {
     cy.get('header').contains('Rancid Tomatillos').should('be.visible')
   });
 
-  it.skip('Should have a button to the Login page', () => {
+  it('Should have a button to the Login page', () => {
     cy.get('.login-button').contains('Log in')
       .click()
     cy.url().should('include', 'login')
   });
 
-  it.skip('Should render a section for the Top Rated movies that has the top three movies\'s titles and ratings', () => {
+  it('Should render a section for the Top Rated movies that has the top three movies\'s titles and ratings', () => {
     cy.contains('Top Rated')
     cy.get('.top-three-section > #1').contains('7')
     cy.get('.top-three-section > #2').contains('7')
@@ -33,71 +33,85 @@ describe('Dashboard UI', () => {
     cy.get('.top-movie-title3').contains('The King of Staten Island')
   });
 
-  it.skip('Should be able to click the rating or title for the top rated movie and visit the correct Movie Details page', () => {
+  it('Should be able to click the rating or title for the top rated movie and visit the correct Movie Details page', () => {
     cy.get('.top-movie-rating1').click()
     cy.url().should('include', 'movie-details/Cats&Dogs3:PawsUnite')
   });
 
-  it.skip('Should be able to click the title of the top rated movie and visit the correct Movie Details page', () => {
+  it('Should be able to click the title of the top rated movie and visit the correct Movie Details page', () => {
     cy.get('.top-movie-title1').click()
     cy.url().should('include', 'movie-details/Cats&Dogs3:PawsUnite')
   });
 
-  it.skip('Should have a section containing all of the movie posters', () => {
+  it('Should have a section containing all of the movie posters', () => {
     cy.get('.movies-container a').should('have.length', '8')
   });
 
-  it.skip('Should be able to click the first child in the movie container and go to the url with the title of the movie as the endpoint', () => {
+  it('Should be able to click the first child in the movie container and go to the url with the title of the movie as the endpoint', () => {
     cy.get('.movies-container').children().first().click()
     cy.url().should('include', 'Cats&Dogs3:PawsUnite')
   })
 
-  it.skip('Should have a left scroll image that has an alt stating it is the left scroll image', () => {
+  it('Should have a left scroll image that has an alt stating it is the left scroll image', () => {
     cy.get('.scrollButtonLeft').should('have.attr', 'alt', 'Scroll Left Arrow')
   });
 
-  it.skip('Should have a right scroll image that has an alt stating it is the right scroll image', () => {
+  it('Should have a right scroll image that has an alt stating it is the right scroll image', () => {
     cy.get('.scrollButtonRight').should('have.attr', 'alt', 'Scroll Right Arrow')
   });
 
-  it.skip('Should scroll to the right in the section containing all the movie posters.', () => {
+  it('Should scroll to the right in the section containing all the movie posters.', () => {
     cy.get('.movies-container').scrollTo('right')
   });
 
-  it.skip('Should render a footer that contains an About, FAQ, and Contact Us links', () => {
+  it('Should render a footer that contains an About, FAQ, and Contact Us links', () => {
     cy.get('.about').contains('About')
     cy.get('.faq').contains('FAQ')
     cy.get('.contact-us').contains('Contact Us')
   });
 
-  it.skip('Should be able to click the footer link About and visit the corresponding page', () => {
+  it('Should be able to click the footer link About and visit the corresponding page', () => {
     cy.get('.about').click()
     cy.url().should('include', '/about')
   });
 
-  it.skip('Should be able to click the footer link FAQ and visit the corresponding page', () => {
+  it('Should be able to click the footer link FAQ and visit the corresponding page', () => {
     cy.get('.faq').click()
     cy.url().should('include', '/faq')
   });
 
-  it.skip('Should be able to click the footer link Contact Us and visit the corresponding page', () => {
+  it('Should be able to click the footer link Contact Us and visit the corresponding page', () => {
     cy.get('.contact-us').click()
     cy.url().should('include', '/contact-us')
   });
 
 });
 
-describe('Dashboard UI Errors', () => {
+describe('Dashboard UI 404 Error', () => {
   beforeEach(() => {
-    cy.fixture('testMovies.json')
-      .then((result) => {cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
-        statusCode: 404,
-        body: result.result
-      })})
+      cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+        statusCode: 404
+      })
     cy.visit('http://localhost:3000');
   });
 
   it('Should display the error number and a message when something goes wrong with the api call to retrieve all of the movies is not ok', () => {
     cy.get('main').contains("404 error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!")
+  })
+});
+
+describe('Dashboard UI Errors', () => {
+  beforeEach(() => {
+    cy.fixture('testMovies.json')
+      .then((result) => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+        statusCode: 500,
+        body: result.error500
+      })})
+    cy.visit('http://localhost:3000');
+  });
+
+  it('Should display the error number and a message when something goes wrong with the api call to retrieve all of the movies is not ok', () => {
+    cy.get('main').contains("500 error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!")
   })
 });
