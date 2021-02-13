@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Login.css';
-import { Route, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Profile from './Profile';
 import { fetchUsers } from '../apiCalls'
 
@@ -68,9 +68,15 @@ class Login extends Component {
         </label>
         {errorMsg && <p>{errorMsg}</p>}
         <button className='login-btn' onClick={this.retrieveUsers}>Login</button></div>}
-        <Route exact path="/login">
-          {user ? <Redirect to="/profile" /> : <Profile />}
-        </Route>
+        {user &&
+          <>
+            <h1>Welcome, {user.name}</h1>
+            <Link to={{
+              pathname:'/Profile',
+              state: {user}
+            }}><button>View Profile</button></Link>
+          </>
+        }
       </form>
     )
   }
