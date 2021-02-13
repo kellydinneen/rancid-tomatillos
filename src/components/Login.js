@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './Login.css';
+import { Link } from "react-router-dom";
+import Profile from './Profile';
 import { fetchUsers } from '../apiCalls'
 
 class Login extends Component {
@@ -66,7 +68,15 @@ class Login extends Component {
         </label>
         {errorMsg && <p>{errorMsg}</p>}
         <button className='login-btn' onClick={this.retrieveUsers}>Login</button></div>}
-        {user && <h2 className='welcome-msg'>Welcome back {user.name}</h2>}
+        {user &&
+          <>
+            <h1>Welcome, {user.name}</h1>
+            <Link to={{
+              pathname:'/Profile',
+              state: {user}
+            }}><button>View Profile</button></Link>
+          </>
+        }
       </form>
     )
   }

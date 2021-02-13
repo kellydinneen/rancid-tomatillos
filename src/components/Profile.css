@@ -1,0 +1,20 @@
+.favorites {
+  height: 40vh;
+  width: 50vw;
+  border: 1px solid #E74300;
+}
+
+.favorites-label {
+  margin-bottom: 0;
+}
+
+.logout-button {
+  background-color: #E74300;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-size: x-large;
+  margin-top: 2vh;
+  margin-bottom: 12px;
+  width: 4.6875em;
+}
