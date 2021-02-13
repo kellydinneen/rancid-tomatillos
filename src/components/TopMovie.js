@@ -12,7 +12,7 @@ const TopMovie = (props) => {
       <Link to={{
         pathname:`/movie-details/${movie.title.replace(/\s+/g, '')}`,
         state: {movie}
-      }}  className='top-movie-rating' onClick={() => props.leaveHome()}><h3>{movie.average_rating.toFixed(1)}★</h3></Link>
+      }}  className={`top-movie-rating${id}`} onClick={() => props.leaveHome()}><h3>{movie.average_rating.toFixed(1)}★</h3></Link>
       <Link
       to={{
         pathname:`/movie-details/${movie.title.replace(/\s+/g, '')}`,

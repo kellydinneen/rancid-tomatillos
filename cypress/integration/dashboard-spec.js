@@ -5,6 +5,11 @@ describe('Dashboard UI', () => {
         statusCode: 200,
         body: testMovies
       })})
+    cy.fixture('testMovies.json')
+      .then((testMovie) => {cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/726739', {
+        statusCode: 200,
+        body: testMovie
+      })})
     cy.visit('http://localhost:3000');
   });
 
@@ -28,20 +33,14 @@ describe('Dashboard UI', () => {
     cy.get('.top-movie-title').contains('The King of Staten Island')
   });
 
-  it.skip('Should be able to click the rating or title for the top rated movie and visit the correct Movie Details page', () => {
-    cy.get('#1 > h3').click()
-    cy.url().should('include', 'movie-details/Peninsula')
-    cy.visit('http://localhost:3000')
-    cy.get('#1 > h4').click()
-    cy.url().should('include', 'movie-details/Peninsula')
+  it.only('Should be able to click the rating or title for the top rated movie and visit the correct Movie Details page', () => {
+    cy.get('.top-movie-rating1').click()
+    cy.url().should('include', 'movie-details/Cats&Dogs3:PawsUnite')
   });
 
-  it.skip('Should be able to click the rating or title for the second top rated movie and visit the correct Movie Details page', () => {
-    cy.get('#2 > h3').click()
-    cy.url().should('include', 'movie-details/Cats&Dogs3:PawsUnite')
-    cy.visit('http://localhost:3000')
-    cy.get('#2 > h4').click()
-    cy.url().should('include', 'movie-details/Cats&Dogs3:PawsUnite')
+  it('Should be able to click the title of the top rated movie and visit the correct Movie Details page', () => {
+    cy.get('#1 > h4').click()
+    cy.url().should('include', 'movie-details/Peninsula')
   });
 
   it.skip('Should be able to click the rating or title for the third top rated movie and visit the correct Movie Details page', () => {
@@ -79,17 +78,17 @@ describe('Dashboard UI', () => {
     cy.get('.contact-us').contains('Contact Us')
   });
 
-  it.skip('Should be able to click the footer link About and visit the corresponding page', () => {
+  it('Should be able to click the footer link About and visit the corresponding page', () => {
     cy.get('.about').click()
     cy.url().should('include', '/about')
   });
 
-  it.skip('Should be able to click the footer link FAQ and visit the corresponding page', () => {
+  it('Should be able to click the footer link FAQ and visit the corresponding page', () => {
     cy.get('.faq').click()
     cy.url().should('include', '/faq')
   });
 
-  it.skip('Should be able to click the footer link Contact Us and visit the corresponding page', () => {
+  it('Should be able to click the footer link Contact Us and visit the corresponding page', () => {
     cy.get('.contact-us').click()
     cy.url().should('include', '/contact-us')
   });
