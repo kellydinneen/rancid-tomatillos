@@ -28,6 +28,7 @@ export const postFavorite = (user, movie) => {
     .then(res => {if (!res.ok) {
         return `${res.status} error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!`;
       } else {
+        console.log('post response', res)
         return res.json();
       }})
 

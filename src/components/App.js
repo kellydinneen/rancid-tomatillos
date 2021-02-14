@@ -13,12 +13,14 @@ import './App.css';
 class App extends Component {
   constructor() {
     super()
+
     this.state = {
       movies: [],
       isLoading: true,
       errorMsg: null,
       atHome: window.location.pathname === '/' ? true : false,
-      user: null
+      user: { id: 'u1', name: 'Jessica Candel', username: 'Jessica', password: 'Candel', favorites:[] },
+      // updateUser: this.updateUser.bind(this)
     }
   }
 
@@ -38,11 +40,13 @@ class App extends Component {
           }})
   }
 
-  updateUser = async () => {
-      const result = await fetchUsers();
-      const currentUser = result.users.find(theUser => theUser.id === this.state.user.id);
-      this.setState({ user: currentUser });
-  }
+  // updateUser = async () => {
+  //     console.log('updating user');
+  //     const result = await fetchUsers();
+  //     const currentUser = result.users.find(theUser => theUser.id === this.state.user.id);
+  //     this.setState({ user: currentUser });
+  //     console.log(this.state.user);
+  // }
 
   goHome = () => {
     this.setState({ atHome: true })
@@ -96,10 +100,16 @@ class App extends Component {
             isLoading={isLoading}
             movies={movies}
             user={user}
-            updateUser={this.updateUser}
+            updateUser={this.state.updateUser}
             leaveHome={this.leaveHome}
             />} />
-          <Route path='/movie-details/:title' exact component={MovieDetails}/>} />
+          // <Route path='/movie-details/:title' exact component={MovieDetails}/>} />
+          <Route
+            path='/movie-details/:title'
+            render={(props) => (
+              <MovieDetails {...props} login={this.login} />
+              )}
+          />
           <Route path='/login' exact component={Login} />
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />
