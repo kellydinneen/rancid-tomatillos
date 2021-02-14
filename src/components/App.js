@@ -103,7 +103,6 @@ class App extends Component {
             updateUser={this.state.updateUser}
             leaveHome={this.leaveHome}
             />} />
-          // <Route path='/movie-details/:title' exact component={MovieDetails}/>} />
           <Route
             path='/movie-details/:title'
             render={(props) => (
