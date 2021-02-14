@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import './MovieDetails.css';
 import Trailer from './Trailer';
-import { fetchMovieData } from '../apiCalls'
+import { fetchMovieData, fetchUsers, postFavorite } from '../apiCalls'
 
 class MovieDetails extends Component {
   constructor(props) {
     super(props)
+    const data = this.props.location.state;
     this.state = {
-      id: props.location.state.movie.id,
+      id: data.movie.id,
+      user: data.user,
       movie: {},
+      isFavorite: data.user && data.user.favorites.includes(data.movie) ? true : false,
       isLoading: true,
       errorMsg: null,
       imageShowing: true,
@@ -49,6 +52,15 @@ class MovieDetails extends Component {
     }
   }
 
+  addFavorite = async () => {
+    await postFavorite(this.state.user, this.state.movie);
+    const users = await fetchUsers();
+    const currentUser = users.users.find(theUser => theUser.id === this.state.user.id);
+    this.setState({ isFavorite: true, user: currentUser});
+    console.log(this.state);
+    // this.props.login(this.state.user);
+  }
+
   render() {
     const {movie, isLoading, errorMsg, imageShowing, trailerIsPlaying} = this.state;
 
@@ -70,6 +82,8 @@ class MovieDetails extends Component {
           <h3 className='movieTitle'>{movie.title}</h3>
           <h3 className='rating'>{movie.average_rating.toFixed(1)}★</h3>
         </div>
+        {(this.state.user && !this.state.isFavorite) && <button className='favorite-btn' onClick={this.addFavorite}>Add to Favorites</button>}
+        {this.state.isFavorite && <button className='favorite-btn'>Remove from Favorites</button>}
         <div className='movieData'>
           <h4 className='releaseDate'>{movie.release_date} </h4>
           <h4 className='genre'>{movie.genres.join(', ')}</h4>
