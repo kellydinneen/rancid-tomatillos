@@ -17,3 +17,14 @@ export const fetchUsers = () => {
           return res.json()
         }})
 }
+
+export const postFavorite = (user, movie) => {
+  const post = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(movie)
+    }
+  return fetch(`https://rancid-tomatillos-api-kd-lm.herokuapp.com/api/v1/users/${user.id}`, post)
+    .then(res => res.json())
+    .then(res => fetchUsers())
+}
