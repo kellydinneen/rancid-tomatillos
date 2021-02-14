@@ -49,7 +49,6 @@ class App extends Component {
 
   logIn = (user) => {
       this.setState({ user: user })
-      console.log(this.state.user)
     }
 
   logOut = () => {
@@ -58,7 +57,7 @@ class App extends Component {
 
 
   render() {
-    const {movies, isLoading, errorMsg, atHome, user} = this.state;
+    let {movies, isLoading, errorMsg, atHome, user} = this.state;
 
     return (
       <>
@@ -68,12 +67,16 @@ class App extends Component {
               pathname:'/'
             }}  className="site-title" onClick={this.goHome}><h1>Rancid<br/> Tomatillos
             </h1></NavLink>
-            <NavLink to={{
+            {!user && <NavLink to={{
               pathname:'/login'
             }} className='login-link' onClick={this.leaveHome}>
-              {!user && <button className='login-button'>Log in</button>}
-              {user && <button className='logout-button'>Log out</button>}
-            </NavLink>
+              <button className='login-button'>Log in</button>
+            </NavLink>}
+            {user && <NavLink to={{
+              pathname:'/profile'
+            }} className='profile-link' onClick={this.leaveHome}>
+            <button className='profile-button'>Profile</button>
+            </NavLink>}
           {!atHome &&
             <NavLink to={{
               pathname:'/'
@@ -92,8 +95,8 @@ class App extends Component {
             leaveHome={this.leaveHome}
             />} />
           <Route path='/movie-details/:title' exact component={MovieDetails} />
-          <Route path='/login' exact render={() => <Login logIn={this.logIn}/>} />
-          <Route path='/profile' exact component={Profile} />
+          <Route path='/login' exact render={() => <Login logIn={this.logIn} goHome={this.goHome}/>} />
+          <Route path='/profile' exact render={() => <Profile user={user}/>} />
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />
           <Route path='/contact-us' exact component={ContactUs} />

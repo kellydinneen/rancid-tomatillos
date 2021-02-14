@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from "react-router-dom";
 import './Login.css';
 import { Link } from "react-router-dom";
 import Profile from './Profile';
@@ -24,6 +25,7 @@ class Login extends Component {
     return !!(email.trim() && password.trim());
   }
 
+
   retrieveUsers = async (event) => {
     event.preventDefault();
     if(this.validateInputs()){
@@ -33,6 +35,10 @@ class Login extends Component {
         const foundUser = result.users.filter(user => user.username === email && user.password === password )
         this.setState({user: foundUser[0]})
         this.props.logIn(this.state.user)
+        this.props.goHome()
+      if(foundUser.length === 0){
+        this.setState({ username: '', password: '', errorMsg: 'Please enter vaild email and password!'});
+      }
       } catch({ message }) {
         this.setState({ username: '', password: '', errorMsg: message});
       }
@@ -69,15 +75,7 @@ class Login extends Component {
         </label>
         {errorMsg && <p>{errorMsg}</p>}
         <button className='login-btn' onClick={this.retrieveUsers}>Login</button></div>}
-        {user &&
-          <>
-            <h1>Welcome, {user.name}</h1>
-            <Link to={{
-              pathname:'/Profile',
-              state: {user}
-            }}><button>View Profile</button></Link>
-          </>
-        }
+        {user && <Redirect to='/'/>}
       </form>
     )
   }
