@@ -5,13 +5,19 @@ import kellyProfile from './kellyGitHubPic.jpg';
 
 const ContactUs = () => {
   return (
-    <div className='contact-us'>
+    <main className='contact-us'>
       <h2>Find us on GitHub</h2>
-      <img className="github-profile-pic" src={lucasProfile} alt='GitHub profile'/>
-      <a className='github-profile-link' href="https://github.com/lbmerchant93">lbmerchant93</a>
-      <img className="github-profile-pic" src={kellyProfile} alt='GitHub profile'/>
-      <a className='github-profile-link' href="https://github.com/kellydinneen">kellydinneen</a>
-    </div>
+      <section className='gh-profiles'>
+        <article className='lucas-profile'>
+          <img className="github-profile-pic" src={lucasProfile} alt='GitHub profile'/>
+          <a className='github-profile-link' href="https://github.com/lbmerchant93">lbmerchant93</a>
+        </article>
+        <article className='kelly-profile'>
+          <img className="github-profile-pic" src={kellyProfile} alt='GitHub profile'/>
+          <a className='github-profile-link' href="https://github.com/kellydinneen">kellydinneen</a>
+        </article>
+      </section>
+    </main>
   )
 }
 

@@ -101,7 +101,7 @@ class App extends Component {
           <nav className="footer-links">
             <NavLink className="about footer-link" to='/about' onClick={this.leaveHome}>About</NavLink>
             <NavLink className="faq footer-link" to='/faq' onClick={this.leaveHome}>FAQ</NavLink>
-            <NavLink className="contact-us footer-link" to='/contact-us' onClick={this.leaveHome}>Contact Us</NavLink>
+            <NavLink className="contact-us-page footer-link" to='/contact-us' onClick={this.leaveHome}>Contact Us</NavLink>
           </nav>
         </footer>
       </>
