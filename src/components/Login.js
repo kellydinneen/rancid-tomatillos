@@ -68,19 +68,9 @@ class Login extends Component {
         </label>
         {errorMsg && <p>{errorMsg}</p>}
         <button className='login-btn' onClick={this.retrieveUsers}>Login</button></div>}
-        {user &&
-          <>
-            <h1>Welcome, {user.name}</h1>
-            <Link to={{
-              pathname:'/Profile',
-              state: {user}
-            }}><button>View Profile</button></Link>
-          </>
-        }
       </form>
     )
   }
-
 }
 
 export default Login;

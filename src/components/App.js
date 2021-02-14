@@ -7,7 +7,7 @@ import About from './FooterLinks/About';
 import FAQ from './FooterLinks/FAQ';
 import ContactUs from './FooterLinks/ContactUs';
 import homeButton from '../Images/home.png';
-import { fetchMovieData } from '../apiCalls'
+import { fetchMovieData, fetchUsers } from '../apiCalls';
 import './App.css';
 
 class App extends Component {
@@ -36,6 +36,12 @@ class App extends Component {
                 isLoading: false
               })
           }})
+  }
+
+  updateUser = async () => {
+      const result = await fetchUsers();
+      const currentUser = result.users.find(theUser => theUser.id === this.state.user.id);
+      this.setState({ user: currentUser });
   }
 
   goHome = () => {
@@ -89,9 +95,11 @@ class App extends Component {
             errorMsg={errorMsg}
             isLoading={isLoading}
             movies={movies}
+            user={user}
+            updateUser={this.updateUser}
             leaveHome={this.leaveHome}
             />} />
-          <Route path='/movie-details/:title' exact component={MovieDetails} />
+          <Route path='/movie-details/:title' exact component={MovieDetails}/>} />
           <Route path='/login' exact component={Login} />
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />
