@@ -19,7 +19,8 @@ class App extends Component {
       isLoading: true,
       errorMsg: null,
       atHome: window.location.pathname === '/' ? true : false,
-      user: null
+      user: null,
+      onProfile: false
     }
   }
 
@@ -39,8 +40,14 @@ class App extends Component {
           }})
   }
 
-  goHome = () => {
+  go = (place) => {
+    if(place === 'atHome') {
     this.setState({ atHome: true })
+    this.leaveProfile()
+  } else {
+    this.setState({ onProfile: true })
+    this.leaveHome()
+  }
   }
 
   leaveHome = () => {
@@ -55,9 +62,13 @@ class App extends Component {
       this.setState({ user: null })
     }
 
+  leaveProfile = () => {
+    this.setState({ onProfile: false })
+  }
+
 
   render() {
-    let {movies, isLoading, errorMsg, atHome, user} = this.state;
+    let {movies, isLoading, errorMsg, atHome, user, onProfile} = this.state;
 
     return (
       <>
@@ -65,23 +76,23 @@ class App extends Component {
         <nav className="header-content">
             <NavLink to={{
               pathname:'/'
-            }}  className="site-title" onClick={this.goHome}><h1>Rancid<br/> Tomatillos
+            }}  className="site-title" onClick={() => this.go('atHome')}><h1>Rancid<br/> Tomatillos
             </h1></NavLink>
             {!user && <NavLink to={{
               pathname:'/login'
             }} className='login-link' onClick={this.leaveHome}>
               <button className='login-button'>Log in</button>
             </NavLink>}
-            {user && <NavLink to={{
+            {user && !onProfile && <NavLink to={{
               pathname:'/profile'
-            }} className='profile-link' onClick={this.leaveHome}>
+            }} className='profile-link' onClick={() => this.go('profile')}>
             <button className='profile-button'>Profile</button>
             </NavLink>}
           {!atHome &&
             <NavLink to={{
               pathname:'/'
               }}>
-              <img src={homeButton} alt="home button" className='home-button' onClick={this.goHome}/>
+              <img src={homeButton} alt="home button" className='home-button' onClick={() => this.go('atHome')}/>
             </NavLink>
           }
         </nav>
@@ -95,7 +106,7 @@ class App extends Component {
             leaveHome={this.leaveHome}
             />} />
           <Route path='/movie-details/:title' exact component={MovieDetails} />
-          <Route path='/login' exact render={() => <Login logIn={this.logIn} goHome={this.goHome}/>} />
+          <Route path='/login' exact render={() => <Login logIn={this.logIn} goHome={() => this.go('atHome')}/>} />
           <Route path='/profile' exact render={() => <Profile user={user}/>} />
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />
