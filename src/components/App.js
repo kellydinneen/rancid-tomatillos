@@ -19,8 +19,7 @@ class App extends Component {
       isLoading: true,
       errorMsg: null,
       atHome: window.location.pathname === '/' ? true : false,
-      user: { id: 'u1', name: 'Jessica Candel', username: 'Jessica', password: 'Candel', favorites:[] },
-      // updateUser: this.updateUser.bind(this)
+      user: null,
     }
   }
 
