@@ -20,7 +20,8 @@ class App extends Component {
       errorMsg: null,
       atHome: window.location.pathname === '/' ? true : false,
       user: null,
-      onProfile: false
+      onProfile: false,
+      notOnLoginPage: true
     }
   }
 
@@ -42,12 +43,15 @@ class App extends Component {
 
   go = (place) => {
     if(place === 'atHome') {
-    this.setState({ atHome: true })
-    this.leaveProfile()
-  } else {
-    this.setState({ onProfile: true })
-    this.leaveHome()
-  }
+      this.setState({ atHome: true })
+      this.leaveProfile()
+    } else if(place === 'profile'){
+      this.setState({ onProfile: true })
+      this.leaveHome()
+    } else if(place === 'login'){
+      this.setState({ notOnLoginPage: false })
+      this.leaveHome()
+    }
   }
 
   leaveHome = () => {
@@ -68,7 +72,7 @@ class App extends Component {
 
 
   render() {
-    let {movies, isLoading, errorMsg, atHome, user, onProfile} = this.state;
+    let {movies, isLoading, errorMsg, atHome, user, onProfile, notOnLoginPage} = this.state;
 
     return (
       <>
@@ -78,9 +82,9 @@ class App extends Component {
               pathname:'/'
             }}  className="site-title" onClick={() => this.go('atHome')}><h1>Rancid<br/> Tomatillos
             </h1></NavLink>
-            {!user && <NavLink to={{
+            {notOnLoginPage && !user && <NavLink to={{
               pathname:'/login'
-            }} className='login-link' onClick={this.leaveHome}>
+            }} className='login-link' onClick={() => this.go('login')}>
               <button className='login-button'>Log in</button>
             </NavLink>}
             {user && !onProfile && <NavLink to={{
