@@ -23,7 +23,6 @@ const Movies = (props) => {
         key={movie.id}
         leaveHome={props.leaveHome}
         user={props.user}
-        updateUser={props.updateUser}
       />
     )
   })

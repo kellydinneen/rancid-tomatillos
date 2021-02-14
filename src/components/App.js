@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link, NavLink } from "react-router-dom";
+import { Route, Switch, NavLink } from "react-router-dom";
 import MovieDetails from './MovieDetails';
 import Home from './Home';
 import Login from './Login';
@@ -100,15 +100,13 @@ class App extends Component {
             isLoading={isLoading}
             movies={movies}
             user={user}
-            updateUser={this.state.updateUser}
             leaveHome={this.leaveHome}
             />} />
           <Route
             path='/movie-details/:title'
             render={(props) => (
               <MovieDetails {...props} login={this.login} />
-              )}
-          />
+            )}/>
           <Route path='/login' exact component={Login} />
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />

@@ -13,8 +13,8 @@ const Home = (props) => {
       {props.isLoading && <p className='loading-message'>Loading...</p>}
       {!props.isLoading && !props.errorMsg &&
         <>
-          <TopRated movies={movies} leaveHome={leaveHome} user={user} updateUser={updateUser}/>
-          <Movies movies={movies} leaveHome={leaveHome} user={user} updateUser={updateUser}/>
+          <TopRated movies={movies} leaveHome={leaveHome} user={user}/>
+          <Movies movies={movies} leaveHome={leaveHome} user={user}/>
         </>
       }
     </main>
