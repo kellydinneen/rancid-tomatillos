@@ -5,8 +5,8 @@ import Profile from './Profile';
 import { fetchUsers } from '../apiCalls'
 
 class Login extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       email: '',
       password: '',
@@ -32,6 +32,7 @@ class Login extends Component {
         const result = await fetchUsers();
         const foundUser = result.users.filter(user => user.username === email && user.password === password )
         this.setState({user: foundUser[0]})
+        this.props.logIn(this.state.user)
       } catch({ message }) {
         this.setState({ username: '', password: '', errorMsg: message});
       }

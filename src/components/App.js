@@ -49,6 +49,7 @@ class App extends Component {
 
   logIn = (user) => {
       this.setState({ user: user })
+      console.log(this.state.user)
     }
 
   logOut = () => {
@@ -91,7 +92,7 @@ class App extends Component {
             leaveHome={this.leaveHome}
             />} />
           <Route path='/movie-details/:title' exact component={MovieDetails} />
-          <Route path='/login' exact component={Login} />
+          <Route path='/login' exact render={() => <Login logIn={this.logIn}/>} />
           <Route path='/profile' exact component={Profile} />
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />
