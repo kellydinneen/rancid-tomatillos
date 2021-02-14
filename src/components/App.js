@@ -93,7 +93,6 @@ class App extends Component {
             />} />
           <Route path='/movie-details/:title' exact component={MovieDetails} />
           <Route path='/login' exact component={Login} />
-          <Route path='/profile' exact component={Profile} />
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />
           <Route path='/contact-us' exact component={ContactUs} />
