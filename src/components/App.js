@@ -3,11 +3,12 @@ import { Route, Switch, Link, NavLink } from "react-router-dom";
 import MovieDetails from './MovieDetails';
 import Home from './Home';
 import Login from './Login';
+import Profile from './Profile';
 import About from './FooterLinks/About';
 import FAQ from './FooterLinks/FAQ';
 import ContactUs from './FooterLinks/ContactUs';
 import homeButton from '../Images/home.png';
-import { fetchMovieData } from '../apiCalls'
+import { fetchMovieData } from '../apiCalls';
 import './App.css';
 
 class App extends Component {
@@ -62,12 +63,10 @@ class App extends Component {
       <>
       <header>
         <nav className="header-content">
-          <h1>
             <NavLink to={{
               pathname:'/'
-            }}  className="site-title" onClick={this.goHome}>Rancid<br/> Tomatillos
-            </NavLink>
-          </h1>
+            }}  className="site-title" onClick={this.goHome}><h1>Rancid<br/> Tomatillos
+            </h1></NavLink>
             <NavLink to={{
               pathname:'/login'
             }} className='login-link' onClick={this.leaveHome}>
@@ -93,6 +92,7 @@ class App extends Component {
             />} />
           <Route path='/movie-details/:title' exact component={MovieDetails} />
           <Route path='/login' exact component={Login} />
+          <Route path='/profile' exact component={Profile} />
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />
           <Route path='/contact-us' exact component={ContactUs} />
@@ -103,7 +103,7 @@ class App extends Component {
           <nav className="footer-links">
             <NavLink className="about footer-link" to='/about' onClick={this.leaveHome}>About</NavLink>
             <NavLink className="faq footer-link" to='/faq' onClick={this.leaveHome}>FAQ</NavLink>
-            <NavLink className="contact-us footer-link" to='/contact-us' onClick={this.leaveHome}>Contact Us</NavLink>
+            <NavLink className="contact-us-page footer-link" to='/contact-us' onClick={this.leaveHome}>Contact Us</NavLink>
           </nav>
         </footer>
       </>
