@@ -5,14 +5,16 @@ import TopRated from './TopRated';
 
 const Home = (props) => {
 
+  const {movies, user, leaveHome, updateUser} = props;
+
   return (
     <main>
       {props.errorMsg && <p className='error-message'>{props.errorMsg}</p>}
       {props.isLoading && <p className='loading-message'>Loading...</p>}
       {!props.isLoading && !props.errorMsg &&
         <>
-          <TopRated movies={props.movies} leaveHome={props.leaveHome}/>
-          <Movies movies={props.movies} leaveHome={props.leaveHome}/>
+          <TopRated movies={movies} leaveHome={leaveHome} user={user}/>
+          <Movies movies={movies} leaveHome={leaveHome} user={user}/>
         </>
       }
     </main>

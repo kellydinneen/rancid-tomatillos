@@ -79,11 +79,11 @@ class Login extends Component {
         </label>
         {errorMsg && <p>{errorMsg}</p>}
         <button className='login-btn' onClick={this.retrieveUsers}>Login</button></div>}
+
         {user && <Redirect to='/'/>}
       </form>
     )
   }
-
 }
 
 export default Login;
