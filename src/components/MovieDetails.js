@@ -70,6 +70,7 @@ class MovieDetails extends Component {
           <h3 className='movieTitle'>{movie.title}</h3>
           <h3 className='rating'>{movie.average_rating.toFixed(1)}★</h3>
         </div>
+        <button className='favorite-btn' onClick={this.favoriteMovie}>Add to Favorites</button>
         <div className='movieData'>
           <h4 className='releaseDate'>{movie.release_date} </h4>
           <h4 className='genre'>{movie.genres.join(', ')}</h4>
