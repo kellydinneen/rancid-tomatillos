@@ -3,6 +3,7 @@ import { Route, Switch, NavLink } from "react-router-dom";
 import MovieDetails from './MovieDetails';
 import Home from './Home';
 import Login from './Login';
+import Profile from './Profile';
 import About from './FooterLinks/About';
 import FAQ from './FooterLinks/FAQ';
 import ContactUs from './FooterLinks/ContactUs';
@@ -20,6 +21,9 @@ class App extends Component {
       errorMsg: null,
       atHome: window.location.pathname === '/' ? true : false,
       user: null,
+
+      onProfile: false,
+      notOnLoginPage: true
     }
   }
 
@@ -39,16 +43,17 @@ class App extends Component {
           }})
   }
 
-  // updateUser = async () => {
-  //     console.log('updating user');
-  //     const result = await fetchUsers();
-  //     const currentUser = result.users.find(theUser => theUser.id === this.state.user.id);
-  //     this.setState({ user: currentUser });
-  //     console.log(this.state.user);
-  // }
-
-  goHome = () => {
-    this.setState({ atHome: true })
+  go = (place) => {
+    if(place === 'atHome') {
+      this.setState({ atHome: true })
+      this.leaveProfile()
+    } else if(place === 'profile'){
+      this.setState({ onProfile: true })
+      this.leaveHome()
+    } else if(place === 'login'){
+      this.setState({ notOnLoginPage: false })
+      this.leaveHome()
+    }
   }
 
   leaveHome = () => {
@@ -63,31 +68,37 @@ class App extends Component {
       this.setState({ user: null })
     }
 
+  leaveProfile = () => {
+    this.setState({ onProfile: false })
+  }
+
 
   render() {
-    const {movies, isLoading, errorMsg, atHome, user} = this.state;
+    let {movies, isLoading, errorMsg, atHome, user, onProfile, notOnLoginPage} = this.state;
 
     return (
       <>
       <header>
         <nav className="header-content">
-          <h1>
             <NavLink to={{
               pathname:'/'
-            }}  className="site-title" onClick={this.goHome}>Rancid<br/> Tomatillos
-            </NavLink>
-          </h1>
-            <NavLink to={{
+            }}  className="site-title" onClick={() => this.go('atHome')}><h1>Rancid<br/> Tomatillos
+            </h1></NavLink>
+            {notOnLoginPage && !user && <NavLink to={{
               pathname:'/login'
-            }} className='login-link' onClick={this.leaveHome}>
-              {!user && <button className='login-button'>Log in</button>}
-              {user && <button className='logout-button'>Log out</button>}
-            </NavLink>
+            }} className='login-link' onClick={() => this.go('login')}>
+              <button className='login-button'>Log in</button>
+            </NavLink>}
+            {user && !onProfile && <NavLink to={{
+              pathname:'/profile'
+            }} className='profile-link' onClick={() => this.go('profile')}>
+            <button className='profile-button'>Profile</button>
+            </NavLink>}
           {!atHome &&
             <NavLink to={{
               pathname:'/'
               }}>
-              <img src={homeButton} alt="home button" className='home-button' onClick={this.goHome}/>
+              <img src={homeButton} alt="home button" className='home-button' onClick={() => this.go('atHome')}/>
             </NavLink>
           }
         </nav>
@@ -101,12 +112,13 @@ class App extends Component {
             user={user}
             leaveHome={this.leaveHome}
             />} />
+          <Route path='/login' exact render={() => <Login logIn={this.logIn} goHome={() => this.go('atHome')}/>} />
+          <Route path='/profile' exact render={() => <Profile user={user}/>} />
           <Route
             path='/movie-details/:title'
             render={(props) => (
               <MovieDetails {...props} login={this.login} />
             )}/>
-          <Route path='/login' exact component={Login} />
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />
           <Route path='/contact-us' exact component={ContactUs} />
@@ -117,7 +129,7 @@ class App extends Component {
           <nav className="footer-links">
             <NavLink className="about footer-link" to='/about' onClick={this.leaveHome}>About</NavLink>
             <NavLink className="faq footer-link" to='/faq' onClick={this.leaveHome}>FAQ</NavLink>
-            <NavLink className="contact-us footer-link" to='/contact-us' onClick={this.leaveHome}>Contact Us</NavLink>
+            <NavLink className="contact-us-page footer-link" to='/contact-us' onClick={this.leaveHome}>Contact Us</NavLink>
           </nav>
         </footer>
       </>

@@ -5,9 +5,10 @@ class Profile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: props.location.state.user.name,
-      favorites: props.location.state.user.favorites
+      // name: props.location.state.user.name,
+      // favorites: props.location.state.user.favorites
     }
+    console.log(this.props)
   }
 
   render() {

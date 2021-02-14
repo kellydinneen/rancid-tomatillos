@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import { Redirect } from "react-router-dom";
 import './Login.css';
 import { Link } from "react-router-dom";
 import Profile from './Profile';
 import { fetchUsers } from '../apiCalls'
 
 class Login extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       email: '',
       password: '',
@@ -24,14 +25,24 @@ class Login extends Component {
     return !!(email.trim() && password.trim());
   }
 
+  updateErrorMsg = (user) => {
+    if(user === undefined){
+      this.setState({ username: '', password: '', errorMsg: 'Please enter vaild email and password!', user: ''});
+    } else {
+      this.props.logIn(this.state.user)
+      this.props.goHome()
+    }
+  }
+
   retrieveUsers = async (event) => {
     event.preventDefault();
     if(this.validateInputs()){
       try {
         const { email, password } = this.state;
         const result = await fetchUsers();
-        const foundUser = result.users.filter(user => user.username === email && user.password === password )
-        this.setState({user: foundUser[0]})
+        const foundUser = result.users.find(user => user.username === email && user.password === password )
+        this.setState({user: foundUser})
+        this.updateErrorMsg(foundUser)
       } catch({ message }) {
         this.setState({ username: '', password: '', errorMsg: message});
       }
@@ -68,6 +79,8 @@ class Login extends Component {
         </label>
         {errorMsg && <p>{errorMsg}</p>}
         <button className='login-btn' onClick={this.retrieveUsers}>Login</button></div>}
+
+        {user && <Redirect to='/'/>}
       </form>
     )
   }
