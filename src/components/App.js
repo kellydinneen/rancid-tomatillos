@@ -62,12 +62,10 @@ class App extends Component {
       <>
       <header>
         <nav className="header-content">
-          <h1>
             <NavLink to={{
               pathname:'/'
-            }}  className="site-title" onClick={this.goHome}>Rancid<br/> Tomatillos
-            </NavLink>
-          </h1>
+            }}  className="site-title" onClick={this.goHome}><h1>Rancid<br/> Tomatillos
+            </h1></NavLink>
             <NavLink to={{
               pathname:'/login'
             }} className='login-link' onClick={this.leaveHome}>
