@@ -5,7 +5,6 @@ import scrollRightButton from '../Images/scroll-right.png';
 import './Movies.css';
 
 const Movies = (props) => {
-
   const scroller = React.useRef();
 
   const scrollLeft = () => {

@@ -111,6 +111,7 @@ class App extends Component {
             errorMsg={errorMsg}
             isLoading={isLoading}
             movies={movies}
+            user={user}
             leaveHome={() => this.leave('atHome')}
             />} />
           <Route path='/login' exact render={() => <Login logIn={this.logIn} goHome={() => this.go('atHome')}/>} />

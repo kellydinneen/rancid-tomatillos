@@ -8,7 +8,7 @@ const TopRated = (props) => {
   let topThree = [sortedMovies[0], sortedMovies[1], sortedMovies[2]];
 
   const topThreeComponents = topThree.map((movie, index) => {
-    return (<TopMovie movie={movie} key={movie.id} id={index+1} leaveHome={props.leaveHome}/>)
+    return (<TopMovie movie={movie} key={movie.id} id={index+1} user={props.user} leaveHome={props.leaveHome}/>)
   })
 
   return (

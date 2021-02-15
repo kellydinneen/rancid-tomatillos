@@ -11,7 +11,7 @@ class MovieDetails extends Component {
       id: data.movie.id,
       user: data.user,
       movie: {},
-      isFavorite: data.user.favorites.some(favorite => favorite.id === data.movie.id) ? true : false,
+      isFavorite: data.user && data.user.favorites.some(favorite => favorite.id === data.movie.id) ? true : false,
       isLoading: true,
       errorMsg: null,
       imageShowing: true,
@@ -77,6 +77,7 @@ class MovieDetails extends Component {
     if(isLoading) {
       return <p className='loading-message'>Loading...</p>
     }
+
 
     return (
       <main>
