@@ -67,7 +67,7 @@ describe('Dashboard UI', () => {
   it('Should render a footer that contains an About, FAQ, and Contact Us links', () => {
     cy.get('.about').contains('About')
     cy.get('.faq').contains('FAQ')
-    cy.get('.contact-us').contains('Contact Us')
+    cy.get('.contact-us-page').contains('Contact Us')
   });
 
   it('Should be able to click the footer link About and visit the corresponding page', () => {
@@ -81,7 +81,7 @@ describe('Dashboard UI', () => {
   });
 
   it('Should be able to click the footer link Contact Us and visit the corresponding page', () => {
-    cy.get('.contact-us').click()
+    cy.get('.contact-us-page').click()
     cy.url().should('include', '/contact-us')
   });
 
