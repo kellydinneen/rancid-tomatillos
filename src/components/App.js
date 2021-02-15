@@ -47,15 +47,19 @@ class App extends Component {
       this.leaveProfile()
     } else if(place === 'profile'){
       this.setState({ onProfile: true })
-      this.leaveHome()
+      this.leave('atHome')
     } else if(place === 'login'){
       this.setState({ notOnLoginPage: false })
-      this.leaveHome()
+      this.leave('atHome')
     }
   }
 
-  leaveHome = () => {
-    this.setState({ atHome: false })
+  leave = (page) => {
+    if(page === 'atHome'){
+      this.setState({ atHome: false })
+    } else {
+      this.setState({ onProfile: false })
+    }
   }
 
   leaveProfile = () => {
@@ -107,11 +111,14 @@ class App extends Component {
             errorMsg={errorMsg}
             isLoading={isLoading}
             movies={movies}
-            leaveHome={this.leaveHome}
+            leaveHome={() => this.leave('atHome')}
             />} />
           <Route path='/movie-details/:title' exact component={MovieDetails} />
           <Route path='/login' exact render={() => <Login logIn={this.logIn} goHome={() => this.go('atHome')}/>} />
-          <Route path='/profile' exact render={() => <Profile user={user} logOut={this.logOut} goHome={() => this.go('atHome')} />} />
+          <Route path='/profile' exact render={() => <Profile user={user}
+          logOut={this.logOut}
+          goHome={() => this.go('atHome')}
+          leaveHome={() => this.leave('profile')}/>} />
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />
           <Route path='/contact-us' exact component={ContactUs} />
@@ -120,9 +127,9 @@ class App extends Component {
         <footer>
           <section className="gradient"></section>
           <nav className="footer-links">
-            <NavLink className="about footer-link" to='/about' onClick={this.leaveHome}>About</NavLink>
-            <NavLink className="faq footer-link" to='/faq' onClick={this.leaveHome}>FAQ</NavLink>
-            <NavLink className="contact-us-page footer-link" to='/contact-us' onClick={this.leaveHome}>Contact Us</NavLink>
+            <NavLink className="about footer-link" to='/about' onClick={() => this.leave('atHome')}>About</NavLink>
+            <NavLink className="faq footer-link" to='/faq' onClick={() => this.leave('atHome')}>FAQ</NavLink>
+            <NavLink className="contact-us-page footer-link" to='/contact-us' onClick={() => this.leave('atHome')}>Contact Us</NavLink>
           </nav>
         </footer>
       </>
