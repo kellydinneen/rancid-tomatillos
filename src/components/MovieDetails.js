@@ -11,7 +11,7 @@ class MovieDetails extends Component {
       id: data.movie.id,
       user: data.user,
       movie: {},
-      isFavorite: data.user && data.user.favorites.includes(data.movie) ? true : false,
+      isFavorite: data.user.favorites.some(favorite => favorite.id === data.movie.id) ? true : false,
       isLoading: true,
       errorMsg: null,
       imageShowing: true,
@@ -57,8 +57,7 @@ class MovieDetails extends Component {
     const users = await fetchUsers();
     const currentUser = users.users.find(theUser => theUser.id === this.state.user.id);
     this.setState({ isFavorite: true, user: currentUser});
-    console.log(this.state);
-    // this.props.login(this.state.user);
+    this.props.logIn(this.state.user);
   }
 
   render() {

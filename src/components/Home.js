@@ -5,7 +5,7 @@ import TopRated from './TopRated';
 
 const Home = (props) => {
 
-  const {movies, user, leaveHome, updateUser} = props;
+  const {movies, user, leaveHome} = props;
 
   return (
     <main>
