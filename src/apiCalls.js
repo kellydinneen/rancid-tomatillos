@@ -34,7 +34,7 @@ export const addFavorite = (user, movie) => {
 
 export const deleteFavorite = (user, movie) => {
   const deleteRequest = {
-      method: 'DELETE',
+      method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(movie)
     }
