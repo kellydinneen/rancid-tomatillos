@@ -9,7 +9,7 @@ export const fetchMovieData = (endpoint) => {
   }
 
 export const fetchUsers = () => {
-  return fetch(`https://rancid-tomatillos-api-kd-lm.herokuapp.com/api/v1/users`)
+  return fetch(`https://rancid-tomatillos-api-lm-kd.herokuapp.com/api/v1/users`)
     .then(res => {
       if (!res.ok) {
           return `${res.status} error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!`
@@ -24,7 +24,7 @@ export const addFavorite = (user, movie) => {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(movie)
     }
-  return fetch(`https://rancid-tomatillos-api-kd-lm.herokuapp.com/api/v1/users/${user.id}`, patch)
+  return fetch(`https://rancid-tomatillos-api-lm-kd.herokuapp.com/api/v1/users/${user.id}`, patch)
     .then(res => {if (!res.ok) {
         return `${res.status} error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!`;
       } else {
@@ -38,7 +38,7 @@ export const deleteFavorite = (user, movie) => {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(movie)
     }
-  return fetch(`https://rancid-tomatillos-api-kd-lm.herokuapp.com/api/v1/users/${user.id}`, deleteRequest)
+  return fetch(`https://rancid-tomatillos-api-lm-kd.herokuapp.com/api/v1/users/${user.id}`, deleteRequest)
     .then(res => {if (!res.ok) {
         return `${res.status} error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!`;
       } else {
