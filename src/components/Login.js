@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import './Login.css';
-import { Link } from "react-router-dom";
-import Profile from './Profile';
 import { fetchUsers } from '../apiCalls'
 
 class Login extends Component {

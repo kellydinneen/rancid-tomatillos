@@ -18,16 +18,24 @@
 
 .home-button:hover {
   filter: brightness(1);
+  cursor: pointer;
 }
 
 .login-button,
-.logout-button {
-  background-color: #E74300;
+.profile-button {
+  background-color: white;
   border-radius: 5px;
   border: none;
-  color: white;
+  color: #E74300;
   font-size: x-large;
   margin-bottom: 10px;
+}
+
+.login-button:hover,
+.profile-button:hover {
+  background-color: #E74300;
+  color: white;
+  cursor: pointer;
 }
 
 footer {
