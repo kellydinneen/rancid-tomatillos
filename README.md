@@ -64,11 +64,22 @@ On a movie's details page, a user sees another poster for that movie, the movie 
 To return to the home dashboard, a user can click either the site title or the home button in the header.
 
 ### Logging In and Out
-To login to the site, a user can click the Login button in the header. This will take the user to a Login page with inputs for email and password. When the user types in correct inputs and clicks the Login button at the bottom of the form, the user will be redirected to the site home. If the user enters incorrect/incomplete inputs, an error message will display.
+To login to the site, a user can click the Login button in the header. This will take the user to a Login page with inputs for username and password. When the user types in correct inputs and clicks the Login button at the bottom of the form, the user will be redirected to the site home. If the user enters incorrect/incomplete inputs, an error message will display.
 
-Because our site does not currently support real user accounts, you can test this functionality by logging in as a fake user with 
+Because our site does not currently support real user accounts, you can test this functionality by logging in as one of three fake users: 
 
-email: `Thirdu`  
+(1)
+username: `Jessica`  
+
+password: `Candel`
+
+(2)
+username: `Marcus`  
+
+password: `Aurelius`
+
+(3)
+username: `Thirdu`  
 
 password: `Ser`
 
