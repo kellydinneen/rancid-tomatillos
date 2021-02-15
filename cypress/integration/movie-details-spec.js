@@ -1,6 +1,17 @@
 describe('Movie Details UI', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000');
+    cy.get('.login-button').click().wait(50)
+    cy.fixture('testUsers.json')
+      .then((testUsers) => {cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/users', {
+        statusCode: 200,
+        body: testUsers
+      })})
+    cy.get('input[type="email"]')
+      .type('Thirdu')
+      .get('input[type="password"]')
+      .type('Ser')
+      .get('.login-btn').click().wait(100)
     cy.get('.movies-container').children().first('link').click().wait(50)
   });
 
@@ -58,6 +69,34 @@ describe('Movie Details UI', () => {
     cy.get('.trailerContainer').children().first().should('have.class','trailer')
     cy.get('.viewTrailerBtn').click().wait(500)
     cy.get('.trailerContainer').children().first().should('have.class','movieBackdrop')
+  });
+
+  it('Should be able to add movie to favorites', () => {
+    cy.fixture('testMovies.json')
+      .then((testMovie) => {cy.intercept('PATCH', 'https://rancid-tomatillos.herokuapp.com/api/v2/users/u3', {
+        statusCode: 200,
+        body: testMovie
+      })})
+    cy.get('.favorite-btn').click()
+    cy.get('.profile-link').click().wait(50)
+    cy.get('.favorites').children().first().children().should('have.class','poster 726739')
+  });
+
+  it('Should be able to delete movie from favorites', () => {
+    cy.fixture('testMovies.json')
+      .then((testMovie) => {cy.intercept('PATCH', 'https://rancid-tomatillos.herokuapp.com/api/v2/users/u3', {
+        statusCode: 200,
+        body: testMovie
+      })})
+    cy.get('.favorite-btn').click()
+    cy.fixture('testMovies.json')
+      .then((testMovie) => {cy.intercept('PATCH', 'https://rancid-tomatillos.herokuapp.com/api/v2/users/u3', {
+        statusCode: 200,
+        body: testMovie
+      })})
+    cy.get('.favorite-btn').click()
+    cy.get('.profile-link').click().wait(50)
+    cy.get('.favorites').children().first().children().should('not.have.class','poster 726739')
   });
 
 
