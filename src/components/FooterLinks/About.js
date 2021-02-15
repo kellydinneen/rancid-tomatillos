@@ -14,6 +14,7 @@ const About = () => {
       <h3>Cypress.js</h3>
       <h3>Express.js</h3>
       <h3>React Youtube</h3>
+      <h3>Heroku</h3>
     </div>
   )
 }
