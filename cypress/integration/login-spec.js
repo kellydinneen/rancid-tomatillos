@@ -22,4 +22,28 @@ describe('Login UI', () => {
       .url().should('not.include','profile')
       cy.contains('Top Rated')
   });
+
+  it('Should have inputs for email and  password', () => {
+    cy.get('input[type="email"]')
+      .type('Thirdu')
+      .should('have.value', 'Thirdu')
+      .get('input[type="password"]')
+      .type('Ser')
+      .should('have.value', 'Ser')
+  });
+
+  it('Should have inputs for email and  password', () => {
+    cy.get('input[type="email"]')
+      .type('Thirdu')
+      .should('have.value', 'Thirdu')
+      .get('input[type="password"]')
+      .type('Ser')
+      .should('have.value', 'Ser')
+  });
+
+  it('should display an error message when a user clicks the login button without filling both inputs', () => {
+   cy.get(.login-btn).click()
+   cy.contains('Please fill out both inputs')
+ });
+
 });

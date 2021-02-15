@@ -6,8 +6,6 @@ describe('User Profile UI', () => {
       .type('Thirdu')
       .get('input[type="password"]')
       .type('Ser')
-      .should('have.value', 'Ser')
-      .get('input[type="email"]')
       .get(.login-btn).click().wait(100)
   });
 
