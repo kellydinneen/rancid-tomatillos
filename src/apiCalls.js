@@ -18,17 +18,30 @@ export const fetchUsers = () => {
         }})
 }
 
-export const postFavorite = (user, movie) => {
-  const post = {
-      method: 'POST',
+export const addFavorite = (user, movie) => {
+  const patch = {
+      method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(movie)
     }
-  return fetch(`https://rancid-tomatillos-api-kd-lm.herokuapp.com/api/v1/users/${user.id}`, post)
+  return fetch(`https://rancid-tomatillos-api-kd-lm.herokuapp.com/api/v1/users/${user.id}`, patch)
     .then(res => {if (!res.ok) {
         return `${res.status} error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!`;
       } else {
         return res.json();
       }})
+}
 
+export const deleteFavorite = (user, movie) => {
+  const deleteRequest = {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(movie)
+    }
+  return fetch(`https://rancid-tomatillos-api-kd-lm.herokuapp.com/api/v1/users/${user.id}`, deleteRequest)
+    .then(res => {if (!res.ok) {
+        return `${res.status} error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!`;
+      } else {
+        return res.json();
+      }})
 }
