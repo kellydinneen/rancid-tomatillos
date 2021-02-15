@@ -69,16 +69,19 @@ To login to the site, a user can click the Login button in the header. This will
 Because our site does not currently support real user accounts, you can test this functionality by logging in as one of three fake users: 
 
 (1)
+
 username: `Jessica`  
 
 password: `Candel`
 
 (2)
+
 username: `Marcus`  
 
 password: `Aurelius`
 
 (3)
+
 username: `Thirdu`  
 
 password: `Ser`
