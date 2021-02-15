@@ -57,7 +57,6 @@ class MovieDetails extends Component {
       await addFavorite(this.state.user, this.state.movie);
       this.setState({ isFavorite: true });
     } else if(method === 'remove') {
-      console.log('DELETE')
       await addFavorite(this.state.user, this.state.movie);
       this.setState({ isFavorite: false });
     }
