@@ -117,7 +117,7 @@ class App extends Component {
           <Route
             path='/movie-details/:title'
             render={(props) => (
-              <MovieDetails {...props} login={this.login} />
+              <MovieDetails {...props} logIn={this.logIn} />
             )}/>
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />
