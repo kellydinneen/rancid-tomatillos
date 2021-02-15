@@ -78,6 +78,7 @@ class MovieDetails extends Component {
       return <p className='loading-message'>Loading...</p>
     }
 
+
     return (
       <main>
         <div className='trailerContainer'>
