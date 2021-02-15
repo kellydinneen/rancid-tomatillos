@@ -7,12 +7,13 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props)
     const data = this.props.location.state;
-    console.log(this.props)
+    console.log('favorite?', data.user.favorites.some(favorite => favorite.id === data.movie.id));
+    console.log(this.props);
     this.state = {
       id: data.movie.id,
       user: data.user,
       movie: {},
-      isFavorite: data.user && data.user.favorites.includes(data.movie) ? true : false,
+      isFavorite: data.user.favorites.some(favorite => favorite.id === data.movie.id) ? true : false,
       isLoading: true,
       errorMsg: null,
       imageShowing: true,
