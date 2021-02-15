@@ -57,7 +57,7 @@ class App extends Component {
   leaveHome = () => {
     this.setState({ atHome: false })
   }
-  
+
   leaveProfile = () => {
     this.setState({ onProfile: false })
   }
@@ -67,7 +67,8 @@ class App extends Component {
     }
 
   logOut = () => {
-      this.setState({ user: null })
+      this.setState({ user: '' })
+
     }
 
   render() {
@@ -110,7 +111,7 @@ class App extends Component {
             />} />
           <Route path='/movie-details/:title' exact component={MovieDetails} />
           <Route path='/login' exact render={() => <Login logIn={this.logIn} goHome={() => this.go('atHome')}/>} />
-          <Route path='/profile' exact render={() => <Profile user={user}/>} />
+          <Route path='/profile' exact render={() => <Profile user={user} logOut={this.logOut} goHome={() => this.go('atHome')} />} />
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />
           <Route path='/contact-us' exact component={ContactUs} />

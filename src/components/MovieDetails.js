@@ -83,7 +83,7 @@ class MovieDetails extends Component {
           <h3 className='rating'>{movie.average_rating.toFixed(1)}★</h3>
         </div>
         {(this.state.user && !this.state.isFavorite) && <button className='favorite-btn' onClick={this.addFavorite}>Add to Favorites</button>}
-        {this.state.isFavorite && <button className='favorite-btn'>Remove from Favorites</button>}
+        {this.state.isFavorite && <button className='unfavorite-btn'>Remove from Favorites</button>}
         <div className='movieData'>
           <h4 className='releaseDate'>{movie.release_date} </h4>
           <h4 className='genre'>{movie.genres.join(', ')}</h4>
