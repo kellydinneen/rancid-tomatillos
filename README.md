@@ -96,7 +96,7 @@ In addition to all the functionality above, we made the application completely r
 - **Three:** Using React-Youtube to access a specific movie's trailer and displaying it on the Movie's Details page. With this, implementing conditional rendering to toggle between the trailer and that movie's backdrop image. 
 
 ### Appreciation
-
+Thank you to Leta Keana and Scott Ertmer for introducing us to the tools used in this project.
 
 
 [Back to Top of Page](#table-of-contents)
