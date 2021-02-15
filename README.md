@@ -19,7 +19,7 @@ The details of this project are outlined in [this project spec](https://frontend
 5. [Appreciation](#appreciation)
 
 ## Introduction
-  
+This project is the developers' first project in Module 3 of the Front-End Engineering program at Denver's Turing School of Software and Design. After several months of refining their javascript skills, the developers are finally dipping their toes into React and applying their experience with unit testing to implement end-to-end testing with Cypress.js. To implement the features of this project, the team used React Router, React Youtube, Express.js, and Heroku.
 
 ## Setup Instructions
 To run the project locally:
@@ -37,17 +37,7 @@ We have deployed the App and the api we created to Heroku. This way you don't ha
 - [Rancid Tomatillos API](https://rancid-tomatillos-api-lm-kd.herokuapp.com/)
 
 ### Testing
-We used Cypress.js to implement end-to-end-tests of the user flow. To run these tests, `cd` into the project repository and install Cypress by typing `npm i -D cypress` on the command line and adding 
-```
-"scripts": {
-    "cypress:open": "cypress open"
-  }
-  ```
- to your `package.json` file.
- 
- Then run `npm run cypress:open`
- 
- Cypress.js should open a window with a list of test files. Click on a file name to run the tests in that file.
+
 
 [Back to Top of Page](#table-of-contents)
 
