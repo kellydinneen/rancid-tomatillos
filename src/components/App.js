@@ -111,13 +111,14 @@ class App extends Component {
             movies={movies}
             user={user}
             leaveHome={this.leaveHome}
+            logIn={() => this.logIn()}
             />} />
           <Route path='/login' exact render={() => <Login logIn={this.logIn} goHome={() => this.go('atHome')}/>} />
           <Route path='/profile' exact render={() => <Profile user={user}/>} />
           <Route
             path='/movie-details/:title'
             render={(props) => (
-              <MovieDetails {...props} login={this.login} />
+              <MovieDetails {...props} login={this.logIn} />
             )}/>
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />
