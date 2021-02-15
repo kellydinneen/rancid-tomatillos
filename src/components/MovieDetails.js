@@ -7,6 +7,7 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props)
     const data = this.props.location.state;
+    console.log(this.props)
     this.state = {
       id: data.movie.id,
       user: data.user,
@@ -58,7 +59,7 @@ class MovieDetails extends Component {
     const currentUser = users.users.find(theUser => theUser.id === this.state.user.id);
     this.setState({ isFavorite: true, user: currentUser});
     console.log(this.state);
-    // this.props.login(this.state.user);
+    this.props.logIn(this.state.user);
   }
 
   render() {
