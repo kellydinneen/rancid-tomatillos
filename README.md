@@ -37,7 +37,17 @@ We have deployed the App and the api we created to Heroku. This way you don't ha
 - [Rancid Tomatillos API](https://rancid-tomatillos-api-lm-kd.herokuapp.com/)
 
 ### Testing
-
+We used Cypress.js to implement end-to-end-tests of the user flow. To run these tests, `cd` into the project repository and install Cypress by typing `npm i -D cypress` on the command line and adding 
+```
+"scripts": {
+    "cypress:open": "cypress open"
+  }
+  ```
+ to your `package.json` file.
+ 
+ Then run `npm run cypress:open`
+ 
+ Cypress.js should open a window with a list of test files. Click on a file name to run the tests in that file.
 
 [Back to Top of Page](#table-of-contents)
 
