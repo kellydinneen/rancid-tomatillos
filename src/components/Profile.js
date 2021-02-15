@@ -1,33 +1,43 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import Poster from './Poster';
 import './Profile.css';
 
 class Profile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: this.props.user ? this.props.user.name : '',
-      favorites: this.props.user ? this.props.user.favorites : []
+      name: props.user.name,
+      favorites: props.user.favorites,
+      isLogginOut: false
     }
   }
 
-  render() {
-    const {name, favorites} = this.state;
+  logOutUser = () => {
+    this.setState({ isLoggingOut: true})
+    this.props.goHome()
+    this.props.logOut()
+  }
 
-    const favoriteDisplay = favorites.map(movie => {
-      return <Link className='link-to-favorite' to={{
-          pathname: `/movie-details/${movie.title.replace(/\s+/g, '')}`,
-          state: {movie: movie, user: this.props.user}
-        }}><h3 key={movie.id}>{movie.title}</h3></Link>
+  render() {
+    const {name, favorites, isLoggingOut} = this.state;
+
+    let favs = favorites.map(fav => {
+      return (<Poster
+        movie={fav}
+        key={fav.id}
+        leaveHome={this.props.leaveHome}
+        user={this.props.user}
+      />)
     })
 
     return (
       <main>
         <h1 className='userName'>{name}</h1>
         <h2 className='favorites-label'>Favorites</h2>
-        <div className='favorites'>{favoriteDisplay}</div>
-        <button className='logout-button'>Logout</button>
-
+        <section className='favorites'>{favs}</section>
+        <button className='logout-button' onClick={this.logOutUser}>Logout</button>
+        {isLoggingOut && <Redirect to='/'/>}
       </main>
     )
   }

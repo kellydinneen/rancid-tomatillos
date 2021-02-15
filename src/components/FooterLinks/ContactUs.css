@@ -1,5 +1,5 @@
 .contact-us {
-  height: 75vh;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -37,9 +37,13 @@
 }
 
 @media screen and (max-width: 450px) {
+  .contact-us {
+    height: auto;
+  }
   .gh-profiles {
     flex-direction: column;
   }
+
   .lucas-profile,
   .kelly-profile {
     margin: 0;
