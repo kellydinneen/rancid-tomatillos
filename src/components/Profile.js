@@ -4,11 +4,11 @@ import './Profile.css';
 class Profile extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      // name: props.location.state.user.name,
-      // favorites: props.location.state.user.favorites
-    }
     console.log(this.props)
+    this.state = {
+      name: this.props.user ? this.props.user.name : '',
+      favorites: this.props.user ? this.props.user.favorites.map(favorite => favorite.title) : []
+    }
   }
 
   render() {
@@ -18,7 +18,7 @@ class Profile extends Component {
       <main>
         <h1 className='userName'>{name}</h1>
         <h2 className='favorites-label'>Favorites</h2>
-        <p className='favorites'>{favorites}</p>
+        <p className='favorites'>{favorites.join(', ')}</p>
         <button className='logout-button'>Logout</button>
 
       </main>
