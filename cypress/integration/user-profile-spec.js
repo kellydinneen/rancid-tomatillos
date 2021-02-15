@@ -29,7 +29,7 @@ describe('User Profile UI', () => {
   });
 
   it('Should return to home after clicking home button', () => {
-      cy.get('header').get('img').click()
+      cy.get('header').get('.home-button').click()
       .url().should('not.include','profile')
       cy.contains('Top Rated')
   });
