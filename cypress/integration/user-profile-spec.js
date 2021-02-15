@@ -2,11 +2,16 @@ describe('User Profile UI', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000');
     cy.get('.login-button').click().wait(50)
+    cy.fixture('testUsers.json')
+      .then((testUsers) => {cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/users', {
+        statusCode: 200,
+        body: testUsers
+      })})
     cy.get('input[type="email"]')
       .type('Thirdu')
       .get('input[type="password"]')
       .type('Ser')
-      .get(.login-btn).click().wait(100)
+      .get('.login-btn').click().wait(100)
   });
 
   it('Should have header and footer', () => {

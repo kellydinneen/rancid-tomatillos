@@ -58,7 +58,7 @@ describe('Login UI', () => {
      .get('input[type="password"]')
      .type('Ser')
      .should('have.value', 'Ser')
-     .get(.login-btn).click().wait(100)
+     .get('.login-btn').click().wait(100)
    cy.contains('Thirdu Ser')
  });
 

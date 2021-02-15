@@ -11,7 +11,7 @@ describe('Movie Details UI', () => {
       .type('Thirdu')
       .get('input[type="password"]')
       .type('Ser')
-      .get(.login-btn).click().wait(100)
+      .get('.login-btn').click().wait(100)
     cy.get('.movies-container').children().first('link').click().wait(50)
   });
 
