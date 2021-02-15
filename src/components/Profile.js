@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import Poster from './Poster';
+import Movies from './Movies';
 import './Profile.css';
 
 class Profile extends Component {
@@ -20,22 +21,15 @@ class Profile extends Component {
   }
 
   render() {
-    const {name, favorites, isLoggingOut} = this.state;
-
-    let favs = favorites.map(fav => {
-      return (<Poster
-        movie={fav}
-        key={fav.id}
-        leaveHome={this.props.leaveHome}
-        user={this.props.user}
-      />)
-    })
+    const {name, favorites, isLoggingOut, leaveHome, user} = this.state;
 
     return (
       <main>
         <h1 className='userName'>{name}</h1>
         <h2 className='favorites-label'>Favorites</h2>
-        <section className='favorites'>{favs}</section>
+        <section className='favorites'>
+          <Movies movies={favorites} leaveHome={leaveHome} user={user}/>
+        </section>
         <button className='logout-button' onClick={this.logOutUser}>Logout</button>
         {isLoggingOut && <Redirect to='/'/>}
       </main>
