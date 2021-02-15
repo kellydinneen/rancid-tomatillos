@@ -7,7 +7,7 @@ describe('Movie Details UI', () => {
         statusCode: 200,
         body: testUsers
       })})
-    cy.get('input[type="email"]')
+    cy.get('input[type="text"]')
       .type('Thirdu')
       .get('input[type="password"]')
       .type('Ser')

@@ -56,7 +56,7 @@ class Login extends Component {
       <form>
         {!user && <div className='login-form'><h2 className="form-title">Please Login</h2>
         <label>
-          Email:
+          Name:
           <input
             type='text'
             placeholder='Email'
