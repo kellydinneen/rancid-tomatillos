@@ -8,3 +8,12 @@
   display: flex;
   justify-content: space-between;
 }
+
+
+@media screen and (max-width: 450px) {
+    .top-three-section {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+}
