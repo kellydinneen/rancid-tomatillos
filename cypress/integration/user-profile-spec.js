@@ -34,6 +34,6 @@ describe('User Profile UI', () => {
 
   it('Should show user favorites', () => {
       cy.get('.favorites-label').contains('Favorites')
-      cy.get('favorites')
+      cy.get('.favorites')
   });
 });
