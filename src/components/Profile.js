@@ -5,7 +5,6 @@ import './Profile.css';
 class Profile extends Component {
   constructor(props) {
     super(props)
-    console.log(this.props)
     this.state = {
       name: this.props.user ? this.props.user.name : '',
       favorites: this.props.user ? this.props.user.favorites : []
@@ -16,15 +15,11 @@ class Profile extends Component {
     const {name, favorites} = this.state;
 
     const favoriteDisplay = favorites.map(movie => {
-      console.log(movie);
-      const path = `/movie-details/${movie.title.replace(/\s+/g, '')}`;
       return <Link className='link-to-favorite' to={{
-          pathname: path,
+          pathname: `/movie-details/${movie.title.replace(/\s+/g, '')}`,
           state: {movie: movie, user: this.props.user}
         }}><h3 key={movie.id}>{movie.title}</h3></Link>
     })
-
-    console.log(favoriteDisplay);
 
     return (
       <main>

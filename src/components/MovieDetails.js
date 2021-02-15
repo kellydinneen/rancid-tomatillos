@@ -7,8 +7,6 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props)
     const data = this.props.location.state;
-    console.log('favorite?', data.user.favorites.some(favorite => favorite.id === data.movie.id));
-    console.log(this.props);
     this.state = {
       id: data.movie.id,
       user: data.user,
@@ -59,7 +57,6 @@ class MovieDetails extends Component {
     const users = await fetchUsers();
     const currentUser = users.users.find(theUser => theUser.id === this.state.user.id);
     this.setState({ isFavorite: true, user: currentUser});
-    console.log(this.state);
     this.props.logIn(this.state.user);
   }
 
