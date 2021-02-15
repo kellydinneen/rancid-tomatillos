@@ -12,6 +12,11 @@ describe('Movie Details UI', () => {
       .get('input[type="password"]')
       .type('Ser')
       .get('.login-btn').click().wait(100)
+    cy.fixture('testMovies.json')
+      .then((testMovie) => {cy.intercept('PATCH', 'https://rancid-tomatillos.herokuapp.com/api/v2/users/u3', {
+        statusCode: 200,
+        body: testMovie
+      })})
     cy.get('.movies-container').children().first('link').click().wait(50)
   });
 
@@ -19,7 +24,6 @@ describe('Movie Details UI', () => {
       cy.get('footer').contains('About')
       cy.get('footer').contains('FAQ')
       cy.get('header').contains('Rancid Tomatillos')
-      cy.get('header').find('img').should('have.class','home-button')
   });
 
   it('Should return to home after clicking site title', () => {
@@ -72,31 +76,16 @@ describe('Movie Details UI', () => {
   });
 
   it('Should be able to add movie to favorites', () => {
-    cy.fixture('testMovies.json')
-      .then((testMovie) => {cy.intercept('PATCH', 'https://rancid-tomatillos.herokuapp.com/api/v2/users/u3', {
-        statusCode: 200,
-        body: testMovie
-      })})
     cy.get('.favorite-btn').click()
     cy.get('.profile-link').click().wait(50)
-    cy.get('.favorites').children().first().children().should('have.class','poster 726739')
+    cy.get('.favorites').children().last().children().should('have.class','694919')
   });
 
   it('Should be able to delete movie from favorites', () => {
-    cy.fixture('testMovies.json')
-      .then((testMovie) => {cy.intercept('PATCH', 'https://rancid-tomatillos.herokuapp.com/api/v2/users/u3', {
-        statusCode: 200,
-        body: testMovie
-      })})
     cy.get('.favorite-btn').click()
-    cy.fixture('testMovies.json')
-      .then((testMovie) => {cy.intercept('PATCH', 'https://rancid-tomatillos.herokuapp.com/api/v2/users/u3', {
-        statusCode: 200,
-        body: testMovie
-      })})
     cy.get('.favorite-btn').click()
     cy.get('.profile-link').click().wait(50)
-    cy.get('.favorites').children().first().children().should('not.have.class','poster 726739')
+    cy.get('.favorites').children().last().children().should('not.have.class','694919')
   });
 
 
