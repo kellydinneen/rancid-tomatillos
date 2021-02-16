@@ -40,6 +40,8 @@
   margin-bottom: 3vh;
   text-align: center;
 }
+
+.favorite-btn,
 .viewTrailerBtn {
   background-color: #E74300;
   border-radius: 5px;

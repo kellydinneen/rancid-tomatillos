@@ -56,10 +56,10 @@ class Login extends Component {
       <form>
         {!user && <div className='login-form'><h2 className="form-title">Please Login</h2>
         <label>
-          Name:
+          Username:
           <input
             type='text'
-            placeholder='Email'
+            placeholder='Username'
             name='email'
             value={email}
             onChange={this.updateForm}
