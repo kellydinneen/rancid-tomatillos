@@ -115,3 +115,20 @@ describe('Dashboard UI Errors', () => {
     cy.get('main').contains("500 error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!")
   })
 });
+
+describe('Dashboard UI', () => {
+  beforeEach(() => {
+    cy.fixture('testMovies.json')
+      .then((testMovies) => {cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+        statusCode: 200,
+        delay: 100,
+        body: testMovies
+      })})
+
+      cy.visit('http://localhost:3000');
+    });
+
+    it('Should have a loading message while retrieving the movies', () => {
+      cy.get('.loading-message').contains('Loading...')
+    });
+});
