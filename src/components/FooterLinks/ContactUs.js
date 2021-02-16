@@ -1,7 +1,7 @@
 import React from 'react';
 import './ContactUs.css';
-import lucasProfile from './lucasGitHubPic.jpg';
-import kellyProfile from './kellyGitHubPic.jpg';
+import lucasProfile from '../../Images/lucasGitHubPic.jpg';
+import kellyProfile from '../../Images/kellyGitHubPic.jpg';
 
 const ContactUs = () => {
   return (
