@@ -21,14 +21,14 @@ class Profile extends Component {
   }
 
   render() {
-    const {name, favorites, isLoggingOut, leaveHome, user} = this.state;
+    const {name, favorites, isLoggingOut } = this.state;
 
     return (
       <main>
         <h1 className='userName'>{name}</h1>
         <h2 className='favorites-label'>Favorites</h2>
         <section className='favorites'>
-          <Movies movies={favorites} leaveHome={leaveHome} user={user}/>
+          <Movies movies={favorites} leaveHome={this.props.leaveHome} user={this.props.user}/>
         </section>
         <button className='logout-button' onClick={this.logOutUser}>Logout</button>
         {isLoggingOut && <Redirect to='/'/>}
