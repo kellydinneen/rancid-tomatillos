@@ -24,16 +24,7 @@ describe('Login UI', () => {
   });
 
   it('Should have inputs for email and  password', () => {
-    cy.get('input[type="email"]')
-      .type('Thirdu')
-      .should('have.value', 'Thirdu')
-      .get('input[type="password"]')
-      .type('Ser')
-      .should('have.value', 'Ser')
-  });
-
-  it('Should have inputs for email and  password', () => {
-    cy.get('input[type="email"]')
+    cy.get('input[type="text"]')
       .type('Thirdu')
       .should('have.value', 'Thirdu')
       .get('input[type="password"]')
@@ -42,23 +33,24 @@ describe('Login UI', () => {
   });
 
   it('should display an error message when a user clicks the login button without filling both inputs', () => {
-   cy.get(.login-btn).click()
+   cy.get('.login-btn').click()
    cy.contains('Please enter vaild email and password!')
  });
 
- it('Should have inputs for email and  password', () => {
+ it('Should login with correct inputs', () => {
    cy.fixture('testUsers.json')
      .then((testUsers) => {cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/users', {
        statusCode: 200,
        body: testUsers
      })})
-   cy.get('input[type="email"]')
+   cy.get('input[type="text"]')
      .type('Thirdu')
      .should('have.value', 'Thirdu')
      .get('input[type="password"]')
      .type('Ser')
      .should('have.value', 'Ser')
-     .get('.login-btn').click().wait(100)
+     .get('.login-btn').click().wait(1000)
+     .get('.profile-link').click().wait(1000)
    cy.contains('Thirdu Ser')
  });
 

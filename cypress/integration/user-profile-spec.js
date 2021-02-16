@@ -7,11 +7,12 @@ describe('User Profile UI', () => {
         statusCode: 200,
         body: testUsers
       })})
-    cy.get('input[type="email"]')
+    cy.get('input[type="text"]')
       .type('Thirdu')
       .get('input[type="password"]')
       .type('Ser')
-      .get('.login-btn').click().wait(100)
+      .get('.login-btn').click().wait(1000)
+      .get('.profile-link').click().wait(1000)
   });
 
   it('Should have header and footer', () => {
@@ -28,7 +29,7 @@ describe('User Profile UI', () => {
   });
 
   it('Should return to home after clicking home button', () => {
-      cy.get('header').get('img').click()
+      cy.get('header').get('.home-button').click()
       .url().should('not.include','profile')
       cy.contains('Top Rated')
   });
