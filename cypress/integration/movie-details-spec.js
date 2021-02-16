@@ -12,6 +12,11 @@ describe('Movie Details UI', () => {
         statusCode: 200,
         body: testUsers
       })})
+    cy.fixture('testMovies.json')
+      .then((testMovies) => {cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/726739/videos', {
+        statusCode: 200,
+        body: testMovies.videos
+      })})
     cy.get('input[type="text"]')
       .type('Thirdu')
       .get('input[type="password"]')
@@ -62,7 +67,7 @@ describe('Movie Details UI', () => {
       cy.get('.overview').contains('It\'s been ten years since the creation of the Great Truce, an elaborate joint-species surveillance system designed and monitored by cats and dogs to keep the peace when conflicts arise. But when a tech-savvy villain hacks into wireless networks to use frequencies only heard by cats and dogs, he manipulates them into conflict and the worldwide battle between cats and dogs is BACK ON. Now, a team of inexperienced and untested agents will have to use their old-school animal instincts to restore order and peace between cats and dogs everywhere.')
   });
 
-  it.only('Should reveal trailer', () => {
+  it('Should reveal trailer', () => {
     cy.get('.viewTrailerBtn').click().wait(500)
     cy.get('.trailerContainer').children().first().should('have.class','trailer')
       .get('.trailer').click()
@@ -84,14 +89,13 @@ describe('Movie Details UI', () => {
     cy.get('.favorite-btn').click()
     cy.get('.profile-link').click().wait(50)
     cy.get('.movies-container').children().children()
-    .should('have.class','poster 694919')
+    .should('have.class','poster 726739')
   });
 
   it('Should be able to delete movie from favorites', () => {
     cy.get('.favorite-btn').click()
-    cy.get('.favorite-btn').click()
     cy.get('.profile-link').click().wait(50)
-    cy.get('.favorites').children().last().children().should('not.have.class','poster 694919')
+    cy.get('.favorites').children().last().children().should('not.have.class','poster 726739')
   });
 
 
