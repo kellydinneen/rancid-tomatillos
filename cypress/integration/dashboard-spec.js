@@ -25,21 +25,16 @@ describe('Dashboard UI', () => {
 
   it('Should render a section for the Top Rated movies that has the top three movies\'s titles and ratings', () => {
     cy.contains('Top Rated')
-    cy.get('.top-three-section > #1').contains('7')
-    cy.get('.top-three-section > #2').contains('7')
-    cy.get('.top-three-section > #3').contains('6.8')
-    cy.get('.top-movie-title1').contains('Cats & Dogs 3: Paws Unite')
-    cy.get('.top-movie-title2').contains('Peninsula')
-    cy.get('.top-movie-title3').contains('The King of Staten Island')
+    cy.get('.top-movie-rating1').contains('7')
+    cy.get('.top-movie-rating2').contains('7')
+    cy.get('.top-movie-rating3').contains('6.8')
+    cy.get('#1').contains('Cats & Dogs 3: Paws Unite')
+    cy.get('#2').contains('Peninsula')
+    cy.get('#3').contains('The King of Staten Island')
   });
 
   it('Should be able to click the rating or title for the top rated movie and visit the correct Movie Details page', () => {
     cy.get('.top-movie-rating1').click()
-    cy.url().should('include', 'movie-details/Cats&Dogs3:PawsUnite')
-  });
-
-  it('Should be able to click the title of the top rated movie and visit the correct Movie Details page', () => {
-    cy.get('.top-movie-title1').click()
     cy.url().should('include', 'movie-details/Cats&Dogs3:PawsUnite')
   });
 

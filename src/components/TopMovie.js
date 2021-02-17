@@ -18,7 +18,6 @@ const TopMovie = (props) => {
       </article>
       </Link>
     </>
-
   )
 }
 
