@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link, NavLink } from "react-router-dom";
+import { Route, Switch, NavLink } from "react-router-dom";
 import MovieDetails from './MovieDetails';
 import Home from './Home';
 import Login from './Login';
@@ -44,7 +44,7 @@ class App extends Component {
   go = (place) => {
     if(place === 'atHome') {
       this.setState({ atHome: true, notOnLoginPage: true })
-      this.leaveProfile()
+      this.leave('profile')
     } else if(place === 'profile'){
       this.setState({ onProfile: true })
       this.leave('atHome')
@@ -60,10 +60,6 @@ class App extends Component {
     } else {
       this.setState({ onProfile: false })
     }
-  }
-
-  leaveProfile = () => {
-    this.setState({ onProfile: false })
   }
 
   logIn = (user) => {

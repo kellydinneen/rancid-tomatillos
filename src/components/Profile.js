@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
-import Poster from './Poster';
 import Movies from './Movies';
 import './Profile.css';
 

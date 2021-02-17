@@ -44,7 +44,7 @@ describe('Movie Details UI', () => {
 
   it('Should return to home after clicking home button', () => {
       cy.get('header').find('img').click()
-      .url().should('not.include','MoneyPlane')
+      .url().should('not.include','Cats&Dogs3:PawsUnite')
       cy.contains('Top Rated')
   });
 
