@@ -5,23 +5,18 @@
 - Kelly Dinneen : [github profile](https://github.com/kellydinneen)
 - Lucas Merchant : [github profile](https://github.com/lbmerchant93)
 
-### Instructors: 
+#### Instructors: 
 - Leta Keana : [github profile](https://github.com/letakeane)
 - Scott Ertmer : [github profile](https://github.com/sertmer)
 
-### Technologies
-
-**Build**: React Router, React Youtube, Express.js, CSS
-
-**Testing**: Cypress.js
-
-**Deployment**: Heroku
+The details of this project are outlined in [this project spec](https://frontend.turing.io/projects/module-3/rancid-tomatillos-v3.html)
 
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Instructions](#setup-instructions)
 3. [How-To](#using-rancid-tomatillos)
 4. [Challenges & Wins](#challenges-&-wins)
+5. [Appreciation](#appreciation)
 
 ## Introduction
 This project is the developers' first project in Module 3 of the Front-End Engineering program at Denver's Turing School of Software and Design. After several months of refining their javascript skills, the developers are finally dipping their toes into React and applying their experience with unit testing to implement end-to-end testing with Cypress.js. To implement the features of this project, the team used React Router, React Youtube, Express.js, and Heroku.
@@ -38,11 +33,22 @@ To run the project locally:
 OR
 
 We have deployed the App and the api we created to Heroku. This way you don't have to clone them locally in order to use them! To visit either click the links below!
-- [Rancid Tomatillos App]()
+- [Rancid Tomatillos App](https://rancid-tomatillos-lm-kd.herokuapp.com/)
 - [Rancid Tomatillos API](https://rancid-tomatillos-api-lm-kd.herokuapp.com/)
 
 ### Testing
 
+We used Cypress.js to implement end-to-end-tests of the user flow. To run these tests, `cd` into the project repository and install Cypress by typing `npm i -D cypress` on the command line and adding 
+```
+"scripts": {
+    "cypress:open": "cypress open"
+  }
+  ```
+ to your `package.json` file.
+
+ Then run `npm run cypress:open`
+
+ Cypress.js should open a window with a list of test files. Click on a file name to run the tests in that file.
 
 [Back to Top of Page](#table-of-contents)
 
@@ -55,6 +61,8 @@ We have deployed the App and the api we created to Heroku. This way you don't ha
 The site loads to the homepage, a dashboard displaying a scrollable list of movie posters and a section of Top Rated movies. A user can scroll through the movie posters display clicking on the arrows to the left and right of the display. A user can click on any movie poster or any top rated movie to navigate to that movie's details page. 
 On a movie's details page, a user sees another poster for that movie, the movie title and rating, and other key information like the movie release date, genre, runtime, and plot overview. At the bottom of the page, there is a "View Trailer" button. When clicked, this button will reveal an embedded video in the place of the movie poster. The user can click the play/pause button on this video to play/pause the trailer, and can hide the trailer again by clicking the "Hide Trailer" button at the bottom of the page.
 To return to the home dashboard, a user can click either the site title or the home button in the header.
+
+![Show/Play Trailer](https://media.giphy.com/media/6HmF6lIEydVUbEYmV6/giphy.gif)
 
 ### Logging In and Out
 To login to the site, a user can click the Login button in the header. This will take the user to a Login page with inputs for username and password. When the user types in correct inputs and clicks the Login button at the bottom of the form, the user will be redirected to the site home. If the user enters incorrect/incomplete inputs, an error message will display.
@@ -80,12 +88,15 @@ password: `Ser`
 
 Once logged in, a user can visit the user profile page by clicking the Profile button in the header. The Profile page displays the user's name and favorited movies. The user can logout by clicking the Logout button at the bottom of this page.
 
-
 ### Adding and Removing Movies from Favorites
 Once a user is logged in, see section above, a button to add to favorites will appear on the Movie Details page under the movie image/trailer. If the user already has that movie in their favorites, then a button to remove from favorite will be displayed. By clicking the 'Add to Favorites' button the app will update the server by calling a PATCH request to the api. This request will push that movie object into the favorites array for the logged in user. To see a user's favorites, navigate to the Profile page. If the user clicks the 'Remove from Favorites' button, the app calls another PATCH request to update the user in the server removing that movie. Changes can bee seen on the user's Profile page. 
 
+![Log in, Fav/Unfav a Movie](https://media.giphy.com/media/uotL74SQYuyFRx7q0S/giphy.gif)
+
 ### Footer Content
 Included in the footer are links to an About page, FAQ page, and Contact Us page. These links provide some information on the creation of the app and the developers that made it.
+
+![Move Through Footer Links](https://media.giphy.com/media/DvAoLqHLdc4pNSOR7r/giphy.gif)
 
 ### Mobile Friendly Responsive Design
 
@@ -104,6 +115,8 @@ In addition to all the functionality above, we made the application completely r
 - **One:** Implementing React Router throughout the whole App.
 - **Two:** Creating a backend server using Express and deploying that repository to Heroku. This made it possible to access the server without having to run the server locally. 
 - **Three:** Using React-Youtube to access a specific movie's trailer and displaying it on the Movie's Details page. With this, implementing conditional rendering to toggle between the trailer and that movie's backdrop image. 
+
+### Appreciation
 
 
 
