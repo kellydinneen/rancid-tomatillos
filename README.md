@@ -22,7 +22,6 @@
 2. [Instructions](#setup-instructions)
 3. [How-To](#using-rancid-tomatillos)
 4. [Challenges & Wins](#challenges-&-wins)
-5. [Appreciation](#appreciation)
 
 ## Introduction
 This project is the developers' first project in Module 3 of the Front-End Engineering program at Denver's Turing School of Software and Design. After several months of refining their javascript skills, the developers are finally dipping their toes into React and applying their experience with unit testing to implement end-to-end testing with Cypress.js. To implement the features of this project, the team used React Router, React Youtube, Express.js, and Heroku.
