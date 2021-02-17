@@ -69,16 +69,10 @@ class MovieDetails extends Component {
   render() {
     const {movie, isLoading, errorMsg, imageShowing, trailerIsPlaying} = this.state;
 
-    if(errorMsg) {
-      return <p className='error-message'>{errorMsg}</p>
-    }
-
-    if(isLoading) {
-      return <p className='loading-message'>Loading...</p>
-    }
-
-
     return (
+      {errorMsg && <p className='error-message'>{errorMsg}</p>}
+      {isLoading && <p className='loading-message'>Loading...</p>}
+      {!isLoading && !errorMsg &&
       <main>
         <div className='trailerContainer'>
           {imageShowing && <img src={movie.backdrop_path} alt={movie.title} className='movieBackdrop'/>}
@@ -98,7 +92,7 @@ class MovieDetails extends Component {
         <p className='overview'>{movie.overview}</p>
         {!trailerIsPlaying && imageShowing && <button className='viewTrailerBtn' onClick={this.toggleTrailer}>Show Trailer</button>}
         {!trailerIsPlaying && !imageShowing && <button className='viewTrailerBtn' onClick={this.toggleTrailer}>Show Image</button>}
-      </main>
+      </main>}
     )
   }
 }
