@@ -9,7 +9,11 @@
 - Leta Keana : [github profile](https://github.com/letakeane)
 - Scott Ertmer : [github profile](https://github.com/sertmer)
 
-The details of this project are outlined in [this project spec](https://frontend.turing.io/projects/module-3/rancid-tomatillos-v3.html)
+#### Technologies
+
+Build: React Router, React Youtube, Express.js, CSS
+Testing: Cypress.js
+Deployment: Heroku
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -99,8 +103,6 @@ In addition to all the functionality above, we made the application completely r
 - **One:** Implementing React Router throughout the whole App.
 - **Two:** Creating a backend server using Express and deploying that repository to Heroku. This made it possible to access the server without having to run the server locally. 
 - **Three:** Using React-Youtube to access a specific movie's trailer and displaying it on the Movie's Details page. With this, implementing conditional rendering to toggle between the trailer and that movie's backdrop image. 
-
-### Appreciation
 
 
 
