@@ -5,15 +5,17 @@
 - Kelly Dinneen : [github profile](https://github.com/kellydinneen)
 - Lucas Merchant : [github profile](https://github.com/lbmerchant93)
 
-#### Instructors: 
+### Instructors: 
 - Leta Keana : [github profile](https://github.com/letakeane)
 - Scott Ertmer : [github profile](https://github.com/sertmer)
 
-#### Technologies
+### Technologies
 
-Build: React Router, React Youtube, Express.js, CSS
-Testing: Cypress.js
-Deployment: Heroku
+**Build**: React Router, React Youtube, Express.js, CSS
+
+**Testing**: Cypress.js
+
+**Deployment**: Heroku
 
 ## Table of Contents
 1. [Introduction](#introduction)
