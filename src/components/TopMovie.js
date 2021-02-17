@@ -8,20 +8,16 @@ const TopMovie = (props) => {
 
   return (
     <>
-    <article className="top-movie" id={id}>
       <Link to={{
         pathname:`/movie-details/${movie.title.replace(/\s+/g, '')}`,
         state: {movie, user}
-      }}  className={`top-movie-rating${id}`} onClick={() => props.leaveHome()}><h3>{movie.average_rating.toFixed(1)}★</h3></Link>
-      <Link
-      to={{
-        pathname:`/movie-details/${movie.title.replace(/\s+/g, '')}`,
-        state: {movie, user}
-      }}
-      className={`top-movie-title${id}`} onClick={() => props.leaveHome()}><h4>{movie.title}</h4></Link>
-    </article>
+      }}  className={`top-movie-rating${id}`} onClick={() => props.leaveHome()}>
+      <article className="top-movie" id={id}>
+      <h3>{movie.average_rating.toFixed(1)}★</h3>
+      <h4>{movie.title}</h4>
+      </article>
+      </Link>
     </>
-
   )
 }
 

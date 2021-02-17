@@ -1,5 +1,10 @@
 describe('User Profile UI', () => {
   beforeEach(() => {
+    cy.fixture('testMovies.json')
+      .then((testMovies) => {cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+        statusCode: 200,
+        body: testMovies
+      })})
     cy.visit('http://localhost:3000');
     cy.get('.login-button').click().wait(50)
     cy.fixture('testUsers.json')

@@ -38,7 +38,7 @@
 
 @media screen and (max-width: 450px) {
   .contact-us {
-    height: auto;
+    min-height: 80vh;
   }
   .gh-profiles {
     flex-direction: column;
