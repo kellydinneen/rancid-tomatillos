@@ -68,7 +68,6 @@ class MovieDetails extends Component {
 
   render() {
     const {movie, isLoading, errorMsg, imageShowing, trailerIsPlaying} = this.state;
-    console.log('OVERVIEW', movie.overview)
 
     return (
       <main>
