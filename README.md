@@ -5,9 +5,17 @@
 - Kelly Dinneen : [github profile](https://github.com/kellydinneen)
 - Lucas Merchant : [github profile](https://github.com/lbmerchant93)
 
-#### Instructors: 
+### Instructors: 
 - Leta Keana : [github profile](https://github.com/letakeane)
 - Scott Ertmer : [github profile](https://github.com/sertmer)
+
+### Technologies
+
+**Build**: React Router, React Youtube, Express.js, CSS
+
+**Testing**: Cypress.js
+
+**Deployment**: Heroku
 
 The details of this project are outlined in [this project spec](https://frontend.turing.io/projects/module-3/rancid-tomatillos-v3.html)
 
