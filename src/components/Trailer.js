@@ -51,6 +51,7 @@ class Trailer extends React.Component {
     const { errorMsg, isLoading } = this.state;
 
     return (
+      <>
       {errorMsg && <p className='error-message'>{errorMsg}</p>}
       {isLoading && <p className='loading-message'>Loading...</p>}
       {!isLoading && !errorMsg &&
@@ -63,6 +64,7 @@ class Trailer extends React.Component {
         onPause={this.toggleTrailerBtn}
         />
       </div>}
+      </>
     )
   }
 }

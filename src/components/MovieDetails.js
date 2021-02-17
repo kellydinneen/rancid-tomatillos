@@ -68,31 +68,43 @@ class MovieDetails extends Component {
 
   render() {
     const {movie, isLoading, errorMsg, imageShowing, trailerIsPlaying} = this.state;
+    console.log('OVERVIEW', movie.overview)
 
     return (
+      <main>
       {errorMsg && <p className='error-message'>{errorMsg}</p>}
       {isLoading && <p className='loading-message'>Loading...</p>}
       {!isLoading && !errorMsg &&
-      <main>
-        <div className='trailerContainer'>
-          {imageShowing && <img src={movie.backdrop_path} alt={movie.title} className='movieBackdrop'/>}
-          {!imageShowing && <Trailer movieInfo={this.state} toggleTrailerButton={this.toggleTrailerButton}/>}
-        </div>
-        <div className='featuredMovieData'>
-          <h3 className='movieTitle'>{movie.title}</h3>
-          <h3 className='rating'>{movie.average_rating.toFixed(1)}★</h3>
-        </div>
-        {(this.state.user && !this.state.isFavorite) && <button className='favorite-btn' onClick={() => this.alterFavorites('add')}>Add to Favorites</button>}
-        {this.state.isFavorite && <button className='favorite-btn' onClick={() => this.alterFavorites('remove')}>Remove from Favorites</button>}
-        <div className='movieData'>
-          <h4 className='releaseDate'>{movie.release_date} </h4>
-          <h4 className='genre'>{movie.genres.join(', ')}</h4>
-          <h4 className='runtime'>{movie.runtime} minutes</h4>
-        </div>
-        <p className='overview'>{movie.overview}</p>
-        {!trailerIsPlaying && imageShowing && <button className='viewTrailerBtn' onClick={this.toggleTrailer}>Show Trailer</button>}
-        {!trailerIsPlaying && !imageShowing && <button className='viewTrailerBtn' onClick={this.toggleTrailer}>Show Image</button>}
-      </main>}
+        <>
+          {movie.backdrop_path !== "" && <div className='trailerContainer'>
+            {imageShowing && <img src={movie.backdrop_path} alt={movie.title} className='movieBackdrop'/>}
+            {!imageShowing && <Trailer movieInfo={this.state} toggleTrailerButton={this.toggleTrailerButton}/>}
+          </div>}
+          {movie.backdrop_path === "" && <div className='trailerContainer'>
+            {imageShowing && <h3 className='movieBackdrop'>Sorry, there is no image for this movie</h3>}
+            {!imageShowing && <Trailer movieInfo={this.state} toggleTrailerButton={this.toggleTrailerButton}/>}
+          </div>}
+          <div className='featuredMovieData'>
+            <h3 className='movieTitle'>{movie.title}</h3>
+            <h3 className='rating'>{movie.average_rating.toFixed(1)}★</h3>
+          </div>
+          {(this.state.user && !this.state.isFavorite) && <button className='favorite-btn' onClick={() => this.alterFavorites('add')}>Add to Favorites</button>}
+          {this.state.isFavorite && <button className='favorite-btn' onClick={() => this.alterFavorites('remove')}>Remove from Favorites</button>}
+          <div className='movieData'>
+            {movie.release_date !== "" && <h4 className='releaseDate'>{movie.release_date} </h4>}
+            {movie.release_date === "" && <h4 className='releaseDate'>release date unknown</h4>}
+            {movie.genres !== [] &&<h4 className='genre'>{movie.genres.join(', ')}</h4>}
+            {movie.genres === [] &&<h4 className='genre'>genre unknown</h4>}
+            {movie.runtime !== 0 && <h4 className='runtime'>{movie.runtime} minutes</h4>}
+            {movie.runtime === 0 && <h4 className='runtime'>runtime unknown</h4>}
+          </div>
+          {movie.overview !== "" && <p className='overview'>{movie.overview}</p>}
+          {movie.overview === "" && <p className='overview'>Sorry, there are currently no details for this movie.</p>}
+          {!trailerIsPlaying && imageShowing && <button className='viewTrailerBtn' onClick={this.toggleTrailer}>Show Trailer</button>}
+          {!trailerIsPlaying && !imageShowing && <button className='viewTrailerBtn' onClick={this.toggleTrailer}>Show Image</button>}
+        </>
+      }
+      </main>
     )
   }
 }
