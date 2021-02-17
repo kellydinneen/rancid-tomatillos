@@ -1,5 +1,6 @@
 # Rancid Tomatillos
 #### Turing School of Software Design - Mod3 Partner Project
+The details of this project are outlined in [this project spec](https://frontend.turing.io/projects/module-3/rancid-tomatillos-v3.html)
 
 ### Contributors
 - Kelly Dinneen : [github profile](https://github.com/kellydinneen)
@@ -17,14 +18,11 @@
 
 **Deployment**: Heroku
 
-The details of this project are outlined in [this project spec](https://frontend.turing.io/projects/module-3/rancid-tomatillos-v3.html)
-
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Instructions](#setup-instructions)
 3. [How-To](#using-rancid-tomatillos)
 4. [Challenges & Wins](#challenges-&-wins)
-5. [Appreciation](#appreciation)
 
 ## Introduction
 This project is the developers' first project in Module 3 of the Front-End Engineering program at Denver's Turing School of Software and Design. After several months of refining their javascript skills, the developers are finally dipping their toes into React and applying their experience with unit testing to implement end-to-end testing with Cypress.js. To implement the features of this project, the team used React Router, React Youtube, Express.js, and Heroku.
@@ -124,7 +122,6 @@ In addition to all the functionality above, we made the application completely r
 - **Two:** Creating a backend server using Express and deploying that repository to Heroku. This made it possible to access the server without having to run the server locally. 
 - **Three:** Using React-Youtube to access a specific movie's trailer and displaying it on the Movie's Details page. With this, implementing conditional rendering to toggle between the trailer and that movie's backdrop image. 
 
-### Appreciation
 
 
 
