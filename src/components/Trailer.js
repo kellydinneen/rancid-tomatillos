@@ -50,17 +50,11 @@ class Trailer extends React.Component {
 
     const { errorMsg, isLoading } = this.state;
 
-    if(errorMsg) {
-
-      return <p className='trailerErrorMsg'>{errorMsg}</p>
-
-    }
-
-    if(isLoading) {
-      return <p className='loading-message'>Loading...</p>
-    }
-
     return (
+      <>
+      {errorMsg && <p className='error-message'>{errorMsg}</p>}
+      {isLoading && <p className='loading-message'>Loading...</p>}
+      {!isLoading && !errorMsg &&
       <div className='trailer'>
         <YouTube className='vid'
         videoId={this.state.videoKey}
@@ -69,7 +63,8 @@ class Trailer extends React.Component {
         onPlay={this.toggleTrailerBtn}
         onPause={this.toggleTrailerBtn}
         />
-      </div>
+      </div>}
+      </>
     )
   }
 }
