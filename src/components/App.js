@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { Route, Switch, NavLink } from "react-router-dom";
 import MovieDetails from './MovieDetails';
 import Home from './Home';
-import Login from './Login';
 import Profile from './Profile';
 import About from './FooterLinks/About';
 import FAQ from './FooterLinks/FAQ';
 import ContactUs from './FooterLinks/ContactUs';
 import homeButton from '../Images/home.png';
-import { fetchMovieData } from '../apiCalls';
+import { fetchMovieData, fetchUsers } from '../apiCalls';
 import './App.css';
 
 class App extends Component {
@@ -20,13 +19,13 @@ class App extends Component {
       errorMsg: null,
       atHome: window.location.pathname === '/' ? true : false,
       user: null,
-      onProfile: false,
-      notOnLoginPage: true
+      onProfile: false
     }
   }
 
-  componentDidMount() {
-    fetchMovieData('movies')
+
+  componentDidMount = async () => {
+    await fetchMovieData('movies')
         .then(result =>{
           if (!result.movies) {
             this.setState({
@@ -39,17 +38,29 @@ class App extends Component {
                 isLoading: false
               })
           }})
+    await fetchUsers()
+      .then(result =>{
+        if (!result.users) {
+          this.setState({
+            isLoading: false,
+            errorMsg: result
+          })
+        } else {
+          this.setState({
+              user: result.users[0],
+              isLoading: false
+            })
+        }})
   }
 
   go = (place) => {
     if(place === 'atHome') {
-      this.setState({ atHome: true, notOnLoginPage: true })
+      this.setState({
+        atHome: true
+      })
       this.leave('profile')
     } else if(place === 'profile'){
       this.setState({ onProfile: true })
-      this.leave('atHome')
-    } else if(place === 'login'){
-      this.setState({ notOnLoginPage: false })
       this.leave('atHome')
     }
   }
@@ -62,17 +73,12 @@ class App extends Component {
     }
   }
 
-  logIn = (user) => {
+  updateUser = (user) => {
       this.setState({ user: user })
     }
 
-  logOut = () => {
-      this.setState({ user: '' })
-
-    }
-
   render() {
-    let {movies, isLoading, errorMsg, atHome, user, onProfile, notOnLoginPage} = this.state;
+    let {movies, isLoading, errorMsg, atHome, user, onProfile} = this.state;
 
     return (
       <>
@@ -82,12 +88,7 @@ class App extends Component {
               pathname:'/'
             }}  className="site-title" onClick={() => this.go('atHome')}><h1>Rancid<br/> Tomatillos
             </h1></NavLink>
-            {notOnLoginPage && !user && <NavLink to={{
-              pathname:'/login'
-            }} className='login-link' onClick={() => this.go('login')}>
-              <button className='login-button'>Log in</button>
-            </NavLink>}
-            {user && !onProfile && <NavLink to={{
+            {!onProfile && <NavLink to={{
               pathname:'/profile'
             }} className='profile-link' onClick={() => this.go('profile')}>
             <button className='profile-button'>Profile</button>
@@ -110,15 +111,13 @@ class App extends Component {
             user={user}
             leaveHome={() => this.leave('atHome')}
             />} />
-          <Route path='/login' exact render={() => <Login logIn={this.logIn} goHome={() => this.go('atHome')}/>} />
           <Route path='/profile' exact render={() => <Profile user={user}
-          logOut={this.logOut}
           goHome={() => this.go('atHome')}
           leaveHome={() => this.leave('profile')}/>} />
           <Route
             path='/movie-details/:title'
             render={(props) => (
-              <MovieDetails {...props} logIn={this.logIn} />
+              <MovieDetails {...props} updateUser={this.updateUser} />
             )}/>
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />

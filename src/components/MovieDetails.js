@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './MovieDetails.css';
 import Trailer from './Trailer';
-import { fetchMovieData, fetchUsers, addFavorite, deleteFavorite } from '../apiCalls'
+import { fetchMovieData, fetchUsers, addOrRemoveFavorite } from '../apiCalls'
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -54,16 +54,16 @@ class MovieDetails extends Component {
 
   alterFavorites = async (method) => {
     if(method === 'add') {
-      await addFavorite(this.state.user, this.state.movie);
+      await addOrRemoveFavorite(this.state.user, this.state.movie);
       this.setState({ isFavorite: true });
     } else if(method === 'remove') {
-      await addFavorite(this.state.user, this.state.movie);
+      await addOrRemoveFavorite(this.state.user, this.state.movie);
       this.setState({ isFavorite: false });
     }
     const users = await fetchUsers();
     const currentUser = users.users.find(theUser => theUser.id === this.state.user.id);
     this.setState({ user: currentUser});
-    this.props.logIn(this.state.user);
+    this.props.updateUser(this.state.user);
   }
 
   render() {

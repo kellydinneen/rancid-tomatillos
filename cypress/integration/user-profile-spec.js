@@ -5,19 +5,13 @@ describe('User Profile UI', () => {
         statusCode: 200,
         body: testMovies
       })})
-    cy.visit('http://localhost:3000');
-    cy.get('.login-button').click().wait(50)
     cy.fixture('testUsers.json')
       .then((testUsers) => {cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/users', {
         statusCode: 200,
         body: testUsers
       })})
-    cy.get('input[type="text"]')
-      .type('Thirdu')
-      .get('input[type="password"]')
-      .type('Ser')
-      .get('.login-btn').click().wait(1000)
-      .get('.profile-link').click().wait(1000)
+    cy.visit('http://localhost:3000').wait(1000);
+    cy.get('.profile-button').click();
   });
 
   it('Should have header and footer', () => {
@@ -40,7 +34,7 @@ describe('User Profile UI', () => {
   });
 
   it('Should show user name', () => {
-      cy.get('.userName').contains('Thirdu Ser')
+      cy.get('.userName').contains('Jessica Candel')
   });
 
   it('Should show user favorites', () => {

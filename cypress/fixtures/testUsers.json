@@ -22,10 +22,6 @@
         "password": "Ser",
         "favorites": "[]"
       }
-  ],
-
-  "error404": "404 error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!",
-
-  "error500": "500 error. Sorry! Something went wrong! Try again later or go to Contact Us to contact the developers with questions!"
+  ]
 
 }

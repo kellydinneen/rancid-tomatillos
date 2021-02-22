@@ -17,12 +17,6 @@ describe('Dashboard UI', () => {
     cy.get('header').contains('Rancid Tomatillos').should('be.visible')
   });
 
-  it('Should have a button to the Login page', () => {
-    cy.get('.login-button').contains('Log in')
-      .click()
-    cy.url().should('include', 'login')
-  });
-
   it('Should render a section for the Top Rated movies that has the top three movies\'s titles and ratings', () => {
     cy.contains('Top Rated')
     cy.get('.top-movie-rating1').contains('7')

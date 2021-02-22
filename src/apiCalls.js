@@ -18,7 +18,7 @@ export const fetchUsers = () => {
         }})
 }
 
-export const addFavorite = (user, movie) => {
+export const addOrRemoveFavorite = (user, movie) => {
   const patch = {
       method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
