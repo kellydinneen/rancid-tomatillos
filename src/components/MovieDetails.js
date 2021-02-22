@@ -63,7 +63,7 @@ class MovieDetails extends Component {
     const users = await fetchUsers();
     const currentUser = users.users.find(theUser => theUser.id === this.state.user.id);
     this.setState({ user: currentUser});
-    this.props.logIn(this.state.user);
+    this.props.updateUser(this.state.user);
   }
 
   render() {

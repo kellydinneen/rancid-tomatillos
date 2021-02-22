@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { Route, Switch, NavLink } from "react-router-dom";
 import MovieDetails from './MovieDetails';
 import Home from './Home';
-import Login from './Login';
+// import Login from './Login';
 import Profile from './Profile';
 import About from './FooterLinks/About';
 import FAQ from './FooterLinks/FAQ';
 import ContactUs from './FooterLinks/ContactUs';
 import homeButton from '../Images/home.png';
-import { fetchMovieData } from '../apiCalls';
+import { fetchMovieData, fetchUsers } from '../apiCalls';
 import './App.css';
 
 class App extends Component {
@@ -57,15 +57,21 @@ class App extends Component {
 
   go = (place) => {
     if(place === 'atHome') {
-      this.setState({ atHome: true, notOnLoginPage: true })
+      this.setState({
+        atHome: true,
+        // notOnLoginPage: true
+      })
       this.leave('profile')
     } else if(place === 'profile'){
       this.setState({ onProfile: true })
       this.leave('atHome')
-    } else if(place === 'login'){
-      this.setState({ notOnLoginPage: false })
-      this.leave('atHome')
     }
+    // else if(place === 'login'){
+    //   this.setState({
+    //     notOnLoginPage: false
+    //   })
+    //   this.leave('atHome')
+    // }
   }
 
   leave = (page) => {
@@ -76,14 +82,14 @@ class App extends Component {
     }
   }
 
-  logIn = (user) => {
+  updateUser = (user) => {
       this.setState({ user: user })
     }
 
-  logOut = () => {
-      this.setState({ user: '' })
-
-    }
+  // logOut = () => {
+  //     this.setState({ user: '' })
+  //
+  //   }
 
   render() {
     let {movies, isLoading, errorMsg, atHome, user, onProfile, notOnLoginPage} = this.state;
@@ -96,11 +102,11 @@ class App extends Component {
               pathname:'/'
             }}  className="site-title" onClick={() => this.go('atHome')}><h1>Rancid<br/> Tomatillos
             </h1></NavLink>
-            {notOnLoginPage && !user && <NavLink to={{
-              pathname:'/login'
-            }} className='login-link' onClick={() => this.go('login')}>
-              <button className='login-button'>Log in</button>
-            </NavLink>}
+            // {notOnLoginPage && !user && <NavLink to={{
+            //   pathname:'/login'
+            // }} className='login-link' onClick={() => this.go('login')}>
+            //   <button className='login-button'>Log in</button>
+            // </NavLink>}
             {user && !onProfile && <NavLink to={{
               pathname:'/profile'
             }} className='profile-link' onClick={() => this.go('profile')}>
@@ -124,15 +130,15 @@ class App extends Component {
             user={user}
             leaveHome={() => this.leave('atHome')}
             />} />
-          <Route path='/login' exact render={() => <Login logIn={this.logIn} goHome={() => this.go('atHome')}/>} />
+          // <Route path='/login' exact render={() => <Login logIn={this.logIn} goHome={() => this.go('atHome')}/>} />
           <Route path='/profile' exact render={() => <Profile user={user}
-          logOut={this.logOut}
+          // logOut={this.logOut}
           goHome={() => this.go('atHome')}
           leaveHome={() => this.leave('profile')}/>} />
           <Route
             path='/movie-details/:title'
             render={(props) => (
-              <MovieDetails {...props} logIn={this.logIn} />
+              <MovieDetails {...props} updateUser={this.updateUser} />
             )}/>
           <Route path='/about' exact component={About} />
           <Route path='/faq' exact component={FAQ} />

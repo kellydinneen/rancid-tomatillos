@@ -9,18 +9,22 @@ class Profile extends Component {
     this.state = {
       name: props.user.name,
       favorites: props.user.favorites,
-      isLogginOut: false
+      // isLogginOut: false
     }
   }
 
-  logOutUser = () => {
-    this.setState({ isLoggingOut: true})
-    this.props.goHome()
-    this.props.logOut()
-  }
+  // logOutUser = () => {
+  //   this.setState({ isLoggingOut: true})
+  //   this.props.goHome()
+  //   this.props.logOut()
+  // }
 
   render() {
-    const {name, favorites, isLoggingOut } = this.state;
+    const {
+      name,
+      favorites,
+      // isLoggingOut
+    } = this.state;
 
     return (
       <main>
@@ -29,8 +33,8 @@ class Profile extends Component {
         <section className='favorites'>
           <Movies movies={favorites} leaveHome={this.props.leaveHome} user={this.props.user}/>
         </section>
-        <button className='logout-button' onClick={this.logOutUser}>Logout</button>
-        {isLoggingOut && <Redirect to='/'/>}
+        // <button className='logout-button' onClick={this.logOutUser}>Logout</button>
+        // {isLoggingOut && <Redirect to='/'/>}
       </main>
     )
   }
