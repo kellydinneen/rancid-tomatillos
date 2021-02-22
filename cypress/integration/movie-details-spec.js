@@ -5,8 +5,6 @@ describe('Movie Details UI', () => {
         statusCode: 200,
         body: testMovies
       })})
-    cy.visit('http://localhost:3000');
-    cy.get('.login-button').click().wait(50)
     cy.fixture('testUsers.json')
       .then((testUsers) => {cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/users', {
         statusCode: 200,
@@ -17,16 +15,12 @@ describe('Movie Details UI', () => {
         statusCode: 200,
         body: testMovies.videos
       })})
-    cy.get('input[type="text"]')
-      .type('Thirdu')
-      .get('input[type="password"]')
-      .type('Ser')
-      .get('.login-btn').click().wait(100)
     cy.fixture('testMovies.json')
-      .then((testMovie) => {cy.intercept('PATCH', 'https://rancid-tomatillos.herokuapp.com/api/v2/users/u3', {
+      .then((testMovie) => {cy.intercept('PATCH', 'https://rancid-tomatillos.herokuapp.com/api/v2/users/u1', {
         statusCode: 200,
         body: testMovie
       })})
+    cy.visit('http://localhost:3000').wait(1000);
     cy.get('.movies-container').children().first('link').click().wait(50)
   });
 
@@ -86,14 +80,14 @@ describe('Movie Details UI', () => {
   });
 
   it('Should be able to add movie to favorites', () => {
-    cy.get('.favorite-btn').click()
+    cy.get('.favorite-btn').click().wait(1000)
     cy.get('.profile-link').click().wait(50)
     cy.get('.movies-container').children().children()
     .should('have.class','poster 726739')
   });
 
   it('Should be able to delete movie from favorites', () => {
-    cy.get('.favorite-btn').click()
+    cy.get('.favorite-btn').click().wait(1000)
     cy.get('.profile-link').click().wait(50)
     cy.get('.favorites').children().last().children().should('not.have.class','poster 726739')
   });
