@@ -54,10 +54,10 @@ class MovieDetails extends Component {
 
   alterFavorites = async (method) => {
     if(method === 'add') {
-      await addOrRemoveFavorite(this.state.user, this.state.movie);
+      await addOrRemoveFavorite(this.state.user, this.state.movie, 'fav');
       this.setState({ isFavorite: true });
     } else if(method === 'remove') {
-      await addOrRemoveFavorite(this.state.user, this.state.movie);
+      await addOrRemoveFavorite(this.state.user, this.state.movie, 'fav');
       this.setState({ isFavorite: false });
     }
     const users = await fetchUsers();

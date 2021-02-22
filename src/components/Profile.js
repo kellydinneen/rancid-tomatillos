@@ -22,6 +22,10 @@ class Profile extends Component {
         <section className='favorites'>
           <Movies movies={user.favorites} leaveHome={this.props.leaveHome} user={user}/>
         </section>
+        <h2 className='watched-label'>Watched</h2>
+        <section className='watched'>
+          <Movies movies={user.favorites} leaveHome={this.props.leaveHome} user={user}/>
+        </section>
       </main>
     )
   }
