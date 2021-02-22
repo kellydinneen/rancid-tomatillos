@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from "react-router-dom";
 import Movies from './Movies';
 import './Profile.css';
 
@@ -7,34 +6,22 @@ class Profile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: props.user.name,
-      favorites: props.user.favorites,
-      // isLogginOut: false
+      user: props.user
     }
   }
 
-  // logOutUser = () => {
-  //   this.setState({ isLoggingOut: true})
-  //   this.props.goHome()
-  //   this.props.logOut()
-  // }
-
   render() {
     const {
-      name,
-      favorites,
-      // isLoggingOut
+      user
     } = this.state;
 
     return (
       <main>
-        <h1 className='userName'>{name}</h1>
+        <h1 className='userName'>{user.name}</h1>
         <h2 className='favorites-label'>Favorites</h2>
         <section className='favorites'>
-          <Movies movies={favorites} leaveHome={this.props.leaveHome} user={this.props.user}/>
+          <Movies movies={user.favorites} leaveHome={this.props.leaveHome} user={user}/>
         </section>
-        // <button className='logout-button' onClick={this.logOutUser}>Logout</button>
-        // {isLoggingOut && <Redirect to='/'/>}
       </main>
     )
   }
