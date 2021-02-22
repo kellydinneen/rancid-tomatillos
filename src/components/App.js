@@ -25,6 +25,7 @@ class App extends Component {
     }
   }
 
+
   componentDidMount() {
     fetchMovieData('movies')
         .then(result =>{
@@ -39,6 +40,19 @@ class App extends Component {
                 isLoading: false
               })
           }})
+    fetchUsers()
+      .then(result =>{
+        if (!result.users) {
+          this.setState({
+            isLoading: false,
+            errorMsg: result
+          })
+        } else {
+          this.setState({
+              user: result.users[0],
+              isLoading: false
+            })
+        }})
   }
 
   go = (place) => {
